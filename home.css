@@ -107,3 +107,18 @@ footer {
   text-align: center;
   padding: 1rem;
 }
+
+label, #signup {
+  display: inline-block; /* Ensures labels and input fields appear on the same line */
+  width: 100px; /* Adjust width as needed to align labels */
+  text-align: left; /* Aligns text to the right for consistent spacing */
+  margin-right: 75px; /* Adds a small margin between label and input */
+}
+
+#LoginInfo button {
+  display: inline-block;
+  
+  margin-left: 150px;
+
+}
+

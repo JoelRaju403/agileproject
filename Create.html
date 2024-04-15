@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>My Flashcards</h1>
+  </header>
+  <main>
+    <section id="flashcard-section">
+      <h2>Create Flashcards</h2>
+      <form id="flashcard-form">
+        <input type="text" id="question-input" placeholder="Enter your question">
+        <input type="text" id="answer-input" placeholder="Enter your answer">
+        <button type="submit">Add Flashcard</button>
+      </form>
+    </section>
+    <section id="my-flashcards-section">
+      <h2>My Flashcards</h2>
+      <ul id="flashcard-list">
+        <!-- Flashcards will be dynamically added here -->
+      </ul>
+    </section>
+  </main>
+  <script>// Define an array to store flashcards
+    let flashcards = [];
+    
+    // Function to add flashcard
+    function addFlashcard(question, answer) {
+      flashcards.push({ question, answer });
+    }
+    
+    // Function to display flashcards
+    function displayFlashcards() {
+      const flashcardList = document.getElementById('flashcard-list');
+      flashcardList.innerHTML = ''; // Clear previous list
+    
+      flashcards.forEach((flashcard, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<strong>${index + 1}.</strong> ${flashcard.question} - ${flashcard.answer}`;
+        flashcardList.appendChild(listItem);
+      });
+    }
+    
+    // Event listener for form submission
+    document.getElementById('flashcard-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+      const questionInput = document.getElementById('question-input');
+      const answerInput = document.getElementById('answer-input');
+      const question = questionInput.value.trim();
+      const answer = answerInput.value.trim();
+    
+      if (question && answer) {
+        addFlashcard(question, answer);
+        displayFlashcards();
+        questionInput.value = ''; // Clear input fields after submission
+        answerInput.value = '';
+      } else {
+        alert('Please enter both question and answer!');
+      }
+    });
+    </script>
+</body>
+</html>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>stud.e</title>
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="static/home.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -14,14 +14,14 @@
 
 <body>
   <header>
-    <img src="logo.png">
+    <img src="static/logo.png">
     <h1>stud.e</h1>
     <nav>
       <ul>
-        <li><a href="home.html">Home</a></li>
+        <li><a href='{{ url_for('home') }}'>Home</a></li>
         <li><a href="#">Explore</a></li>
         <li><a href="#">Create</a></li>
-        <li><a href="Login.html">Login</a></li>
+        <li><a href='{{ url_for('login') }}'>Login</a></li>
       </ul>
     </nav>
   </header>
@@ -37,7 +37,7 @@
           <button type="submit">Login</button>
         </div>
       </form>
-      <a id="signup" href="#">Sign up</a>
+      <a id="signup" href="SignUp.html">Sign up</a>
 
     </section>
 
@@ -51,7 +51,7 @@
 
     <p>&copy; 2024 stud.e. All rights reserved.</p>
   </footer>
-  <script src="home.js"></script>
+  <script src="static/home.js"></script>
 </body>
 
 </html>

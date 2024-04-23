@@ -1,0 +1,194 @@
+:root {
+  --gray-outline: black;
+}
+
+
+
+
+/* Modal styles */
+.modal {
+  /*display: none; /* Hidden by default */
+  display: block;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Disable scroll */
+ 
+}
+
+
+
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  height: 100%;
+  text-align: center;
+  position: relative; /* Relative positioning for close button */
+  overflow: hidden; /* Disable scroll */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+  background-image: linear-gradient(
+    115deg,
+    rgba(249, 249, 249, 0),
+    rgba(83, 200, 246, 0.406)
+  ),
+  url(background.JPG);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+
+}
+
+
+.outline {
+  border: 1px solid #888; 
+  width: 45rem;
+  height: 100vh; 
+  margin: 0;
+  background-color: rgb(230, 232, 233);
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  padding: 2rem;
+}
+
+/* Close button */
+.modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Sign In title */
+.modal .modal-content h1 {
+  margin-bottom: 20px;
+}
+
+/* Social icons */
+.modal .social-icons {
+  margin-bottom: 20px;
+}
+
+.modal .social-icons .icon {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Email and password inputs */
+.modal input[type="email"],
+.modal input[type="password"] {
+  width: 35rem;
+  padding: 10px;
+  margin: 0 auto 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+}
+
+/* Forget password link */
+.modal a {
+  display: block;
+  text-align: right;
+  margin-bottom: 10px;
+  color: #666;
+  text-decoration: none;
+}
+
+.modal a:hover {
+  color: #333;
+}
+
+/* Sign In button */
+.modal button {
+  width: 35rem;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #0056b3;
+}
+
+/* Style the social icons container */
+.social-icons {
+  text-align: center;
+}
+
+
+.Google {
+  border: 3px solid var(--gray-outline);
+  border-radius: 5px;
+  padding: 10px; /* Adjust padding to set height */
+  display: block;
+  margin: 0 auto 10px;
+  width: 35rem; /* Set width based on height and border width */
+}
+
+/* Style the Google button icon */
+.Google .icon {
+  font-size: 24px;
+  color: var(--gray-outline); /* Use the defined variable for color */
+  text-decoration: none;
+}
+
+/* Style the Google button text */
+.Google a {
+  color: var(--gray-outline); /* Use the defined variable for color */
+  text-decoration: none;
+  margin-left: 10px; /* Add some space between icon and text */
+}
+
+/* On hover, darken the button */
+.Google:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Add a subtle background color on hover */
+}
+
+
+/* Adjust modal width for smaller screens */
+@media only screen and (max-width: 768px) {
+  
+  .modal .modal-content {
+    width: calc(100% - 20px);
+    font-size: 14px; 
+  }
+  
+  
+  .modal input[type="email"],
+  .modal input[type="password"] {
+    width: calc(100% - 20px); 
+  }
+  
+  .modal button {
+    width: calc(100% - 20px); 
+  }
+  .Google{
+    width: calc(100% - 20px);
+  }
+
+  .outline{
+    width: calc(100% - 20px);
+  }
+
+}
+
+

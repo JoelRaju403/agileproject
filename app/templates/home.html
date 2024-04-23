@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>stud.e</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="static/home.css">
+  <!--<link rel="stylesheet" href="static/login.css">-->
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
   <header>
@@ -21,10 +22,10 @@
     <h1>stud.e</h1>
     <nav>
       <ul>
-        <li><a href='{{url_for('home') }}'>Home</a></li>
+        <li><a href='{{ url_for('home') }}'>Home</a></li>
         <li><a href="#">Explore</a></li>
         <li><a href="#">Create</a></li>
-        <li><a href='{{ url_for('login') }}'>Login</a></li>
+        <li><a href="" id="login-btn">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -33,7 +34,7 @@
     <section class="hero">
       <h2>Master Your Subjects with stud.e</h2>
       <p>Study smarter, not harder. Access millions of flashcards and quizzes created by students like you.</p>
-      <button class='btn' onclick="location.href='{{ url_for('login') }}'"> Get started</button>
+      <button class='btn' id="login-btn1"> Get started</button>
     </section>
     <div class="container">
       <!-- Bootstrap Carousel -->
@@ -63,6 +64,30 @@
               <span class="sr-only">Next</span>
           </a>
       </div><br>
+      <div id="login-modal" class="modal">
+        <div class="modal-content">
+         
+          <div class="outline">
+            <span class="close">&times;</span>
+          <form>
+            <h1><b>Log In</b></h1>
+            <div class="social-icons">
+                <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>
+                <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with Facebook</b></div>
+              </div>
+              <div style="display: flex; align-items: center; text-align: center;">
+                <hr style="flex: 1;">
+                <span style="padding: 0 10px;">or use your email password</span>
+                <hr style="flex: 1;">
+              </div>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button>Log In</button>
+        </form>
+      </div>
+        </div>
+      </div>
+    
   
    
   </main>

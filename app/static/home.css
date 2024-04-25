@@ -43,6 +43,7 @@
 
   }
  
+ 
   .hero {
     text-align: center;
     margin-bottom: 2rem;
@@ -50,13 +51,11 @@
   .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: white;
-    padding-top: 25%;
+    
   }
   .hero p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
-    color: #fff;
     
   }
   .btn {
@@ -67,6 +66,25 @@
     text-decoration: none;
     border-radius: 5px;
   }
+
+
+
+  .content {
+    background-image: url(home.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+  }
+
+ 
+
+
+
+
+  
 
 
 

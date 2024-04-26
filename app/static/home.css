@@ -51,14 +51,10 @@
   .hero h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: white;
-    padding-top: 25%;
   }
   .hero p {
     font-size: 1.1rem;
     margin-bottom: 2rem;
-    color: #fff;
-    
   }
   .btn {
     display: inline-block;
@@ -137,7 +133,7 @@
 
   li>a:hover {
     text-decoration: underline;
-
+    font-weight: bold;
 
   }
 

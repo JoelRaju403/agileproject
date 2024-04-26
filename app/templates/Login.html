@@ -23,8 +23,8 @@
   <div id="login-modal" class="modal">
     <div class="modal-content">
       <div class="outline">
-        <span class="close"><a href='{{ url_for('home') }}'>&times; </a></span>
-        <form>
+        <div class="close"><a href='{{ url_for('home') }}'>&times; </a></div>
+        <form action="" method="post" novalidate>
           <h1><b>Log In</b></h1>
           <div class="social-icons">
             <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></Log></div>
@@ -36,17 +36,35 @@
           <span style="padding: 0 10px;">or use your email password</span>
           <hr style="flex: 1;">
         </div>
-          <input type="email" placeholder="Email">
+          <!--<input type="email" placeholder="Email">
           <input type="password" placeholder="Password">
-          <button>Log In</button>
-
+          <button>Log In</button>-->
+          <div class="inputinfo">
+            {{ form.hidden_tag() }}
+            <p>
+              {{ form.username(size=32, placeholder="Enter username") }}
+              {% for error in form.username.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.password(size=32, placeholder="Password") }}
+              {% for error in form.password.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+              <a class="forgetPassword" href="#"> Forgot Password</a>
+            </p>
+            <div class="rememberme">
+              <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            </div>
+            <p>{{ form.submit() }}</p>
+            <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+        </div>
         </form>
       </div>
     </div>
   </div>
-  
-
-
+ 
 </body>
 
 </html>

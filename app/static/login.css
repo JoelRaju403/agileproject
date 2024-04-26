@@ -57,7 +57,7 @@ background-position: center;
 }
 
 /* Close button */
-.modal .close {
+/*.modal .close {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -69,7 +69,7 @@ background-position: center;
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
+}*/
 
 /* Sign In title */
 .modal .modal-content h1 {
@@ -101,21 +101,27 @@ background-position: center;
   display: block;
 }
 
+
 /* Forget password link */
-.modal a {
+.modal .forgetPassword {
   display: block;
-  text-align: right;
+  margin-right: 27.5rem;
   margin-bottom: 10px;
-  color: #666;
+  color: blue;
   text-decoration: none;
 }
 
 .modal a:hover {
   color: #333;
+  text-decoration: none;
+}
+
+.rememberme {
+  margin-right: 27.5rem;
 }
 
 /* Sign In button */
-.modal button {
+.modal input[type="submit"] {
   width: 35rem;
   padding: 10px;
   background-color: #007bff;
@@ -125,7 +131,7 @@ background-position: center;
   cursor: pointer;
 }
 
-.modal button:hover {
+.modal input[type="submit"]:hover {
   background-color: #0056b3;
 }
 

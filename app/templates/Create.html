@@ -53,6 +53,13 @@
           border-radius: 5px;
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
         }
+        .subject-box{
+          margin: auto;
+          padding: 20px;
+          margin-top: 10px;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        }
         .create-box textarea{
           width: 100%;
           border-radius: 5px;
@@ -99,6 +106,16 @@
   </nav>
 </header>
 
+    <div class = "container">
+      <div class="subject-box">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject">
+        <br>
+        <label for="title"> Title</label>
+        <input type ='text' id="title" name="title">
+      </div>
+    </div>
+
     <div>
       <button class="creation" onclick="showCreateCardBox()">New Card</button>
       <button class="creation" onclick="delFlashcards()">Delete Cards</button>
@@ -108,10 +125,10 @@
       <div class="create-box">
         <h2 style="text-align: center; color:black">Create Flashcard </h2>
         <label for="question">Question</label>
-        <textarea id="question" cols="30" rows="10"></textarea>
+        <textarea id="question" cols="3" rows="10"></textarea>
         <br>
         <label for="answer">Answer</label>
-        <textarea id="answer" cols="30" rows="10"></textarea>
+        <textarea id="answer" cols="3" rows="10"></textarea>
         <div>
           <button onclick="addFlashcard()">Save</button>
           <button onclick="hideCreateBox() ">Close</button>

@@ -115,11 +115,7 @@
   
   }
 
-  li>a:hover {
-    text-decoration: underline;
-
-
-  }
+  
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-color: rgb(3, 48, 63);

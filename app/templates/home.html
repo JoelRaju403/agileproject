@@ -6,12 +6,10 @@
   <title>stud.e</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/home.css">
-  <!--<link rel="stylesheet" href="static/login.css">-->
+ 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="static/favicon.ico">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -24,7 +22,7 @@
       <ul>
         <li><a href='{{ url_for('home') }}'>Home</a></li>
         <li><a href="#">Explore</a></li>
-        <li><a href="#">Create</a></li>
+        <li><a href='{{ url_for('create') }}'>Create</a></li>
         <li><a href="" id="login-btn">Login</a></li>
       </ul>
     </nav>
@@ -32,13 +30,14 @@
   <main>
     
     <section class="hero">
-      <h2>Master Your Subjects with stud.e</h2>
-      <p>Study smarter, not harder. Access millions of flashcards and quizzes created by students like you.</p>
-      <button class='btn' id="login-btn1"> Get started</button>
+      <div class="content">
+        <h2>Master Your Subjects with stud.e</h2>
+        <p>Study smarter, not harder. Access millions of flashcards and quizzes created by students like you.</p>
+        <button class='btn' id="login-btn1"> Get started</button>
+      </div>
     </section>
-    <div class="container">
-      <!-- Bootstrap Carousel -->
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+        <!-- Bootstrap Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -64,9 +63,37 @@
               <span class="sr-only">Next</span>
           </a>
       </div><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+   
+      
       <div id="login-modal" class="modal">
         <div class="modal-content">
-         
+
           <div class="outline">
             <span class="close">&times;</span>
             <form action="" method="post" novalidate>
@@ -105,18 +132,9 @@
       </div>
         </div>
       </div>
-    
-  
-   
   </main>
   <footer>
-
-
-
-
-
-    
-    <p>&copy; 2024 stud.e. All rights reserved.</p>
+        <p>&copy; 2024 stud.e. All rights reserved.</p>
   </footer>
   <script src="static/home.js"></script>
 </body>

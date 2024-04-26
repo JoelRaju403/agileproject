@@ -172,29 +172,30 @@ background-position: center;
 
 /* Adjust modal width for smaller screens */
 @media only screen and (max-width: 768px) {
-  
   .modal .modal-content {
     width: calc(100% - 20px);
     font-size: 14px; 
   }
   
-  
   .modal input[type="email"],
-  .modal input[type="password"] {
-    width: calc(100% - 20px); 
+  .modal input[type="password"],
+  .Google {
+    width: calc(100% - 40px); /* Adjust width calculation */
+    margin: 0 20px; /* Add margin for spacing */
   }
   
   .modal button {
-    width: calc(100% - 20px); 
+    width: calc(100% - 40px); /* Adjust width calculation */
+    margin: 0 20px; /* Add margin for spacing */
   }
-  .Google{
-    width: calc(100% - 20px);
+  
+  /* Set outline to take up the whole screen */
+  .outline {
+    width: 100vw; /* 100% of viewport width */
+    height: 100vh; /* 100% of viewport height */
+    right: auto !important;
+    margin: auto !important;
   }
-
-  .outline{
-    width: calc(100% - 20px);
-  }
-
 }
 
 

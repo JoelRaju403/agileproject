@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
   }
   /* Global styles */
   body {
@@ -147,6 +148,8 @@
 .carousel-item {
   overflow: hidden;
 }
+
+/*what is this referencing*/
 .container {
   background-color: white; /* Set background color for the carousel container */
   padding: 20px; /* Optional: Add padding for better visual separation */
@@ -206,8 +209,7 @@
     url(background.JPG);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  
+  background-position: center; 
   }
   
   
@@ -222,21 +224,12 @@
     right: 0; 
     padding: 2rem;
   }
-  
-  /* Close button */
-  /*.modal .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
+ 
   
   .modal .close:hover,
   .modal .close:focus {
-    color: black;
-    text-decoration: none;
     cursor: pointer;
-  }*/
+  }
   
   /* Sign In title */
   .modal .modal-content h1 {
@@ -260,7 +253,7 @@
   /* Email and password inputs */
 .modal input[type="email"],
 .modal input[type="password"] {
-  width: 35rem;
+  width: 35rem !important;
   padding: 10px;
   margin: 0 auto 10px;
   border: 1px solid #ccc;
@@ -270,24 +263,26 @@
 }
   
   /* Forget password link */
+  /* Ask about structure*/
   .modal .forgetPassword {
-    display: block;
-    margin-right: 27.5rem;
-    margin-bottom: 10px;
     color: blue;
     text-decoration: none;
+    display: block; 
+    text-align: center;
+    margin: auto; 
+    width: 35rem;
+
   }
-  
+  /* why do we wnt this */
   .modal a:hover {
     color: #333;
     text-decoration: none;
   }
   
-  .rememberme {
-    margin-right: 27.5rem;
-  }
+
   
-  /* Sign In button */
+  
+  /* Log In button */
   .modal input[type="submit"] {
     width: 35rem;
     padding: 10px;
@@ -305,7 +300,33 @@
   /* Style the social icons container */
   .social-icons {
     text-align: center;
+    width: 35rem;
+    margin: 0 auto 10px;
   }
+  
+  .heading-container{
+    justify-items: left;
+    display: flex;
+    padding-left: 3.25rem;
+
+  }
+
+  
+  .login-heading, .signin-heading {
+    margin-right: 20px; /* Adjust the spacing between headings */
+   display: inline-flex;
+   margin-bottom: 2.5rem;
+   
+
+   }
+
+   .swiggly-text {
+    text-decoration:red underline wavy; /* Add styles for the swiggly effect */
+  
+  }
+  
+  
+
   
   
   .Google {
@@ -336,7 +357,30 @@
     background-color: rgba(0, 0, 0, 0.1); /* Add a subtle background color on hover */
   }
   
-  
+  .inputinfo {
+    text-align: center; 
+}
+
+.centered-text {
+    display: flex; 
+    justify-content: center; 
+   
+}
+
+.signUp {
+  border: 3px solid var(--gray-outline);
+  margin: 0 auto 10px;
+  width: 35rem;
+  border-radius: 5px;
+  color: var(--gray-outline);
+  padding-top: 15px;  
+}
+
+.signUp:hover {
+  background-color: rgba(0, 0, 0, 0.1); 
+}
+
+
   /* Adjust modal width for smaller screens */
   @media only screen and (max-width: 768px) {
     

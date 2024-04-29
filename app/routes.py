@@ -31,7 +31,7 @@ def home():
     elif request.referrer == request.url:
         # If the form was submitted without anything, redirect to login page to try again.
         return redirect(url_for('login'))
-    return render_template('home.html', form=form)
+    return render_template('home.html', form=form, page='home')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -43,13 +43,13 @@ def login():
             sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            return render_template('login.html', title='Sign In', form=form)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', form=form, page="login")
 
 
 @app.route('/logout')
@@ -75,9 +75,11 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form, page='register')
 
 
 @app.route('/create')
+@login_required
 def create():
+  
   return render_template('Create.html')

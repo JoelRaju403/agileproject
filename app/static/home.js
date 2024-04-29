@@ -10,13 +10,14 @@ const loginBtn1 = document.getElementById('login-btn1');
 // Get the <span> element that closes the modal
 const closeBtn = document.getElementsByClassName('close')[0];
 
-
+const page = document.documentElement;
  
 // When the user clicks the login button, open the modal 
 loginBtn.addEventListener('click', function(event) {
   event.preventDefault(); // Prevent default click behavior
   modal.style.display = 'block';
   modal.classList.add('slide-up'); // Add slide-up class
+  page.style.overflow ='hidden';
 });
 
 // When the user clicks the 'get started' button, open the modal 

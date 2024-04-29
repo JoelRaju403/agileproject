@@ -6,6 +6,7 @@
   <title>stud.e</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/home.css">
+  <link rel="stylesheet" href="static/login.css">
  
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -65,12 +66,6 @@
       </div><br>
 
 
-
-
-
-
-
-
       
       <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -79,8 +74,8 @@
             <span class="close">&times;</span>
             <form action="" method="post" novalidate>
               <div class="heading-container">
-            <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b>Log In</b></h1>
-            <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b>Sign In</b></h1>
+                <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b><a href="{{ url_for('login') }}">Log In</a></b></h1>
+                <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a href="{{ url_for('register') }}">Sign In</a></b></h1>
           </div>
             <div class="social-icons">
                 <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>

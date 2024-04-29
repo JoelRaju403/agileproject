@@ -33,7 +33,7 @@ def home():
     elif request.referrer == request.url:
         # If the form was submitted without anything, redirect to login page to try again.
         return redirect(url_for('login'))
-    return render_template('home.html', form=form)
+    return render_template('home.html', form=form, page='home')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -51,7 +51,7 @@ def login():
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('home')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', form=form, page='login')
 
 
 @app.route('/logout')
@@ -77,7 +77,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form, page='register')
 
 
 @app.route('/create')

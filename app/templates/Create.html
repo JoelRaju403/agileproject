@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/static/home.css">
+  <link rel="icon" href="static/favicon.ico">
   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,11 @@
         .creation{
           float: right;
           justify-content: right;
+          background-color: #f44336;
+        }
+
+        .creation:hover{
+          background-color: #c73f35;
         }
         button:hover {
             background-color: #45a049;
@@ -107,42 +113,44 @@
 </header>
 
     <div class = "container">
-      <div class="subject-box">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="Subject">
-        <br>
-        <label for="title"> Title</label>
+    <div class="subject-box">
+      <h2 style="text-align: center; color:black">Create Flashcard </h2>
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject">
+      <br>
+      <label for="title"> Title</label>
         <input type ='text' id="title" name="title">
-      </div>
     </div>
-
-    <div>
-      <button class="creation" onclick="showCreateCardBox()">New Card</button>
-      <button class="creation" onclick="delFlashcards()">Delete Cards</button>
-    </div>
+  </div>
 
     <div class="container">
       <div class="create-box">
-        <h2 style="text-align: center; color:black">Create Flashcard </h2>
         <label for="question">Question</label>
         <textarea id="question" cols="3" rows="10"></textarea>
         <br>
         <label for="answer">Answer</label>
         <textarea id="answer" cols="3" rows="10"></textarea>
         <div>
-          <button onclick="addFlashcard()">Save</button>
-          <button onclick="hideCreateBox() ">Close</button>
+          <button onclick="addFlashcard()">Save Card</button>
+          <button id = "flashcard-form"> Submit Set</button>
+          <button class="creation" onclick="delFlashcards()">Delete All Cards</button>
+
         </div>
       </div>
     </div>
 
     <div class="flashcards"></div>
 
+    <div id="flashcard-message"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+    
       const flashcards = document.getElementsByClassName("flashcards")[0];
       const createBox = document.getElementsByClassName("create-box")[0];
       const question = document.getElementById("question");
       const answer = document.getElementById("answer");
+      const subject = document.getElementById("subject")
       let contentArray = localStorage.getItem('items')?
       JSON.parse(localStorage.getItem('items')) : [];
       
@@ -183,7 +191,9 @@
       function addFlashcard(){
         var flashcard_info = {
           'my_question' : question.value,
-          'my_answer' : answer.value
+          'my_answer' : answer.value,
+          'subject' : subject.value,
+          'title' : title.value
         }
         contentArray.push(flashcard_info);
         localStorage.setItem('items',JSON.stringify(contentArray));
@@ -207,6 +217,35 @@
         createBox.style.display = "none";
 
       }
+
+    $(document).ready(function(){
+        $('#flashcard-form').click(function(event){
+          
+        alert("the button was clicked"); 
+        const subject = $('#subject').val();
+        const title = $('#title').val();
+        
+        const jsonData = JSON.stringify({
+          subject: subject,
+          title: title,
+          flashcards: contentArray
+        });
+
+        $.ajax({
+          url: '/save_flashcards',
+          type: 'POST',
+          contentType: 'application/json',
+          data: jsonData,
+          success: function(response){
+            $('#flashcard-message').text(response.message);
+          },
+          error: function(xhr, status, error){
+            console.error('Failed to save flashcards;', error);
+          }
+        });
+      });
+    });
+    
 
 
 

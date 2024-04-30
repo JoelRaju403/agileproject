@@ -218,7 +218,7 @@
   }
   
   /* Close button */
-  .modal .close {
+  /*.modal .close {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -230,7 +230,7 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+  }*/
   
   /* Sign In title */
   .modal .modal-content h1 {
@@ -251,32 +251,38 @@
   }
   
   /* Email and password inputs */
-  .modal input[type="email"],
-  .modal input[type="password"] {
-    width: 35rem;
-    padding: 10px;
-    margin: 0 auto 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    display: block;
-  }
+  /* Email and password inputs */
+.modal input[type="email"],
+.modal input[type="password"] {
+  width: 35rem;
+  padding: 10px;
+  margin: 0 auto 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+}
   
   /* Forget password link */
-  .modal a {
+  .modal .forgetPassword {
     display: block;
-    text-align: right;
+    margin-right: 27.5rem;
     margin-bottom: 10px;
-    color: #666;
+    color: blue;
     text-decoration: none;
   }
   
   .modal a:hover {
     color: #333;
+    text-decoration: none;
+  }
+  
+  .rememberme {
+    margin-right: 27.5rem;
   }
   
   /* Sign In button */
-  .modal button {
+  .modal input[type="submit"] {
     width: 35rem;
     padding: 10px;
     background-color: #007bff;
@@ -286,7 +292,7 @@
     cursor: pointer;
   }
   
-  .modal button:hover {
+  .modal input[type="submit"]:hover {
     background-color: #0056b3;
   }
   

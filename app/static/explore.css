@@ -1,5 +1,33 @@
 .search{
-    width: max-content;
+    margin: 2rem;
     display: flex;
     align-items: center;
+    padding: 1rem;
+    border-radius: 9rem;
+    background-color: #f6f6f6;
+    transition: box-shadow 0.25s;
+    
+
 }
+.search >img{
+    filter: invert(1);
+}
+
+
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input{
+    color: #333333;
+    flex: 1;
+    margin-left: 1rem;
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.search-input::placeholder, .search-symbol{
+    color: rgba(0, 0, 0, 0.5)
+}
+

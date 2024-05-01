@@ -6,6 +6,7 @@
   <title>stud.e</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="static/home.css">
+  <link rel="stylesheet" href="static/login.css">
  
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -24,6 +25,9 @@
         <li><a href='{{ url_for('explore') }}'>Explore</a></li>
         <li><a href='{{ url_for('create') }}'>Create</a></li>
         <li><a href="" id="login-btn">Login</a></li>
+        {% if current_user.is_authenticated %}
+        <li><a href='{{ url_for('user', username=current_user.username) }}'> Profile</a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>
@@ -65,31 +69,6 @@
       </div><br>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-   
       
       <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -97,7 +76,10 @@
           <div class="outline">
             <span class="close">&times;</span>
             <form action="" method="post" novalidate>
-            <h1><b>Log In</b></h1>
+              <div class="heading-container">
+                <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b><a href="{{ url_for('login') }}">Log In</a></b></h1>
+                <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a href="{{ url_for('register') }}">Sign In</a></b></h1>
+          </div>
             <div class="social-icons">
                 <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>
                 <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with Facebook</b></div>
@@ -110,24 +92,29 @@
               <div class="inputinfo">
                 {{ form.hidden_tag() }}
                 <p>
-                  {{ form.username(size=32, placeholder="Enter username") }}
-                  {% for error in form.username.errors %}
-                  <span style="color: red;">[{{ error }}]</span>
-                  {% endfor %}
+                    {{ form.username(size=32, placeholder="Enter username") }}
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
                 </p>
                 <p>
-                  {{ form.password(size=32, placeholder="Password") }}
-                  {% for error in form.password.errors %}
-                  <span style="color: red;">[{{ error }}]</span>
-                  {% endfor %}
-                  <a class="forgetPassword" href="#"> Forgot Password</a>
+                    {{ form.password(size=32, placeholder="Password") }}
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                    <div class="centerPassword">
+                    <a class="forgetPassword" href="#"> Forgot Password</a>
+                  </div>
                 </p>
-                <div class="rememberme">
-                  <p>{{ form.remember_me() }} Remember Me</p>
+                <div class="centered-text">
+                    <p>{{ form.remember_me() }} Remember Me</p>
+                </div><p>{{ form.submit() }}</p>
+                  <div class="signUp">
+                    <p><a href="{{ url_for('register') }}">New to stud.e? Create an account</a></p>
                 </div>
-                <p>{{ form.submit() }}</p>
-                <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-            </div>
+                
+              </div>
+            
         </form>
       </div>
         </div>

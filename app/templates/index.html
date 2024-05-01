@@ -1,7 +1,42 @@
 {% extends "base.html" %}
 
-  <p>hello world </p>
-  <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-  <a href="{{ url_for('logout') }}">Logout</a>
 
+<<<<<<< HEAD
   {% endblock %}
+=======
+
+
+
+{% block navigation_menu %}
+<ul class="navigation-menu1">
+  <li><a href='{{ url_for('home') }}'>Home</a></li>
+  <li><a href="#">Explore</a></li>
+  <li><a href='{{ url_for('create') }}'>Create</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  <li><a href="{{ url_for('user', username=current_user.username) }}">{{ user.username }}</a></li>
+
+
+ <div class="dropdown" onmouseover="showMenu()" onmouseout="hideMenu()">
+  <button class="dropbtn">Menu</button>
+  <div class="dropdown-content" id="myDropdown">
+    <a href="#">Joel</a>
+    <a href={{ url_for('edit_profile') }}>Edit profile</a>
+    <a href="{{ url_for('logout') }}">Log out</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- Your content goes here -->
+
+<p class="hi">Your Element</p>
+<div>
+  <p style="color: green;">Your Element</p>
+</div>
+
+
+
+{% endblock %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+>>>>>>> c7b578a (Created drop down menu)

@@ -13,8 +13,6 @@ from flask import request
 from urllib.parse import urlsplit
 from app.forms import RegistrationForm
 from flask import jsonify
-@app.route('/')
-@app.route('/home')
 from app.forms import LoginForm
 from flask_login import current_user, login_user
 import sqlalchemy as sa
@@ -75,7 +73,7 @@ def logout():
 @app.route('/index')
 @login_required
 def index():
-    #...
+    
     return render_template("index.html", title='Home Page')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -110,7 +108,7 @@ def save_flashcards():
   subject = data.get('subject')
   title = data.get('title')
 
-  set_obj = Sets(userId=1, subject=subject, title=title)
+  set_obj = Sets(userId=current_user, subject=subject, title=title)
   set_id=set_obj.id
   db.session.add(set_obj)
 

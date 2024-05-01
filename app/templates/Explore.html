@@ -25,16 +25,22 @@
 </head>
 <body>
   <header>
-    <img src="static/logo.png">
-    <h1>stud.e</h1>
+    <img src="{{ url_for('static', filename='logo.png') }}">
+    <h1>Stud.e</h1>
     <nav>
       <ul>
-        <li><a href='{{ url_for('home') }}'>Home</a></li>
-        <li><a href="#">Explore</a></li>
-        <li><a href='{{ url_for('create') }}'>Create</a></li>
-        <li><a href="" id="login-btn">Login</a></li>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a>Explore</a></li>
+          <li><a href="{{ url_for('create') }}">Create</a></li>
+          {% if current_user.is_authenticated %}
+              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
       </ul>
-    </nav>
+  </nav>
+  
   </header>
 
   <form>

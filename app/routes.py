@@ -60,13 +60,13 @@ def login():
             sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return render_template('login.html', title='Sign In', form=form)
+            return render_template('Login.html', title='Sign In', form=form)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('home')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form, page='login')
+    return render_template('Login.html', title='Sign In', form=form, page='login')
 
 
 @app.route('/logout')
@@ -96,7 +96,7 @@ def register():
 
 
 @app.route('/create')
-
+@app.login_required
 def create():
   return render_template('Create.html')
 

@@ -42,3 +42,13 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     console.log('Logging in...');
   }, 100); // Delay for 100 milliseconds
 });
+
+var dropdownMenu = document.getElementById("myDropdown");
+
+function showMenu() {
+  dropdownMenu.style.display = "block";
+}
+
+function hideMenu() {
+  dropdownMenu.style.display = "none";
+}

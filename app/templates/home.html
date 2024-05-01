@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -40,7 +40,7 @@
         <button class='btn' id="login-btn1"> Get started</button>
       </div>
     </section>
-        <!-- Bootstrap Carousel -->
+        Bootstrap Carousel
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -125,4 +125,70 @@
   </footer>
   <script src="static/home.js"></script>
 </body>
-</html>
+</html>-->
+
+{% extends "base.html" %}
+
+{% block title %}Stud.e{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="content">
+    <h2>Explore stud.e</h2>
+    <p>Discover new study materials and resources.</p>
+    <button class='btn' id="login-btn1">Get started</button>
+  </div>
+
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+
+      <div class="outline">
+        <span class="close">&times;</span>
+        <form action="" method="post" novalidate>
+          <div class="heading-container">
+            <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b><a href="{{ url_for('login') }}">Log In</a></b></h1>
+            <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a href="{{ url_for('register') }}">Sign Up</a></b></h1>
+      </div>
+        <div class="social-icons">
+            <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>
+            <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with Facebook</b></div>
+          </div>
+          <div style="display: flex; align-items: center; text-align: center;">
+            <hr style="flex: 1;">
+            <span style="padding: 0 10px;">or use your email password</span>
+            <hr style="flex: 1;">
+          </div>
+          <div class="inputinfo">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username(size=32, placeholder="Enter username") }}
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password(size=32, placeholder="Password") }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <div class="centerPassword">
+                <a class="forgetPassword" href="#"> Forgot Password</a>
+              </div>
+            </p>
+            <div class="centered-text">
+                <p>{{ form.remember_me() }} Remember Me</p>
+            </div><p>{{ form.submit() }}</p>
+              <div class="signUp">
+                <p><a href="{{ url_for('register') }}">New to stud.e? Create an account</a></p>
+            </div>
+            
+          </div>
+        
+    </form>
+  </div>
+    </div>
+  </div>
+
+</section>
+<!-- Add any additional content specific to the explore page here -->
+{% endblock %}

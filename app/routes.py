@@ -28,7 +28,7 @@ def home():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('home')
+            next_page = url_for('index')
         return redirect(next_page)
     elif request.referrer == request.url:
         # If the form was submitted without anything, redirect to login page to try again.
@@ -38,7 +38,7 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
@@ -49,7 +49,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('home')
+            next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
@@ -62,8 +62,8 @@ def logout():
 @app.route('/index')
 @login_required
 def index():
-    #...
-    return render_template("index.html", title='Home Page')
+    user = current_user
+    return render_template("index.html", title='Home Page', user=user)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

@@ -1,47 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>stud.e</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="static/login.css">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="icon" href="static/favicon.ico">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      </head>
 <body>
-
-  {% block content %}
-    <h1>Register</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
-            {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
-            {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
-{% endblock %}
-  
+    <div id="login-modal" class="modal" style="display: block;">
+        <div class="modal-content">
+          <div class="outline">
+            <span class="close"><a href="{{ url_for('home') }}">&times;</a></span>
+            <form action="" method="post" novalidate>
+              <div class="heading-container">
+                <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b><a href="{{ url_for('login') }}">Log In</a></b></h1>
+                <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a href="{{ url_for('register') }}">Sign In</a></b></h1>
+              </div>
+              <div class="social-icons">
+                <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Continue with Google</b></div>
+                <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Continue with Facebook</b></div>
+              </div>
+              <div class="inputinfo">
+                {{ form.hidden_tag() }}
+                <div>
+                  {{ form.username.label }}
+      
+                  <div class="form-group">
+                    {{ form.username(size=32, placeholder="Enter username", class="form-control") }}
+                    {% for error in form.username.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div>
+                  {{ form.email.label }}
+                  <div class="form-group">
+                    {{ form.email(size=64, placeholder="Enter email", class="form-control") }}
+                    {% for error in form.email.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div>
+                  {{ form.password.label }}
+                  <div class="form-group">
+                    {{ form.password(size=32, placeholder="Enter password", class="form-control") }}
+                    {% for error in form.password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div>
+                  {{ form.password2.label }}
+                  <div class="form-group">
+                    <div class="inputWrapper">
+                        {{ form.password2(size=32, placeholder="Confirm password", class="form-control") }}
+                        {% for error in form.password2.errors %}
+                        <span class="text-danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                  {{ form.submit(class="btn btn-primary") }}
+                </div>
+                <div class="signUp">
+                    <p><a href="{{ url_for('login') }}">Already have an account? Log In </a></p>
+                </div>
+            
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
 </body>
+<script src="static/home.js"></script>
+
 </html>

@@ -6,6 +6,7 @@ import sqlalchemy.orm as so
 from app import db
 from flask_login import UserMixin
 from app import login
+from hashlib import md5
 
 @login.user_loader
 def load_user(id):
@@ -22,6 +23,9 @@ class User(UserMixin, db.Model):
 
     posts: so.WriteOnlyMapped['Post'] = so.relationship(
         back_populates='author')
+    about_me: so.Mapped[Optional[str]] = so.mapped_column(sa.String(140))
+    last_seen: so.Mapped[Optional[datetime]] = so.mapped_column(
+        default=lambda: datetime.now(timezone.utc))
     
     sets = db.relationship('Sets', backref='user', lazy=True)
     
@@ -32,6 +36,10 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+    
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -49,11 +57,9 @@ class Sets(db.Model):
 
 
 class Cards(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
     setId=db.Column(db.Integer, db.ForeignKey(Sets.id))
-    question=db.Column(db.string(400), nullable=False)
+    question=db.Column(db.String(400), nullable=False)
     answer=db.Column(db.String(400), nullable=False)
-
-
-
 
 

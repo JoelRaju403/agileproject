@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stud.e</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="static/home.css">
+  <link rel="stylesheet" href="static/login.css">
+  <link rel="icon" href="static/favicon.ico">
+
+  <script src="static/login.js"></script>
+</head>
+
+<body>
+
+  <div id="login-modal" class="modal" style="display: block;">
+    <div class="modal-content">
+
+      <div class="outline">
+        <span class="close"><a href="{{ url_for('home') }}">&times;</a></span>
+        <form action="" method="post" novalidate>
+          <div class="heading-container">
+            <h1 class="{% if page == 'login' %}swiggly-text{% endif %} login-heading"><b><a href="{{ url_for('login') }}">Log In</a></b></h1>
+            <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a href="{{ url_for('register') }}">Sign In</a></b></h1>
+      </div>
+        <div class="social-icons">
+            <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>
+            <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with Facebook</b></div>
+          </div>
+          <div style="display: flex; align-items: center; text-align: center;">
+            <hr style="flex: 1;">
+            <span style="padding: 0 10px;">or use your email password</span>
+            <hr style="flex: 1;">
+          </div>
+          <div class="inputinfo">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username(size=32, placeholder="Enter username") }}
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.password(size=32, placeholder="Password") }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+                <div class="centerPassword">
+                <a class="forgetPassword" href="#"> Forgot Password</a>
+              </div>
+            </p>
+            <div class="centered-text">
+                <p>{{ form.remember_me() }} Remember Me</p>
+            </div><p>{{ form.submit() }}</p>
+              <div class="signUp">
+                <p><a href="{{ url_for('register') }}">New to stud.e? Create an account</a></p>
+            </div>
+            
+          </div>
+        
+    </form>
+  </div>
+    </div>
+  </div>
+ 
+</body>
+
+</html>

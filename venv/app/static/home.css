@@ -1,0 +1,172 @@
+:root{
+  /*ALL COLOUR VALUES ARE DECLARED HERE*/
+    
+  }
+  /* Reset styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+  }
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    background: rgb(3, 48, 63);
+    color: #fff;
+    padding: 1rem;
+    display: flex; 
+    align-items: center; 
+  }
+  header img {
+    margin-right: 1rem; 
+    height: 65px;
+    width: 65px;
+    
+  }
+  header h1 {
+    font-size: 2rem;
+    margin-right: 1rem; }
+  nav ul {
+    list-style: none;
+    margin-left: auto; 
+  }
+  nav ul li {
+    display: inline;
+    margin-right: 1rem;
+  }
+  nav ul li a {
+    color: #fff;
+    text-decoration: bold;
+
+  }
+ 
+  .hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    padding-top: 30%;
+    text-shadow: 2px 2px 1px black;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 1px black;
+    
+  }
+  .btn {
+    display: inline-block;
+    background: rgb(3, 48, 63);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+
+
+  .content {
+    background-image: url(home.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+  }
+
+ 
+
+
+
+
+  
+  .features {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .feature {
+    flex: 0 0 calc(33.333% - 1rem);
+    background: #f4f4f4;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .feature img {
+    max-width: 100%;
+  }
+  .feature h3 {
+    margin-top: 1rem;
+  }
+  footer {
+    background: rgb(3, 48, 63);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: flex;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+  
+  }
+
+  li>a:hover {
+    text-decoration: underline;
+
+
+  }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgb(3, 48, 63);
+}
+.carousel-control-prev-icon:before, .carousel-control-next-icon:before {
+    content: '';
+}
+.carousel-control-prev, .carousel-control-next {
+    filter: invert(100%);
+}
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    filter: invert(0%);
+}
+.carousel-control-prev, .carousel-control-next {
+    filter: invert(100%);
+}
+
+.carousel-item img {
+    margin: 0 auto; /* Center the images horizontally */
+   
+  height: 30rem;
+}
+.carousel-item {
+  overflow: hidden;
+}
+
+/*what is this referencing*/
+.container {
+  background-color: white; /* Set background color for the carousel container */
+  padding: 20px; /* Optional: Add padding for better visual separation */
+}
+
+
+
+  /*This is the animation for the login page to move into frame*/
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-up {
+    animation: slideUp 0.5s ease forwards;
+  }

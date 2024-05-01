@@ -1,0 +1,294 @@
+label, #signup {
+  display: inline-block; /* Ensures labels and input fields appear on the same line */
+  width: 100px; /* Adjust width as needed to align labels */
+  text-align: left; /* Aligns text to the right for consistent spacing */
+  margin-right: 75px; /* Adds a small margin between label and input */
+}
+#LoginInfo button {
+  display: inline-block;
+  
+  margin-left: 150px;
+}
+
+:root {
+  --gray-outline: black;
+}
+
+body{
+  font-family: Arial, sans-serif;
+}
+
+
+/* Modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Disable scroll */
+ 
+}
+
+
+
+.modal .modal-content {
+  background-color: #fefefe;
+  margin: auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  height: 100%;
+  text-align: center;
+  position: relative; /* Relative positioning for close button */
+ 
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+  background-image: linear-gradient(
+    115deg,
+    rgba(249, 249, 249, 0),
+    rgba(83, 200, 246, 0.406)
+  ),
+  url(background.JPG);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center; 
+}
+
+
+.outline {
+  border: 1px solid #888; 
+  width: 45rem;
+  height: 100vh; 
+  margin: 0;
+  background-color: rgb(230, 232, 233);
+  position: fixed; 
+  top: 0; 
+  right: 0; 
+  padding: 2rem;
+}
+
+
+.modal .close:hover,
+.modal .close:focus {
+  cursor: pointer;
+}
+
+/* Sign In title */
+.modal .modal-content h1 {
+  margin-bottom: 20px;
+}
+
+/* Social icons */
+.modal .social-icons {
+  margin-bottom: 20px;
+}
+
+.modal .social-icons .icon {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+}
+
+.login-heading a:hover,
+.signin-heading  a:hover {
+    text-decoration: none;
+    color: inherit; 
+}
+
+
+/* Email and password inputs */
+/* Email and password inputs */
+/*FORM STYLING FOR LOGIN.HTML*/
+.modal input[type="email"],
+.modal input[type="password"]
+{ 
+width: 35rem !important;
+padding: 10px;
+margin: 0 auto 10px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+display: block;
+}
+
+
+/*FORM STYLING FOR REGISTER HTML*/
+.form-group{
+width: 35rem !important;
+margin: 0 auto 10px;
+border-radius: 5px;
+display: block;
+}
+
+
+
+/*left align text for the forms*/
+.inputinfo label {
+    margin-left: 3.4rem;
+    display: block;
+    
+  }
+
+.password-label {
+    width: 150px; 
+    margin-right: 10px;
+  }
+ 
+  .input-wrapper {
+    flex: 1; }
+
+
+/* Forget password link */
+/* Ask about structure*/
+.modal .forgetPassword {
+  color: blue;
+  text-decoration: none;
+  display: block; 
+  text-align: center;
+  margin: auto; 
+  width: 35rem;
+
+}
+/* why do we wnt this */
+.modal a:hover {
+  color: #333;
+  text-decoration: none;
+  cursor:pointer;
+}
+
+
+
+
+/* Log In button */
+.modal input[type="submit"] {
+  width: 35rem;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style the social icons container */
+.social-icons {
+  text-align: center;
+  width: 36.20rem; 
+  margin: 0 auto 10px;
+}
+
+.heading-container{
+  justify-items: left;
+  display: flex;
+  padding-left: 3.75rem;
+  
+
+}
+
+
+.login-heading, .signin-heading {
+  margin-right: 20px; 
+ display: inline-flex;
+ margin-bottom: 2.5rem;
+  cursor:pointer;
+
+ }
+
+ .swiggly-text {
+  text-decoration:red underline wavy; /* Add styles for the swiggly effect */
+
+}
+
+
+
+
+
+.Google {
+  border: 3px solid var(--gray-outline);
+  border-radius: 5px;
+  padding: 10px; 
+  display: block;
+  margin: 0 auto 10px;
+  width: 35rem; 
+  height: 4rem;
+}
+
+/* Style the Google button icon */
+.Google .icon {
+  font-size: 24px;
+  color: var(--gray-outline); /* Use the defined variable for color */
+  text-decoration: none;
+}
+
+/* Style the Google button text */
+.Google a {
+  color: var(--gray-outline); /* Use the defined variable for color */
+  text-decoration: none;
+  margin-left: 10px; /* Add some space between icon and text */
+}
+
+/* On hover, darken the button */
+.Google:hover {
+  background-color: rgba(0, 0, 0, 0.1); 
+  cursor:pointer;
+
+}
+
+
+
+.centered-text {
+  display: flex; 
+  justify-content: center; 
+ 
+}
+
+.signUp {
+border: 3px solid var(--gray-outline);
+margin: 0 auto 10px;
+width: 35rem;
+border-radius: 5px;
+color: var(--gray-outline);
+padding-top: 15px;  
+}
+
+.signUp:hover {
+background-color: rgba(0, 0, 0, 0.1); 
+}
+
+
+/* Adjust modal width for smaller screens */
+@media only screen and (max-width: 768px) {
+  
+  .modal .modal-content {
+    width: 100%;
+    font-size: 14px; 
+    background-image: none;
+  }
+  
+  
+  .modal input[type="email"],
+  .modal input[type="password"] {
+    width: calc(100% - 20px); 
+  }
+  
+  .modal button {
+    width: calc(100% - 20px); 
+  }
+  .Google{
+    width: calc(100% - 20px);
+  }
+
+  .outline{
+    width:100%;
+
+  }
+
+
+}

@@ -20,6 +20,7 @@
     padding: 1rem;
     display: flex; 
     align-items: center; 
+    width: 100vw;
   }
   header img {
     margin-right: 1rem; 
@@ -85,27 +86,6 @@
 
  
 
-
-
-
-  
-  .features {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  .feature {
-    flex: 0 0 calc(33.333% - 1rem);
-    background: #f4f4f4;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  .feature img {
-    max-width: 100%;
-  }
-  .feature h3 {
-    margin-top: 1rem;
-  }
   footer {
     background: rgb(3, 48, 63);
     color: #fff;
@@ -113,7 +93,7 @@
     padding: 1rem;
     position: flex;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     height: 50px;
   
   }

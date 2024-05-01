@@ -57,3 +57,5 @@ class Cards(db.Model):
     setId=db.Column(db.Integer, db.ForeignKey(Sets.id))
     question=db.Column(db.String(400), nullable=False)
     answer=db.Column(db.String(400), nullable=False)
+
+

@@ -202,10 +202,8 @@ display: block;
  }
 
  .swiggly-text {
-  text-decoration:red underline wavy; /* Add styles for the swiggly effect */
-
+  text-decoration:red underline ; /* Add styles for the swiggly effect */ 
 }
-
 
 
 

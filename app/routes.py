@@ -25,6 +25,8 @@ from urllib.parse import urlsplit
 from app.forms import RegistrationForm
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
+from flask import jsonify
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
@@ -46,7 +48,7 @@ def home():
     elif request.referrer == request.url:
         # If the form was submitted without anything, redirect to login page to try again.
         return redirect(url_for('login'))
-    return render_template('home.html', form=form, page='home')
+    return render_template('home.html', form=form, page='home', current_user=current_user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -108,6 +110,7 @@ def user(username):
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
+        
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
 

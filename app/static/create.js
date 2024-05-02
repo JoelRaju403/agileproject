@@ -98,5 +98,16 @@ $(document).ready(function(){
 });
 });
 
+function SwitchPublic() {
+  var privateElement = document.querySelector('.Private'); // Select the paragraph element with class 'Private'
+  var checkbox = document.querySelector('.toggle input[type="checkbox"]'); // Select the checkbox element
+
+  if (checkbox.checked) {
+      privateElement.textContent = 'Public'; // Change the text content to 'Public' if the checkbox is checked
+  } else {
+      privateElement.textContent = 'Private'; // Change the text content to 'Private' if the checkbox is unchecked
+  }
+}
+
 
 

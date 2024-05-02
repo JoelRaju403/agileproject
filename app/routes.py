@@ -17,7 +17,6 @@ from app.forms import LoginForm
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
-from app.models import User
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
@@ -145,8 +144,9 @@ def save_flashcards():
 
   subject = data.get('subject')
   title = data.get('title')
+  public = data.get('public')
 
-  set_obj = Sets(userId=current_user.id, subject=subject, title=title)
+  set_obj = Sets(userId=current_user.id, subject=subject, title=title, public=public)
   set_id=set_obj.id
   db.session.add(set_obj)
 

@@ -47,6 +47,7 @@ class Sets(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(100), nullable = False)
     title = db.Column(db.String(100),nullable=False)
+    public = db.Column(db.Boolean, nullable=False, default=False)
 
     cards = db.relationship('Cards', backref='set', lazy=True)
 

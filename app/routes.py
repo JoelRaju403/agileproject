@@ -96,7 +96,7 @@ def register():
 
 
 @app.route('/create')
-
+@login_required
 def create():
   return render_template('Create.html')
 
@@ -143,8 +143,9 @@ def save_flashcards():
 
   subject = data.get('subject')
   title = data.get('title')
+  public = data.get('public')
 
-  set_obj = Sets(userId=1, subject=subject, title=title)
+  set_obj = Sets(userId=current_user.id, subject=subject, title=title, public=public)
   set_id=set_obj.id
   db.session.add(set_obj)
 

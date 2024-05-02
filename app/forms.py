@@ -38,7 +38,9 @@ class RegistrationForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    email = EmailField('Email', validators=[DataRequired()])
+    original_email = StringField('Original Email')
+    #about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):
@@ -51,3 +53,10 @@ class EditProfileForm(FlaskForm):
                 User.username == self.username.data))
             if user is not None:
                 raise ValidationError('Please use a different username.')
+            
+    def validate_email(self, email):
+        if email.data != self.original_email:
+            user = db.session.scalar(sa.select(User).where(
+                User.email == self.email.data))
+            if user is not None:
+                raise ValidationError('Email already Used')

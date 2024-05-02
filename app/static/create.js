@@ -42,20 +42,36 @@ function divMaker(text) {
 }
 
 function addFlashcard(){
+  var checkbox = document.querySelector('.toggle input[type="checkbox"]'); // Select the checkbox element
+  console.log('Checkbox checked:', checkbox.checked); // Log the state of the checkbox
+  let scope;
+
+  if (checkbox.checked) {
+    scope = 1;
+  } else {
+    scope = 0;
+  }
+  console.log('Scope:', scope); // Log the value of scope
+
   var flashcard_info = {
     'my_question' : question.value,
     'my_answer' : answer.value,
     'subject' : subject.value,
     'title' : title.value,
-    'public' :document.getElementById('publicCheckbox').checked
+    'public' : scope
   }
+
+  console.log('Flashcard Info:', flashcard_info); // Log the flashcard information
+
   contentArray.push(flashcard_info);
   localStorage.setItem('items',JSON.stringify(contentArray));
+  console.log('Stored in local storage:', contentArray); // Log the updated contentArray
   divMaker (contentArray[contentArray.length -1]);
   question.value = '';
   answer.value = '';
 
 }
+
 
 function delFlashcards(){
   localStorage.clear();
@@ -76,14 +92,26 @@ $(document).ready(function(){
   $('#flashcard-form').click(function(event){
     
   alert("the button was clicked"); 
+  var checkbox = document.querySelector('.toggle input[type="checkbox"]'); // Select the checkbox element
+  console.log('Checkbox checked:', checkbox.checked); // Log the state of the checkbox
+  let scope;
+
+  if (checkbox.checked) {
+    scope = 1;
+  } else {
+    scope = 0;
+  }
   const subject = $('#subject').val();
   const title = $('#title').val();
   
   const jsonData = JSON.stringify({
     subject: subject,
     title: title,
+    public: scope,
     flashcards: contentArray
   });
+
+  delFlashcards()
 
   $.ajax({
     url: '/save_flashcards',

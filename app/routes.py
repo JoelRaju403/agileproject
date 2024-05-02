@@ -5,6 +5,19 @@ from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
 from app.models import User
+from app.models import Sets
+from app.models import Cards
+from flask_login import logout_user
+from flask_login import login_required
+from flask import request
+from urllib.parse import urlsplit
+from app.forms import RegistrationForm
+from flask import jsonify
+from app.forms import LoginForm
+from flask_login import current_user, login_user
+import sqlalchemy as sa
+from app import db
+from app.models import User
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
@@ -64,7 +77,7 @@ def logout():
 @app.route('/index')
 @login_required
 def index():
-    #...
+    
     return render_template("index.html", title='Home Page')
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -83,7 +96,7 @@ def register():
 
 
 @app.route('/create')
-@login_required
+
 def create():
   return render_template('Create.html')
 
@@ -118,6 +131,32 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
+@app.route('/explore')
+def explore():
+  return render_template('Explore.html')
 
 
+
+@app.route('/save_flashcards', methods=['POST'])
+def save_flashcards():
+  data = request.json
+
+  subject = data.get('subject')
+  title = data.get('title')
+
+  set_obj = Sets(userId=1, subject=subject, title=title)
+  set_id=set_obj.id
+  db.session.add(set_obj)
+
+  flashcards = data.get('flashcards')
+  for flashcard_info in flashcards:
+    question= flashcard_info.get('my_question')
+    answer = flashcard_info.get('my_answer')
+
+    card = Cards(question=question, answer=answer, setId=set_id)
+    db.session.add(card)
+  
+  db.session.commit()
+
+  return jsonify({'message': 'Flashcards saved successfully'}), 200
 

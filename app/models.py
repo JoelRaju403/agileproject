@@ -21,11 +21,11 @@ class User(UserMixin, db.Model):
                                              unique=True)
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
 
-    posts: so.WriteOnlyMapped['Post'] = so.relationship(
-        back_populates='author')
-    about_me: so.Mapped[Optional[str]] = so.mapped_column(sa.String(140))
-    last_seen: so.Mapped[Optional[datetime]] = so.mapped_column(
-        default=lambda: datetime.now(timezone.utc))
+   
+    
+    sets = db.relationship('Sets', backref='user', lazy=True)
+    
+
     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -42,18 +42,20 @@ class User(UserMixin, db.Model):
 
 
 
-class Post(db.Model):
-    id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    body: so.Mapped[str] = so.mapped_column(sa.String(140))
-    timestamp: so.Mapped[datetime] = so.mapped_column(
-        index=True, default=lambda: datetime.now(timezone.utc))
-    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
-                                               index=True)
+class Sets(db.Model):
+    userId = db.Column(db.Integer, db.ForeignKey('user.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(100), nullable = False)
+    title = db.Column(db.String(100),nullable=False)
 
-    author: so.Mapped[User] = so.relationship(back_populates='posts')
+    cards = db.relationship('Cards', backref='set', lazy=True)
 
-    def __repr__(self):
-        return '<Post {}>'.format(self.body)
-    
+
+
+class Cards(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    setId=db.Column(db.Integer, db.ForeignKey(Sets.id))
+    question=db.Column(db.String(400), nullable=False)
+    answer=db.Column(db.String(400), nullable=False)
 
 

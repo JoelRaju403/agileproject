@@ -1,0 +1,59 @@
+.search{
+    margin: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 9rem;
+    background-color: #f6f6f6;
+    transition: box-shadow 0.25s;
+    
+
+}
+.search>img{
+    filter: invert(1);
+}
+
+
+.search:focus-within{
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+}
+
+.search-input{
+    color: #333333;
+    flex: 1;
+    margin-left: 1rem;
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.search-input::placeholder, .search-symbol{
+    color: rgba(0, 0, 0, 0.5)
+}
+
+
+.quote-box{
+    padding: 3rem;
+    margin: 4rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+    
+    
+}
+
+
+.quote-box>h1{
+    font-family: 'Cedarville Cursive', cursive;
+    font-style: normal;
+    flex: 1;
+    
+    
+}
+
+.quote-box>h3{
+    float: right;
+    font-style: italic;
+    flex: 1;
+    
+}
+    

@@ -19,7 +19,7 @@
     <nav>
       <ul>
           <li><a href="{{ url_for('home') }}">Home</a></li>
-          <li><a>Explore</a></li>
+          <li><a href="{{ url_for('explore') }}">Explore</a></li>
           <li><a href="{{ url_for('create') }}">Create</a></li>
           {% if current_user.is_authenticated %}
               <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>

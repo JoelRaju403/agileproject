@@ -3,14 +3,17 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
+
 .container {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    
-    
 }
+    
+
+
 label {
     font-weight: bold;
 }
@@ -48,6 +51,7 @@ button:hover {
   margin-top: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
 }
 .subject-box{
   margin: auto;
@@ -55,6 +59,7 @@ button:hover {
   margin-top: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
 }
 .create-box textarea{
   width: 100%;
@@ -73,9 +78,10 @@ button:hover {
 
 }
 .flashcard{
-  width: 500px;
+  width: 25%;
   height: 300px;
   word-wrap: break-word;
   margin: 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  
 }

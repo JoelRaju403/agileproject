@@ -96,7 +96,7 @@ def register():
 
 
 @app.route('/create')
-@app.login_required
+@login_required
 def create():
   return render_template('Create.html')
 
@@ -133,7 +133,9 @@ def edit_profile():
 
 @app.route('/explore')
 def explore():
-  return render_template('Explore.html')
+  mycards = Sets.query.filter_by(userId=current_user.id)    
+
+  return render_template('Explore.html', cards=mycards)
 
 
 
@@ -144,7 +146,7 @@ def save_flashcards():
   subject = data.get('subject')
   title = data.get('title')
 
-  set_obj = Sets(userId=1, subject=subject, title=title)
+  set_obj = Sets(userId=current_user.id, subject=subject, title=title)
   set_id=set_obj.id
   db.session.add(set_obj)
 

@@ -58,8 +58,17 @@
   </div>
 
 
-  <h1>My Cards</h1>
+  <h1 id="myCardsHeading">My Cards</h1>
   
+  <div class="cards-container">
+  {% for card in cards%}
+    <div class="myCards">
+      <h2>{{card.subject}}</h2>
+      <h3>{{card.title}}</h3>
+    
+    </div>
+    {%endfor%}
+  </div>
 
 
 

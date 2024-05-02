@@ -74,7 +74,6 @@ function hideCreateBox(){
 $(document).ready(function(){
   $('#flashcard-form').click(function(event){
     
-  alert("the button was clicked"); 
   const subject = $('#subject').val();
   const title = $('#title').val();
   

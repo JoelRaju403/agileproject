@@ -121,12 +121,15 @@ def edit_profile():
     form = EditProfileForm(original_username=current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
+        current_user.email = form.email.data
+        current_user.password = form.password.data
         #current_user.about_me = form.about_me.data
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('user', username=current_user.username)) 
     elif request.method == 'GET':
         form.username.data = current_user.username
+        form.email.data = current_user.email
        # form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
@@ -160,4 +163,14 @@ def save_flashcards():
   db.session.commit()
 
   return jsonify({'message': 'Flashcards saved successfully'}), 200
+
+@app.route('/delete_user/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({'message': 'User is deleted'}), 200
+    else:
+        return jsonify({'error' : 'User not found'}), 404
 

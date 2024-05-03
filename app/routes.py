@@ -118,12 +118,10 @@ def before_request():
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm(original_username=current_user.username)
+    form = EditProfileForm(original_username=current_user.username, original_email=current_user.email)
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.email = form.email.data
-        current_user.password = form.password.data
-        #current_user.about_me = form.about_me.data
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('user', username=current_user.username)) 

@@ -50,3 +50,8 @@ legend {
   font-size: 16px; /* Adjust font size as needed */
   border: 1px solid #ccc;
 }
+
+.confirm-label {
+  display: inline-block; /* Ensures the label appears on one line */
+  width: auto; /* Allows the label to expand to accommodate its content */
+}

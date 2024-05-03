@@ -18,14 +18,14 @@
             <p class="Edit">
                 {{form.email.label}}<br>
                 {{ form.email(size=32) }}<br>
-                {% for error in form.password.errors %}
+                {% for error in form.email.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p class="Edit">
-                {{form.password.label}}<br>
-                {{ form.password(size=32) }}<br>
-                {% for error in form.password.errors %}
+                {{ form.confirm_password.label (class="confirm-label")}} <br>
+                {{ form.confirm_password }}<br>
+                {% for error in form.confirm_password.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>

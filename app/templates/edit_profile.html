@@ -1,28 +1,77 @@
 {% extends "base.html" %}
 
-  {% block content %}
-    <h1>Edit Profile</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{form.email.label}}<br>
-            {{ form.email(size=120) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+{% block content %}
+<h1 id="SettingTitle">Settings</h1>
+
+<fieldset>
+    <legend> Edit Profile</legend>
+    <div class="EditProfile">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p class="Edit">
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br>
+                {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p class="Edit">
+                {{form.email.label}}<br>
+                {{ form.email(size=32) }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p class="Edit">
+                {{form.password.label}}<br>
+                {{ form.password(size=32) }}<br>
+                {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+</fieldset>
 
 
-    <button> Delete Account</button>
+<fieldset>
+    <legend>Appearance</legend>
+    <div class="textbtn">
+        <p>Dark Mode</p>
+        <label class="toggle">
+            <input type="checkbox" id="publicCheckbox">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <hr>
+    <div class="textbtn">
+        <p>Langauge</p>
+        <select id="myDropdown">
+            <option value="English">English</option>
+        </select>
+
+    </div>
+</fieldset>
+
+
+<fieldset class="AccPriv">
+    <legend>Account and Privacy</legend>
+    <p><b> Privacy </b></p>
+    <div class="textbtn">
+        <p class="inlinetxt"> Make profile private (all cards will be private)</p>
+        <label class="toggle">
+            <input type="checkbox" id="publicCheckbox" onclick="SwitchPublic()">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <hr>
+    <p><b> Delete Your account </b></p>
+    <div class="textbtn">
+        <p class="inlinetxt"> This will delete your account forever and cannot be undone </p>
+        <button class="deletebtn" onclick="deleteAcc({{ current_user.id }})"> Delete Account</button>
+    </div>
+
+</fieldset>
+
 {% endblock %}
-  

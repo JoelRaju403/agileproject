@@ -45,7 +45,7 @@ def home():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('home')
+            next_page = url_for('index')
         return redirect(next_page)
     elif request.referrer == request.url:
         # If the form was submitted without anything, redirect to login page to try again.
@@ -55,7 +55,7 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = db.session.scalar(
@@ -66,7 +66,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = url_for('home')
+            next_page = url_for('index')
         return redirect(next_page)
     return render_template('Login.html', title='Sign In', form=form, page='login')
 
@@ -79,8 +79,8 @@ def logout():
 @app.route('/index')
 @login_required
 def index():
-    
-    return render_template("index.html", title='Home Page')
+    user = current_user
+    return render_template("index.html", title='Home Page', user=user)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -121,16 +121,17 @@ def before_request():
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm(original_username=current_user.username)
+    form = EditProfileForm(original_username=current_user.username, original_email=current_user.email)
     if form.validate_on_submit():
         current_user.username = form.username.data
-        current_user.about_me = form.about_me.data
+        current_user.email = form.email.data
         db.session.commit()
         flash('Your changes have been saved.')
         return redirect(url_for('user', username=current_user.username)) 
     elif request.method == 'GET':
         form.username.data = current_user.username
-        form.about_me.data = current_user.about_me
+        form.email.data = current_user.email
+       # form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
@@ -194,4 +195,14 @@ def save_flashcards():
   db.session.commit()
 
   return jsonify({'message': 'Flashcards saved successfully'}), 200
+
+@app.route('/delete_user/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({'message': 'User is deleted'}), 200
+    else:
+        return jsonify({'error' : 'User not found'}), 404
 

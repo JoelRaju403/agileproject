@@ -87,14 +87,27 @@
 
 }
 .myCards>h3{
-    margin-top: auto;
+    margin-top: 0px;
     float: right;
+    bottom: 0;
+    display: flex;
+    border-top: 2px solid whitesmoke;
+
+
+}
+
+.myCards>hr{
+    width: 100%;
+    margin-top: 125px;
+    border-top: 2px solid whitesmoke;
+    margin-bottom: 0;
+
 }
 
 
 hr{
     margin: 4rem;
-    border-top: 3px whitesmoke solid;
+    
 
 }
 

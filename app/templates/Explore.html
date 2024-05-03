@@ -44,14 +44,14 @@
   </header>
 
   <div class = 'quote-box'>
-    <h1 id="quote"></h1>
-    <h3 id="author"></h3>
+    <h1 id="quote">{{quote}}</h1>
+    <h3 id="author">{{author}}</h3>
   </div>
 
   <form>
     <div class = 'search'>
         <span class="search-symbol material-symbols-outlined">search</span>
-        <input class="search-input" type="search" placeholder="Search">
+        <input id="searchInput" class="search-input" type="search" placeholder="Search">
         <img src="static/logo.png" height="35px" width="35px">
     
     </div>
@@ -59,13 +59,27 @@
 
   <hr>
 
+  {%if searched == 1%}
+    <h1> Search Results</h1>
+    <div class = 'cards-container'
+    {% for result in results %}
+      <div class='myCards'>
+        <h2>{{result.subject}}</h2>
+        <hr>
+        <h3>{{result.title}}</h3>
+      </div>
+      {%endfor%}
+    <hr>
+    {%endif%}
+
 
   <h1 id="myCardsHeading">My Cards</h1>
   
   <div class="cards-container">
   {% for card in cards%}
-    <div class="myCards">
+    <div class='myCards'>
       <h2>{{card.subject}}</h2>
+      <hr>
       <h3>{{card.title}}</h3>
     
     </div>

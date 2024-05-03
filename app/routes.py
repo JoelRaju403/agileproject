@@ -1,3 +1,5 @@
+import requests
+import json
 from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm
@@ -25,6 +27,7 @@ from app.forms import RegistrationForm
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -99,6 +102,7 @@ def register():
 def create():
   return render_template('Create.html')
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -132,10 +136,36 @@ def edit_profile():
 
 @app.route('/explore')
 def explore():
+  category = 'inspirational'
+  api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
+  response = requests.get(api_url, headers={'X-Api-Key': '54BNuKnSnAeD1L+DHawYTw==4eLn0FXxFEnC1EmI'})
+  if response.status_code == requests.codes.ok:
+    data=response.json()
+    quote = data[0].get('quote')
+    author= data[0].get('author')
+    print(response.text)
+  else:
+    print("Error:", response.status_code, response.text)
+
+
+
+
   mycards = Sets.query.filter_by(userId=current_user.id)    
 
-  return render_template('Explore.html', cards=mycards)
+  return render_template('Explore.html', cards=mycards, quote=quote, author=author)
 
+
+@app.route('/search', methods=['POST'])
+def search_request():
+    data = request.json()
+    query=data.get('query')
+
+    searchCards = Sets.query.filter_by(subject=query, public = 0)
+    mycards = Sets.query.filter_by(userId=current_user.id)  
+
+    return render_template('Explore.html', cards=mycards, searched=1, results=mycards)
+    
+    
 
 
 @app.route('/save_flashcards', methods=['POST'])
@@ -147,8 +177,11 @@ def save_flashcards():
   public = data.get('public')
 
   set_obj = Sets(userId=current_user.id, subject=subject, title=title, public=public)
-  set_id=set_obj.id
   db.session.add(set_obj)
+  db.session.commit()
+
+  set_id = set_obj.id
+  
 
   flashcards = data.get('flashcards')
   for flashcard_info in flashcards:

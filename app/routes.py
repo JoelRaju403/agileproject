@@ -161,3 +161,7 @@ def save_flashcards():
 
   return jsonify({'message': 'Flashcards saved successfully'}), 200
 
+@app.route('/upload')
+def upload():
+  return render_template('upload.html')
+    

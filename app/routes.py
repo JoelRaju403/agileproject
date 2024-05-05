@@ -26,6 +26,12 @@ from app.forms import RegistrationForm
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -104,13 +110,13 @@ def create():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
+    user_sets = Sets.query.filter_by(userId=user.id).all() 
     return render_template('user.html', user=user)
 
 
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
-        
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
 
@@ -161,7 +167,43 @@ def save_flashcards():
 
   return jsonify({'message': 'Flashcards saved successfully'}), 200
 
-@app.route('/upload')
+
+
+@app.route('/upload', methods=['GET', 'POST'])
 def upload():
   return render_template('upload.html')
-    
+
+@app.route('/answer', methods=["GET", "POST"])
+def answer():
+    if request.method == "POST":
+        data = request.json
+        prompt_text = data.get('prompt')
+        if prompt_text:
+            chat_completion = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "You are a helpful assistant that converts text into a series of flashcards with questions and answers.",
+                    },
+                    {
+                        "role": "user",
+                        "content": f'Convert the following text into flashcards: "{prompt_text}"',
+                    }
+                ],
+            )
+            generated_text = chat_completion.choices[0].message.content
+            print(generated_text)
+            # Return the raw output from the OpenAI model
+            return jsonify({"response": generated_text})
+        else:
+            return jsonify({"error": "No prompt provided"}), 400
+    else:
+        return jsonify({"error": "Only POST requests are supported for this endpoint"}), 405
+
+
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

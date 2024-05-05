@@ -1,5 +1,5 @@
 :root{
-  --purple-header:#AD88C6;
+  --purple-header: #0a092d;
   --lighter: #AD88C6;
   --gray-300-gray-600: #586380;
 }
@@ -87,6 +87,13 @@ nav ul li.close a {
 main {
   background-color: var(--purple-header);
   color: #ddd;
+  display: flex;
+  width: 100vw;
+}
+.learnSection,
+.Waffle {
+    flex-grow: 1;
+    width: 50%;
 }
 
 .learnSection {
@@ -96,17 +103,12 @@ main {
   padding: 20px;
   margin-bottom: 20px;
   height: 50vh;
-  width: 100vw;
+  width: 55vw;
   display: flex;
   flex-direction: column; 
- 
-  
+ align-items: left;
 }
-.learnSection h2,
-.learnSection h3,
-.learnSection h4 {
-  align-items: left !important;
-}
+
 
 .learnSection h2{
   margin-bottom: 2rem;
@@ -117,30 +119,21 @@ main {
 
 .learnSection h4{
   margin-bottom: 2rem;
-  
-
 }
 
-.learnSection 
-   .PasteText{
-  margin: 10px;
- 
 
- 
-}
 
 .PasteText{
-  border-bottom: 2px dashed  black;
+  border-bottom: 2px dashed  rgb(255, 255, 255);
   cursor: pointer;
+  margin-bottom: 10px;
 }
-
 
 
 
 .learnSection textarea {
   width: calc(100% - 20px);
   padding: 10px;
-  margin: 0 auto 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-sizing: border-box; 
@@ -156,7 +149,8 @@ main {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
-  width: 35rem;
+  width: 25rem;
+
 }
 
 .learnSection button:hover {
@@ -171,7 +165,9 @@ main {
   padding: 20px;
   margin-bottom: 20px;
   height: auto; /* Adjust height as needed */
-  width: 100vw;
+  font-size: 1.5rem;
+  width: 45vh;
+
 }
 
 .Waffle h3 {
@@ -181,6 +177,7 @@ main {
 
 .Waffle div {
   margin-bottom: 10px;
+  
 }
 
 .Waffle div i {
@@ -195,12 +192,15 @@ main {
 
 .socialMedia {
   margin-top: 20px;
-
+  
 }
 
 .socialMedia i {
-  font-size: 24px;
-  margin-right: 10px;
+  font-size: 2.5rem;
+  cursor: pointer;
+  margin: auto;
+  padding: 0;
+  
 }
 
 
@@ -225,17 +225,17 @@ footer p {
 }
 
 footer button {
-  background-color: transparent;
-  border: 2px solid #fff;
+  background-color: grey;
+  border: 2px solid #4a4949;
   color: #fff;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   width: 15rem;
 }
 
 footer button:hover {
-  background-color: #fff;
+  background-color: rgba(128, 128, 128, 0.671);
   color: var(--purple-header);
 }

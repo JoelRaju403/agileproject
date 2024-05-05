@@ -14,6 +14,22 @@
 <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
 <a href="{{ url_for('logout') }}">Logout</a>
 {% endif %}
+
+<h2>User's Sets</h2>
+<ul>
+    {% for set in user_sets %}
+        <li>{{ set.title }} - {{ set.subject }}</li>
+    {% endfor %}
+</ul>
+<h2>User's Flashcards</h2>
+    <div class="flashcards">
+       
+    </div>
+
+   
+    <script src="{{ url_for('static', filename='create.js') }}"></script>
+
+
 <div id="demo"></div>
 
 {% endblock %}

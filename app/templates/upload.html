@@ -14,8 +14,7 @@
 </head>
 <header>
   <img>
-  <h1>Stud.e&nbsp;<i>Premium</i></h1>&nbsp; &nbsp; &nbsp;
-  <h1>AI Notes</h1>
+  <h1>Stud.e&nbsp;<i>Premium</i></h1>&nbsp; 
   <nav class="navbar">
     <ul>
       <li class="close"><a href="{{ url_for('home') }}"><i class="fa-solid fa-xmark"></i></a></li>
@@ -26,11 +25,16 @@
 <body>
   <main>
     <section class="learnSection">
-      <h2 class="first">Generate instant study materials</h2>
+      <h2 class="first">Generate instant study materials through AI</h2>
       <h3 class="second">Upload class notes, lecture slides or journal articles</h3>
       <h4 class="third">Request the services of an AI to make flashcards!</h4>
-      <div class="PasteText">Paste Text below!</div>
-      <textarea placeholder="Paste you notes here. We'll do the rest."></textarea>
+      <form id="prompt-form" method="post">
+        <div class="PasteText">Paste Text below!</div>
+        <textarea id="prompt-textarea" name="prompt" placeholder="Paste your notes here. We'll do the rest."></textarea>
+        <button id="transform-btn">Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
+      </form>
+    </section>
+
     </section>
     <section class="Waffle">
 
@@ -41,13 +45,18 @@
       <div class="socialMedia"><i class="fa-brands fa-instagram"></i>
         <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-x-twitter"></i>
       </div>
+
     </section>
+    <div id="response"></div>
   </main>
   <footer>
     <p>This product is enhanced with AI and may provide incorrect or problematic content. Do not enter any personal
       data.</p>
-    <button>Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
   </footer>
+
 </body>
+<script src="{{ url_for('static', filename='upload.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 </html>

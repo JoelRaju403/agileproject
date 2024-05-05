@@ -98,6 +98,15 @@
   
   }
 
+  .darkmode {
+    background-color: rgb(129, 129, 129);
+    
+  }
+
+  .darkhfmode {
+    background-color: black;
+  }
+
   
 
 .carousel-control-prev-icon, .carousel-control-next-icon {

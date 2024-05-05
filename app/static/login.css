@@ -290,3 +290,8 @@ background-color: rgba(0, 0, 0, 0.1);
 
 
 }
+
+.confirm-label {
+  display: inline-block; /* Ensures the label appears on one line */
+  width: auto; /* Allows the label to expand to accommodate its content */
+}

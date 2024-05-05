@@ -29,7 +29,7 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>{{ form.submit() }}</p>
+            <p>{{ form.submit(id="editSubmit") }}</p>
         </form>
     </div>
 </fieldset>
@@ -40,7 +40,7 @@
     <div class="textbtn">
         <p>Dark Mode</p>
         <label class="toggle">
-            <input type="checkbox" id="publicCheckbox">
+            <input type="checkbox" id="DMtoggle" onclick="darkmode()">
             <span class="slider"></span>
         </label>
     </div>
@@ -54,8 +54,8 @@
     </div>
 </fieldset>
 
-
-<fieldset class="AccPriv">
+<div class="AccPriv">
+<fieldset>
     <legend>Account and Privacy</legend>
     <p><b> Privacy </b></p>
     <div class="textbtn">
@@ -71,7 +71,6 @@
         <p class="inlinetxt"> This will delete your account forever and cannot be undone </p>
         <button class="deletebtn" onclick="deleteAcc({{ current_user.id }})"> Delete Account</button>
     </div>
-
 </fieldset>
-
+</div>
 {% endblock %}

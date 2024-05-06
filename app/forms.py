@@ -6,6 +6,7 @@ from app import db
 from app.models import User
 from wtforms import TextAreaField
 from wtforms.validators import Length
+from flask_login import current_user
 
 
 class LoginForm(FlaskForm):
@@ -38,12 +39,14 @@ class RegistrationForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    about_me = TextAreaField('About me', validators=[Length(min=0, max=140)])
+    email = EmailField('Email', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm with Password', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-    def __init__(self, original_username, *args, **kwargs):
+    def __init__(self, original_username, original_email, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.original_username = original_username
+        self.original_email = original_email
 
     def validate_username(self, username):
         if username.data != self.original_username:
@@ -51,3 +54,14 @@ class EditProfileForm(FlaskForm):
                 User.username == self.username.data))
             if user is not None:
                 raise ValidationError('Please use a different username.')
+            
+    def validate_email(self, email):
+        if email.data != self.original_email:
+            user = db.session.scalar(sa.select(User).where(
+                User.email == self.email.data))
+            if user is not None:
+                raise ValidationError('Email already Used')
+            
+    def validate_confirm_password(self, current_password):
+        if not current_user.check_password(current_password.data):
+            raise ValidationError('Invalid current password.')

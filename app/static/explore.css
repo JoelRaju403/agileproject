@@ -1,3 +1,4 @@
+
 .search{
     margin: 4rem;
     display: flex;
@@ -57,3 +58,57 @@
     
 }
     
+#myCardsHeading{
+    margin: 4rem;
+}
+
+.cards-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 4rem;
+}
+
+.myCards{
+    width: calc(25% - 20px); /* Adjust the width and margin as needed */
+    height:250px;
+    min-width:250px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 2rem;
+    padding: 2rem;
+    
+
+} 
+
+.myCards>h2{
+    align-items: center;
+    margin-bottom: auto;
+
+}
+.myCards>h3{
+    margin-top: 0px;
+    float: right;
+    bottom: 0;
+    display: flex;
+}
+
+.myCards>hr{
+    width: 100%;
+    margin-top: 125px;
+    border-top: 2px solid whitesmoke;
+    margin-bottom: 0;
+
+}
+
+
+hr{
+    margin: 4rem;
+}
+
+.searchContainer>h1{
+    float:left;
+    
+
+}
+

@@ -1,0 +1,73 @@
+#SettingTitle {
+  text-align: left;
+  padding-left: 10rem;
+  padding-top: 1rem;
+  font-weight: bold;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 5rem;
+  box-shadow: 1rem;
+
+}
+
+legend {
+  font-family: Arial, sans-serif;
+  width: auto;
+}
+
+.deletebtn {
+  background-color: rgb(193, 6, 6);
+  border-radius: 0.5rem;
+  border-color: rgb(193, 6, 6);
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  font-weight: bold;
+}
+
+.textbtn {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+#myDropdown {
+  padding-right: 2rem;
+}
+
+.Edit input[type="text"], .Edit input[type="email"], .Edit input[type="password"] {
+  width: 100%; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  border: 1px solid #ccc;
+}
+
+.confirm-label {
+  display: inline-block; /* Ensures the label appears on one line */
+  width: auto; /* Allows the label to expand to accommodate its content */
+}
+
+#editSubmit {
+  background-color: #1d81ec ;
+  border-radius: 0.5rem;
+  border-color: #1d81ec;
+  color: white;
+  width: 10%;
+  font-weight: bold;
+};
+
+
+.AccPriv {
+  height: 100vh;
+  margin-bottom: 0;
+}

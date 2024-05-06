@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Stud.e{% endblock %}</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/static/home.css">
+  <link rel="stylesheet" href="/static/create.css">
+  <link rel="icon" href="static/favicon.ico">
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Creator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    
 </head>
-<header>
-  <img src="{{ url_for('static', filename='logo.png') }}">
-  <h1>Stud.e</h1>
-  <nav>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('explore') }}">Explore</a></li>
-        <li><a href="{{ url_for('create') }}">Create</a></li>
-        {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-            <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        {% else %}
-            <li><a id="login-btn" href="{{ url_for('login') }}">Login</a></li>
-        {% endif %}
-    </ul>
-</nav>
+<body>
+  <header>
+    <img src="{{ url_for('static', filename='logo.png') }}">
+    <h1>Stud.e</h1>
+    <nav>
+      <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('explore') }}">Explore</a></li>
+          <li><a href="{{ url_for('create') }}">Create</a></li>
+          {% if current_user.is_authenticated %}
+              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
+      </ul>
+  </nav>
+  
+  </header>
 
-</header>
 
     <div class = "container">
     <div class="subject-box">

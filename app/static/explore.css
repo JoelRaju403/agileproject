@@ -91,9 +91,6 @@
     float: right;
     bottom: 0;
     display: flex;
-    border-top: 2px solid whitesmoke;
-
-
 }
 
 .myCards>hr{
@@ -107,6 +104,10 @@
 
 hr{
     margin: 4rem;
+}
+
+.searchContainer>h1{
+    float:left;
     
 
 }

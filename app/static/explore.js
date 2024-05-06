@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
       
     if (event.key === 'Enter') {
       event.preventDefault();
-        
-        
+  
+      
       const searchInputValue = $('#searchInput').val();
       const searchData= JSON.stringify({term: searchInputValue});
     
@@ -17,17 +17,18 @@ document.addEventListener('DOMContentLoaded', function () {
         contentType: 'application/json', 
         data: searchData,
         success: function (response) {
-        // Handle the successful response from the server
-        // Display the search results or perform other actions
+          if ($('.searchContainer').length != 0){ 
+            clearBox(searchContainer);
+          }
+          
           console.log('Search results:', response);
           var result = response.results;
+          
           var h1_heading = document.createElement('h1');
           h1_heading.innerHTML="Search Results";
-          document.createElement('hr');
+        
           result.forEach(divMaker);
-
-
-          searchContainer.appendChild(h1_heading);
+          
         },
         error: function (xhr, status, error) {
         // Handle errors if the request fails
@@ -58,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     
+    }
+
+    function clearBox(className) { 
+      while(className.firstChild) { 
+          className.removeChild(className.firstChild); 
+      } 
     }
 });
   

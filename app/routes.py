@@ -162,6 +162,9 @@ def search_request():
 
   search_cards = Sets.query.filter_by(subject=query, public = 1).all()
   results = [{'subject': card.subject, 'title': card.title} for card in search_cards]
+  
+  mycards = Sets.query.filter_by(userId=current_user.id)    
+
   print(results)
   
   return jsonify({'results': results}), 200

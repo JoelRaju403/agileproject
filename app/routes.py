@@ -136,6 +136,7 @@ def edit_profile():
                            form=form)
 
 @app.route('/explore')
+@login_required
 def explore():
   category = 'inspirational'
   api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
@@ -148,9 +149,6 @@ def explore():
     author= data[0].get('author')
   else:
     print("Error:", response.status_code, response.text)
-
-
-
 
   mycards = Sets.query.filter_by(userId=current_user.id)    
 
@@ -165,6 +163,7 @@ def search_request():
   search_cards = Sets.query.filter_by(subject=query, public = 1).all()
   results = [{'subject': card.subject, 'title': card.title} for card in search_cards]
   print(results)
+  
   return jsonify({'results': results}), 200
     
     

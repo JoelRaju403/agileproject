@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   const searchContainer = document.getElementsByClassName("searchContainer")[0];
   const searchInput = document.getElementById('searchInput');
+  const myCardsHeading = document.getElementById('myCardsHeading');
+  
     
   searchInput.addEventListener('keyup', function (event) {
       
@@ -26,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
           
           var h1_heading = document.createElement('h1');
           h1_heading.innerHTML="Search Results";
+          searchContainer.parentNode.insertBefore(h1_heading, searchContainer);
+
+          const line = document.createElement('hr');
+          myCardsHeading.parentNode.insertBefore(line, myCardsHeading);
         
           result.forEach(divMaker);
           

@@ -58,9 +58,6 @@
     
 }
     
-#myCardsHeading{
-    margin: 4rem;
-}
 
 .cards-container{
     display: flex;
@@ -108,7 +105,8 @@ hr{
 
 .searchContainer>h1{
     float:left;
-    
-
 }
 
+h1{
+    margin: 4rem;
+}

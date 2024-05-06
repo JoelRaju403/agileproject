@@ -21,14 +21,19 @@
         <li>{{ set.title }} - {{ set.subject }}</li>
     {% endfor %}
 </ul>
-<h2>User's Flashcards</h2>
-    <div class="flashcards">
-       
-    </div>
 
-    <script src="{{ url_for('static', filename='create.js') }}"></script>
+<h2>User's Flashcards</h2>
+<div class="flashcards">
+    {% for card in user_flashcards %}
+        <div class="flashcard">
+            <h2>Question: {{ card.question }}</h2>
+            <p>Answer: {{ card.answer }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{{ url_for('static', filename='create.js') }}"></script>
 
 <div id="demo"></div>
 
 {% endblock %}
-

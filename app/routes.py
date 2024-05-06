@@ -106,13 +106,15 @@ def register():
 def create():
   return render_template('Create.html')
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
     user_sets = Sets.query.filter_by(userId=user.id).all() 
-    return render_template('user.html', user=user)
-
+    user_flashcards = db.session.query(Cards).join(Sets, Cards.setId == Sets.id).filter(Sets.userId == current_user.id).all()
+    return render_template('user.html', user=user, user_sets=user_sets, user_flashcards=user_flashcards)
+  
 
 @app.before_request
 def before_request():
@@ -188,7 +190,7 @@ def answer():
                             messages=[
         {
             "role": "system",
-            "content": "You are a helpful assistant that converts text into a series of flashcards with questions and answers with one subject and title.",
+            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title, you are creating one set. Each flashcard has a question, an answer.",
         },
         {
             "role": "user",
@@ -199,11 +201,11 @@ def answer():
             generated_text = chat_completion.choices[0].message.content
             print(type(generated_text))
 
-            
-            parse_generated_text(generated_text)
+            print(generated_text)
+            response = parse_generated_text(generated_text)
 
-            # Return the raw output from the OpenAI model
-            return jsonify({"response": generated_text})
+            
+            return response
         else:
             return jsonify({"error": "No prompt provided"}), 400
     else:
@@ -215,29 +217,32 @@ def parse_generated_text(generated_text):
     user_id = current_user.id
 
     # The first line is the title
-    title = lines[0].replace('**Title: ', '').replace('**', '').strip()
+    title = lines[0].replace('Title: ', '').replace('**', '').strip()
 
     # The second line is the subject
-    subject = lines[1].replace('**Subject: ', '').replace('**', '').strip()
+    subject = lines[1].replace('Subject: ', '').replace('**', '').strip()
 
     # Initialize an empty list of flashcards
     flashcards = []
 
     # Iterate over the lines
     for line in lines[2:]:
-        if line.startswith('**Question:**'):
+        if line.startswith('Question:'):
             # Start a new flashcard
             flashcard = {}
             # Add the question to the current flashcard
-            flashcard['my_question'] = line.replace('**Question:**', '').strip()
-        elif line.startswith('**Answer:**'):
+            flashcard['my_question'] = line.replace('Question:', '').strip()
+        elif line.startswith('Answer:'):
             # Add the answer to the current flashcard
-            flashcard['my_answer'] = line.replace('**Answer:**', '').strip()
+            flashcard['my_answer'] = line.replace('Answer:', '').strip()
             # Add the completed flashcard to the list
             flashcards.append(flashcard)
     
     store_flashcards(title, subject, flashcards, user_id)
-    return title, subject, flashcards
+    return jsonify({'title':title, 
+                    'subject':subject, 
+                    'flashcards':flashcards
+    })
 
 
 

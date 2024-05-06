@@ -59,18 +59,11 @@
 
   <hr>
 
-  {%if searched == 1%}
-    <h1> Search Results</h1>
-    <div class = 'cards-container'
-    {% for result in results %}
-      <div class='myCards'>
-        <h2>{{result.subject}}</h2>
-        <hr>
-        <h3>{{result.title}}</h3>
-      </div>
-      {%endfor%}
-    <hr>
-    {%endif%}
+  
+    
+  <div class = 'searchContainer cards-container'></div>
+    
+    
 
 
   <h1 id="myCardsHeading">My Cards</h1>

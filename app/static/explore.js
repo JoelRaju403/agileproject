@@ -1,46 +1,63 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the search input field
-    var searchInput = document.getElementById('searchInput');
-  
-    // Add event listener for keydown event
+  const searchContainer = document.getElementsByClassName("searchContainer")[0];
+  const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('keyup', function (event) {
-      // Check if the pressed key is Enter (key code 13)
+      
       if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent default behavior (form submission)
+        event.preventDefault();
         
-        // Get the search query from the input field
-        var searchQuery = searchInput.value;
-        
-        // Perform the search
-        searchDatabase(searchQuery);
+        const searchInputValue = $('#searchInput').val();
+        const searchData= JSON.stringify({term: searchInputValue});
+    
+        $.ajax({
+          url: '/search', 
+          method: 'POST',
+          contentType: 'application/json', 
+          data: searchData,
+          success: function (response) {
+          // Handle the successful response from the server
+          // Display the search results or perform other actions
+            console.log('Search results:', response);
+            var result = response.results;
+            var h1_heading = document.createElement('h1');
+            h1_heading.innerHTML="Search Results";
+            document.createElement('hr');
+            result.forEach(divMaker);
+
+
+            searchContainer.appendChild(h1_heading);
+          },
+          error: function (xhr, status, error) {
+          // Handle errors if the request fails
+            console.error('Error searching:', error);
+          }
+        });
       }
     });
-  });
+
+
+    function divMaker(text) {
+      var div = document.createElement("div");
+      var h2_subject = document.createElement("h2");
+      var h3_title = document.createElement("h3");
+      
+      div.className = 'myCards';
+    
+      h2_subject.innerHTML = text.subject;
+    
+      h3_title.innerHTML = text.title;
+    
+    
+      div.appendChild(h2_subject);
+      div.appendChild(h3_title);
+      
+    
+      searchContainer.appendChild(div);
+    
+    
+    
+    }
+});
   
-  function searchDatabase(query) {
-    
-    const searchData={ term: query };
-    
-    $.ajax({
-      url: '/search', 
-      method: 'POST', 
-      data: JSON.stringify(searchData),
-      success: function (response) {
-        // Handle the successful response from the server
-        // Display the search results or perform other actions
-        console.log('Search results:', response);
-      },
-      error: function (xhr, status, error) {
-        // Handle errors if the request fails
-        console.error('Error searching:', error);
-      }
-    });
-  }
-  
 
-
-
-    
-
-    
 

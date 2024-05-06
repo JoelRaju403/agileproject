@@ -139,12 +139,13 @@ def edit_profile():
 def explore():
   category = 'inspirational'
   api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
+  quote = None
+  author = None
   response = requests.get(api_url, headers={'X-Api-Key': '54BNuKnSnAeD1L+DHawYTw==4eLn0FXxFEnC1EmI'})
   if response.status_code == requests.codes.ok:
     data=response.json()
     quote = data[0].get('quote')
     author= data[0].get('author')
-    print(response.text)
   else:
     print("Error:", response.status_code, response.text)
 
@@ -158,13 +159,13 @@ def explore():
 
 @app.route('/search', methods=['POST'])
 def search_request():
-    data = request.json()
-    query=data.get('query')
+  data = request.json
+  query=data.get('term')
 
-    searchCards = Sets.query.filter_by(subject=query, public = 0)
-    mycards = Sets.query.filter_by(userId=current_user.id)  
-
-    return render_template('Explore.html', cards=mycards, searched=1, results=mycards)
+  search_cards = Sets.query.filter_by(subject=query, public = 1).all()
+  results = [{'subject': card.subject, 'title': card.title} for card in search_cards]
+  print(results)
+  return jsonify({'results': results}), 200
     
     
 
@@ -198,11 +199,11 @@ def save_flashcards():
 
 @app.route('/delete_user/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
-    user = User.query.get(user_id)
-    if user:
-        db.session.delete(user)
-        db.session.commit()
-        return jsonify({'message': 'User is deleted'}), 200
-    else:
-        return jsonify({'error' : 'User not found'}), 404
+  user = User.query.get(user_id)
+  if user:
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'message': 'User is deleted'}), 200
+  else:
+    return jsonify({'error' : 'User not found'}), 404
 

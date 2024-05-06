@@ -25,35 +25,59 @@
 </head>
 <body>
   <header>
-    <img src="static/logo.png">
-    <h1>stud.e</h1>
+    <img src="{{ url_for('static', filename='logo.png') }}">
+    <h1>Stud.e</h1>
     <nav>
       <ul>
-        <li><a href='{{ url_for('home') }}'>Home</a></li>
-        <li><a href="#">Explore</a></li>
-        <li><a href='{{ url_for('create') }}'>Create</a></li>
-        <li><a href="" id="login-btn">Login</a></li>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a>Explore</a></li>
+          <li><a href="{{ url_for('create') }}">Create</a></li>
+          {% if current_user.is_authenticated %}
+              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
       </ul>
-    </nav>
+  </nav>
+  
   </header>
 
-  <form>
+  <div class = 'quote-box'>
+    <h1 id="quote">{{quote}}</h1>
+    <h3 id="author">{{author}}</h3>
+  </div>
+
+  
     <div class = 'search'>
         <span class="search-symbol material-symbols-outlined">search</span>
-        <input class="search-input" type="search" placeholder="Search">
+        <input id="searchInput" class="search-input" type="search" placeholder="Search">
         <img src="static/logo.png" height="35px" width="35px">
     
     </div>
-  </form>
-
-  <div class = 'quote-box'>
-    <h1 id="quote"></h1>
-    <h3 id="author"></h3>
-  </div>
-
-
-  <h1>My Cards</h1>
   
+
+  <hr>
+
+  
+    
+  <div class = 'searchContainer cards-container'></div>
+    
+    
+
+
+  <h1 id="myCardsHeading">My Cards</h1>
+  
+  <div class="cards-container">
+  {% for card in cards%}
+    <div class='myCards'>
+      <h2>{{card.subject}}</h2>
+      <hr>
+      <h3>{{card.title}}</h3>
+    
+    </div>
+    {%endfor%}
+  </div>
 
 
 

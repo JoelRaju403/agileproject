@@ -1,3 +1,5 @@
+import requests
+import json
 from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm
@@ -17,7 +19,6 @@ from app.forms import LoginForm
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
-from app.models import User
 from flask_login import logout_user
 from flask_login import login_required
 from flask import request
@@ -26,6 +27,7 @@ from app.forms import RegistrationForm
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -60,13 +62,13 @@ def login():
             sa.select(User).where(User.username == form.username.data))
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return render_template('login.html', title='Sign In', form=form)
+            return render_template('Login.html', title='Sign In', form=form)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form, page='login')
+    return render_template('Login.html', title='Sign In', form=form, page='login')
 
 
 @app.route('/logout')
@@ -99,6 +101,7 @@ def register():
 @login_required
 def create():
   return render_template('Create.html')
+
 
 @app.route('/user/<username>')
 @login_required
@@ -133,13 +136,40 @@ def edit_profile():
                            form=form)
 
 @app.route('/explore')
+@login_required
 def explore():
-  return render_template('Explore.html')
+  category = 'inspirational'
+  api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
+  quote = None
+  author = None
+  response = requests.get(api_url, headers={'X-Api-Key': '54BNuKnSnAeD1L+DHawYTw==4eLn0FXxFEnC1EmI'})
+  if response.status_code == requests.codes.ok:
+    data=response.json()
+    quote = data[0].get('quote')
+    author= data[0].get('author')
+  else:
+    print("Error:", response.status_code, response.text)
 
-@app.route('/learn')
-def learn():
-    return render_template('learn.html')
+  mycards = Sets.query.filter_by(userId=current_user.id)    
 
+  return render_template('Explore.html', cards=mycards, quote=quote, author=author)
+
+
+@app.route('/search', methods=['POST'])
+def search_request():
+  data = request.json
+  query=data.get('term')
+
+  search_cards = Sets.query.filter_by(subject=query, public = 1).all()
+  results = [{'subject': card.subject, 'title': card.title} for card in search_cards]
+  
+  mycards = Sets.query.filter_by(userId=current_user.id)    
+
+  print(results)
+  
+  return jsonify({'results': results}), 200
+    
+    
 
 
 @app.route('/save_flashcards', methods=['POST'])
@@ -151,8 +181,11 @@ def save_flashcards():
   public = data.get('public')
 
   set_obj = Sets(userId=current_user.id, subject=subject, title=title, public=public)
-  set_id=set_obj.id
   db.session.add(set_obj)
+  db.session.commit()
+
+  set_id = set_obj.id
+  
 
   flashcards = data.get('flashcards')
   for flashcard_info in flashcards:
@@ -168,11 +201,11 @@ def save_flashcards():
 
 @app.route('/delete_user/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
-    user = User.query.get(user_id)
-    if user:
-        db.session.delete(user)
-        db.session.commit()
-        return jsonify({'message': 'User is deleted'}), 200
-    else:
-        return jsonify({'error' : 'User not found'}), 404
+  user = User.query.get(user_id)
+  if user:
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'message': 'User is deleted'}), 200
+  else:
+    return jsonify({'error' : 'User not found'}), 404
 

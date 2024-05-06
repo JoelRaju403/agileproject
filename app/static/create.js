@@ -91,7 +91,6 @@ function hideCreateBox(){
 $(document).ready(function(){
   $('#flashcard-form').click(function(event){
     
-  alert("the button was clicked"); 
   var checkbox = document.querySelector('.toggle input[type="checkbox"]'); // Select the checkbox element
   console.log('Checkbox checked:', checkbox.checked); // Log the state of the checkbox
   let scope;

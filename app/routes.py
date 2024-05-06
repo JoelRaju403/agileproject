@@ -136,6 +136,10 @@ def edit_profile():
 def explore():
   return render_template('Explore.html')
 
+@app.route('/learn')
+def learn():
+    return render_template('learn.html')
+
 
 
 @app.route('/save_flashcards', methods=['POST'])

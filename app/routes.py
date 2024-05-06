@@ -27,7 +27,12 @@ from app.forms import RegistrationForm
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
+import os
+from openai import OpenAI
 
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),
+)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -103,17 +108,19 @@ def create():
   return render_template('Create.html')
 
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
-    return render_template('user.html', user=user)
-
+    user_sets = Sets.query.filter_by(userId=user.id).all() 
+    user_flashcards = db.session.query(Cards).join(Sets, Cards.setId == Sets.id).filter(Sets.userId == current_user.id).all()
+    return render_template('user.html', user=user, user_sets=user_sets, user_flashcards=user_flashcards)
+  
 
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
-        
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
 
@@ -188,6 +195,10 @@ def save_flashcards():
   
 
   flashcards = data.get('flashcards')
+  if flashcards is None:
+    return jsonify({'error': 'No flashcards data provided'}), 400
+
+  flashcards = data.get('flashcards')
   for flashcard_info in flashcards:
     question= flashcard_info.get('my_question')
     answer = flashcard_info.get('my_answer')
@@ -209,3 +220,97 @@ def delete_user(user_id):
   else:
     return jsonify({'error' : 'User not found'}), 404
 
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+  return render_template('upload.html')
+
+@app.route('/answer', methods=["GET", "POST"])
+def answer():
+    if request.method == "POST":
+        data = request.json
+        prompt_text = data.get('prompt')
+        if prompt_text:
+            chat_completion = client.chat.completions.create(
+                            model="gpt-3.5-turbo",
+                            messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title, you are creating one set. Each flashcard has a question, an answer.",
+        },
+        {
+            "role": "user",
+            "content": f'Convert the following text into flashcards with questions, answers, subjects, and titles: "{prompt_text}"',
+        }
+            ],
+                    )
+            generated_text = chat_completion.choices[0].message.content
+            print(type(generated_text))
+
+            print(generated_text)
+            response = parse_generated_text(generated_text)
+
+            
+            return response
+        else:
+            return jsonify({"error": "No prompt provided"}), 400
+    else:
+        return jsonify({"error": "Only POST requests are supported for this endpoint"}), 405
+
+def parse_generated_text(generated_text):
+    # Split the generated text into lines
+    lines = generated_text.split('\n')
+    user_id = current_user.id
+
+    # The first line is the title
+    title = lines[0].replace('Title: ', '').replace('**', '').strip()
+
+    # The second line is the subject
+    subject = lines[1].replace('Subject: ', '').replace('**', '').strip()
+
+    # Initialize an empty list of flashcards
+    flashcards = []
+
+    # Iterate over the lines
+    for line in lines[2:]:
+        if line.startswith('Question:'):
+            # Start a new flashcard
+            flashcard = {}
+            # Add the question to the current flashcard
+            flashcard['my_question'] = line.replace('Question:', '').strip()
+        elif line.startswith('Answer:'):
+            # Add the answer to the current flashcard
+            flashcard['my_answer'] = line.replace('Answer:', '').strip()
+            # Add the completed flashcard to the list
+            flashcards.append(flashcard)
+    
+    store_flashcards(title, subject, flashcards, user_id)
+    return jsonify({'title':title, 
+                    'subject':subject, 
+                    'flashcards':flashcards
+    })
+
+
+
+def store_flashcards(title, subject, flashcards, user_id):
+    # Create a new Sets object and add it to the database
+    set_obj = Sets(userId=user_id, subject=subject, title=title, public=True)
+    db.session.add(set_obj)
+    db.session.commit()  # Commit the Sets object to the database to get its id
+
+    set_id = set_obj.id  # Now you can get the id
+
+    # Create a new Cards object for each flashcard and add it to the database
+    for flashcard in flashcards:
+        card = Cards(question=flashcard['my_question'], answer=flashcard['my_answer'], setId=set_id)
+        
+        db.session.add(card)
+
+    db.session.commit()  # Commit the Cards objects to the database
+
+
+
+    
+
+if __name__ == "__main__":
+    app.run(debug=True)

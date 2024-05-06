@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Stud.e{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+</head>
+<header>
+  <img>
+  <h1>Stud.e&nbsp;<i>Premium</i></h1>&nbsp; 
+  <nav class="navbar">
+    <ul>
+      <li class="close"><a href="{{ url_for('home') }}"><i class="fa-solid fa-xmark"></i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<body>
+  <main>
+    <section class="learnSection">
+      <h2 class="first">Generate instant study materials through AI</h2>
+      <h3 class="second">Upload class notes, lecture slides or journal articles</h3>
+      <h4 class="third">Request the services of an AI to make flashcards!</h4>
+      <form id="prompt-form" method="post">
+        <div class="PasteText">Paste Text below!</div>
+        <textarea id="prompt-textarea" name="prompt" placeholder="Paste your notes here. We'll do the rest."></textarea>
+        <button id="transform-btn">Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
+      </form>
+    </section>
+
+    </section>
+    <section class="Waffle">
+
+      <h3>AI has improved your notes!</h3>
+      <div class="p1"><i class="fa-solid fa-robot"></i>Learn faster by converting notes to flashcards</div>
+      <div class="p2"><i class="fa-solid fa-award"></i>Pactice on our learn page</div>
+      <div class="p3"><i class="fa-solid fa-share"></i>Recommended Stud.e to a friend</div>
+      <div class="socialMedia"><i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-x-twitter"></i>
+      </div>
+
+    </section>
+    
+  </main>
+  <div class="flashcards"></div>
+  <footer>
+    <p>This product is enhanced with AI and may provide incorrect or problematic content. Do not enter any personal
+      data.</p>
+  </footer>
+
+</body>
+<script src="{{ url_for('static', filename='upload.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</html>

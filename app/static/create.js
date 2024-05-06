@@ -37,8 +37,6 @@ function divMaker(text) {
 
   flashcards.appendChild(div);
 
-
-
 }
 
 function addFlashcard(){

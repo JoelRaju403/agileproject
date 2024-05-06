@@ -156,6 +156,10 @@ def save_flashcards():
   db.session.add(set_obj)
 
   flashcards = data.get('flashcards')
+  if flashcards is None:
+    return jsonify({'error': 'No flashcards data provided'}), 400
+
+  flashcards = data.get('flashcards')
   for flashcard_info in flashcards:
     question= flashcard_info.get('my_question')
     answer = flashcard_info.get('my_answer')
@@ -180,20 +184,24 @@ def answer():
         prompt_text = data.get('prompt')
         if prompt_text:
             chat_completion = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a helpful assistant that converts text into a series of flashcards with questions and answers.",
-                    },
-                    {
-                        "role": "user",
-                        "content": f'Convert the following text into flashcards: "{prompt_text}"',
-                    }
-                ],
-            )
+                            model="gpt-3.5-turbo",
+                            messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant that converts text into a series of flashcards with questions and answers with one subject and title.",
+        },
+        {
+            "role": "user",
+            "content": f'Convert the following text into flashcards with questions, answers, subjects, and titles: "{prompt_text}"',
+        }
+            ],
+                    )
             generated_text = chat_completion.choices[0].message.content
-            print(generated_text)
+            print(type(generated_text))
+
+            
+            parse_generated_text(generated_text)
+
             # Return the raw output from the OpenAI model
             return jsonify({"response": generated_text})
         else:
@@ -201,9 +209,57 @@ def answer():
     else:
         return jsonify({"error": "Only POST requests are supported for this endpoint"}), 405
 
+def parse_generated_text(generated_text):
+    # Split the generated text into lines
+    lines = generated_text.split('\n')
+    user_id = current_user.id
+
+    # The first line is the title
+    title = lines[0].replace('**Title: ', '').replace('**', '').strip()
+
+    # The second line is the subject
+    subject = lines[1].replace('**Subject: ', '').replace('**', '').strip()
+
+    # Initialize an empty list of flashcards
+    flashcards = []
+
+    # Iterate over the lines
+    for line in lines[2:]:
+        if line.startswith('**Question:**'):
+            # Start a new flashcard
+            flashcard = {}
+            # Add the question to the current flashcard
+            flashcard['my_question'] = line.replace('**Question:**', '').strip()
+        elif line.startswith('**Answer:**'):
+            # Add the answer to the current flashcard
+            flashcard['my_answer'] = line.replace('**Answer:**', '').strip()
+            # Add the completed flashcard to the list
+            flashcards.append(flashcard)
+    
+    store_flashcards(title, subject, flashcards, user_id)
+    return title, subject, flashcards
 
 
 
+def store_flashcards(title, subject, flashcards, user_id):
+    # Create a new Sets object and add it to the database
+    set_obj = Sets(userId=user_id, subject=subject, title=title, public=True)
+    db.session.add(set_obj)
+    db.session.commit()  # Commit the Sets object to the database to get its id
+
+    set_id = set_obj.id  # Now you can get the id
+
+    # Create a new Cards object for each flashcard and add it to the database
+    for flashcard in flashcards:
+        card = Cards(question=flashcard['my_question'], answer=flashcard['my_answer'], setId=set_id)
+        
+        db.session.add(card)
+
+    db.session.commit()  # Commit the Cards objects to the database
+
+
+
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

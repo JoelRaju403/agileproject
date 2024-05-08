@@ -4,33 +4,51 @@
 
 
 {% block content %}
+  
+<link rel="stylesheet" href="{{ url_for('static', filename='learn.css') }}">
+<script src="static/learn.js"></script>
 
-<!-- Bootstrap Carousel -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-  <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-      <div class="carousel-item active">
-          <img class="d-block w-30" src="{{ url_for('static', filename='image_50368001.jpg') }}" alt="First slide">
+<div class="slider">
+  <div class="holder">
+    <div class="flashcard active first">
+      <div class="front">
+        <p class="show-text">Press the DOWN ARROW key to flip the flashcard.</p>
       </div>
-      <div class="carousel-item">
-          <img class="d-block w-30" src="{{ url_for('static', filename='image_50423809.jpg') }}" alt="Second slide">
+      <div class="back">
+        <p>Press the LEFT ARROW KEY to move to the next flashcard</p>
       </div>
-      <div class="carousel-item">
-          <img class="d-block w-30" src="{{ url_for('static', filename='image_50429185.jpg') }}" alt="Third slide">
+    </div>
+    {%for card in cards%}
+    <div class="flashcard">
+      <div class="front">
+        <p class="show-text">{{card.question}}</p>
       </div>
+      <div class="back">
+        <p>{{card.answer}}</p>
+      </div>
+    </div>
+    {%endfor%}
+    <div class="flashcard">
+    <div class="flashcard lastcard flipped">
+      <div class="front">
+        <p class="show-text">You have finished the deck. Press the RIGHT ARROW KEY to flip back through.</p>
+      </div>
+      <div class="back">
+        <p>You have finished the deck. Press the RIGHT ARROW KEY to flip back through.</p>
+      </div>
+    </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-  </a>
-</div><br>
+</div>
+
+<footer>
+  <div class="instructions">
+    <ul>
+      <li>&#9668; - rotate LEFT</li>
+      <li>&#9658; - rotate RIGHT</li>
+      <li>&#9660; - FLIP card</li>
+    </ul>
+  </div>
+</footer>
+
 
 {% endblock %}

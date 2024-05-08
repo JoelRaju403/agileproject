@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="/static/home.css">
-  <link rel="stylesheet" href="/static/create.css">
-  <link rel="icon" href="static/favicon.ico">
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard Creator</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
-    
-</head>
-<body>
-  <header>
-    <img src="{{ url_for('static', filename='logo.png') }}">
-    <h1>Stud.e</h1>
-    <nav>
-      <ul>
-          <li><a href="{{ url_for('home') }}">Home</a></li>
-          <li><a href="{{ url_for('explore') }}">Explore</a></li>
-          <li><a href="{{ url_for('create') }}">Create</a></li>
-          {% if current_user.is_authenticated %}
-              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-              <li><a href="{{ url_for('logout') }}">Logout</a></li>
-          {% else %}
-              <li><a href="{{ url_for('login') }}">Login</a></li>
-          {% endif %}
-      </ul>
-  </nav>
-  
-  </header>
+{% extends "base.html" %}
 
+    
+{% block content %}
 
     <div class = "container">
     <div class="subject-box">
-      <h2 style="text-align: center; color:black">Create Flashcard </h2>
+      <h2 style="text-align: center">Create Flashcard </h2>
       <label for="subject">Subject</label>
       <input type="text" id="subject" name="subject">
       <br>
@@ -68,8 +38,7 @@
     <div class="flashcards"></div>
 
     <div id="flashcard-message"></div>
-    <script src="static/create.js"></script>  
-</body>
-    
 
-</html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
+    <script src="static/create.js"></script>  
+{% endblock %}

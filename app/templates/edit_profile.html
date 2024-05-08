@@ -63,7 +63,7 @@
     <div class="textbtn">
         <p class="inlinetxt"> Make profile private (all cards will be private)</p>
         <label class="toggle">
-            <input type="checkbox" id="publicCheckbox" onclick="SwitchPublic()">
+            <input type="checkbox" id="publicCheckbox" onclick="">
             <span class="slider"></span>
         </label>
     </div>
@@ -75,4 +75,7 @@
     </div>
 </fieldset>
 </div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
+
 {% endblock %}

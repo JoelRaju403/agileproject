@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 
 
   <link rel="manifest" href="/site.webmanifest">
@@ -24,7 +25,6 @@
   <nav>
     <ul>
         <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('explore') }}">Explore</a></li>
         <li><a href="{{ url_for('explore') }}">Explore</a></li>
         <li><a href="{{ url_for('create') }}">Create</a></li>
         {% if current_user.is_authenticated %}

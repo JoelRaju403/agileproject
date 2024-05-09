@@ -23,7 +23,6 @@
     </ul>
   </nav>
 </header>
-
 <body>
   <main>
     <section class="learnSection">
@@ -33,13 +32,8 @@
       <form id="prompt-form" method="post">
         <div class="PasteText">Paste Text below!</div>
         <textarea id="prompt-textarea" name="prompt" placeholder="Paste your notes here. We'll do the rest."></textarea>
-        <button id="transform-btn">Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
-      </form>
-    </section>
-
     </section>
     <section class="Waffle">
-
       <h3>AI has improved your notes!</h3>
       <div class="p1"><i class="fa-solid fa-robot"></i>Learn faster by converting notes to flashcards</div>
       <div class="p2"><i class="fa-solid fa-award"></i>Pactice on our learn page</div>
@@ -49,14 +43,17 @@
       </div>
 
     </section>
+
+
+    <div class="loading"></div>
     
   </main>
   <div class="flashcards"></div>
   <footer>
     <p>This product is enhanced with AI and may provide incorrect or problematic content. Do not enter any personal
-      data.</p>
+      data.</p> <button id="transform-btn">Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
   </footer>
-
+</form>
 </body>
 <script src="{{ url_for('static', filename='upload.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

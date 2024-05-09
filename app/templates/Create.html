@@ -5,13 +5,13 @@
   <link rel="stylesheet" href="/static/create.css">
   <link rel="icon" href="static/favicon.ico">
   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard Creator</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcard Creator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
+
 <body>
   <header>
     <img src="{{ url_for('static', filename='logo.png') }}">
@@ -28,19 +28,18 @@
               <li><a href="{{ url_for('login') }}">Login</a></li>
           {% endif %}
       </ul>
-  </nav>
-  
+    </nav>
   </header>
+  <div class="loader">
 
-
-    <div class = "container">
+  <div class="container">
     <div class="subject-box">
-      <h2 style="text-align: center; color:black">Create Flashcard </h2>
+      <h2 style="text-align: center; color:black">Create Flashcard</h2>
       <label for="subject">Subject</label>
       <input type="text" id="subject" name="subject">
       <br>
       <label for="title"> Title</label>
-        <input type ='text' id="title" name="title">
+      <input type="text" id="title" name="title">
       <br>
       <label class="toggle">
         <input type="checkbox" id="publicCheckbox" onclick="SwitchPublic()">
@@ -49,27 +48,26 @@
     </div>
   </div>
 
-    <div class="container">
-      <div class="create-box">
-        <label for="question">Question</label>
-        <textarea id="question" cols="3" rows="10"></textarea>
-        <br>
-        <label for="answer">Answer</label>
-        <textarea id="answer" cols="3" rows="10"></textarea>
-        <div>
-          <button onclick="addFlashcard()">Save Card</button>
-          <button id = "flashcard-form"> Submit Set</button>
-          <button class="creation" onclick="delFlashcards()">Delete All Cards</button>
-
-        </div>
+  <div class="container">
+    <div class="create-box">
+      <label for="question">Question</label>
+      <textarea id="question" cols="3" rows="10"></textarea>
+      <br>
+      <label for="answer">Answer</label>
+      <textarea id="answer" cols="3" rows="10"></textarea>
+      <div>
+        <button onclick="addFlashcard()">Save Card</button>
+        <button id="flashcard-form"> Submit Set</button>
+        <button class="creation" onclick="delFlashcards()">Delete All Cards</button>
       </div>
     </div>
+  </div>
 
-    <div class="flashcards"></div>
+  <div class="flashcards"></div>
+  <div id="flashcard-message"></div>
+</div>
 
-    <div id="flashcard-message"></div>
-    <script src="static/create.js"></script>  
+  <script src="static/create.js"></script>
+ 
 </body>
-    
-
 </html>

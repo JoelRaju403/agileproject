@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
  
   <script src="{{ url_for('static', filename='setting.js') }}"></script>
-  <script src="{{ url_for('static', filename='base.css') }}"></script>
+  
 
 </head>
 
@@ -41,7 +41,7 @@
     
       
       <div id="dropdownContent">
-        <span class="closeMenu">&times;</span>
+        <span id="closeMenu">&times;</span>
         <ul>
           <li><a href="{{ url_for('home') }}">Home</a></li>
           <li><a href="{{url_for('explore') }}">Explore</a></li>
@@ -67,11 +67,12 @@
     {% block content %}{% endblock %}
   </main>
 
-  <footer id="footer">
-    <p>&copy; 2024 Stud.e. All rights reserved.</p>
-  </footer>
+  
 
 </body>
+<footer id="footer">
+  <p>&copy; 2024 Stud.e. All rights reserved.</p>
+</footer>
 
 
 <script src="{{ url_for('static', filename='base.js') }}"></script>

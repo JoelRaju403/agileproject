@@ -9,21 +9,21 @@
         <form action="" method="post">
             {{ form.hidden_tag() }}
             <p class="Edit">
-                {{ form.username.label }}<br>
+                <b>{{ form.username.label }}</b><br>
                 {{ form.username(size=32) }}<br>
                 {% for error in form.username.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p class="Edit">
-                {{form.email.label}}<br>
+                <b>{{form.email.label}}</b><br>
                 {{ form.email(size=32) }}<br>
                 {% for error in form.email.errors %}
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p class="Edit">
-                {{ form.confirm_password.label (class="confirm-label")}} <br>
+            <b>{{ form.confirm_password.label (class="confirm-label")}}</b><br>
                 {{ form.confirm_password }}<br>
                 {% for error in form.confirm_password.errors %}
                 <span style="color: red;">[{{ error }}]</span>
@@ -38,7 +38,7 @@
 <fieldset>
     <legend>Appearance</legend>
     <div class="textbtn">
-        <p>Dark Mode</p>
+        <p><b>Dark Mode</b></p>
         <label class="toggle">
             <input type="checkbox" id="DMtoggle" onclick="darkmode()">
             <span class="slider"></span>
@@ -46,7 +46,7 @@
     </div>
     <hr>
     <div class="textbtn">
-        <p>Langauge</p>
+        <p><b>Langauge</b></p>
         <select id="myDropdown">
             <option value="English">English</option>
         </select>
@@ -75,5 +75,6 @@
 </div>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
+
 
 {% endblock %}

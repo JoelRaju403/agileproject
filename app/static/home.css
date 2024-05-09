@@ -2,7 +2,6 @@
   /*ALL COLOUR VALUES ARE DECLARED HERE*/
     
   }
-  /* Reset styles */
   * {
     margin: 0;
     padding: 0;
@@ -42,8 +41,9 @@
   nav ul li a {
     color: #fff;
     text-decoration: bold;
-
   }
+ 
+  
  
   .hero {
     text-align: center;
@@ -69,7 +69,7 @@
   }
   .btn {
     display: inline-block;
-    background: rgb(3, 48, 63);
+    background: rgb(8, 129, 120);
     color: #fff;
     padding: 0.5rem 1rem;
     text-decoration: none;

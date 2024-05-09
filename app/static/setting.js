@@ -26,27 +26,35 @@ function darkmode() {
   header.classList.toggle('darkhfmode');
   footer.classList.toggle('darkhfmode');
 
-
-  //save the dark mode state local storage
+  const hrElements= document.querySelectorAll('hr');
+  hrElements.forEach(hr => {
+    hr.classList.toggle('darkHr');
+  });
+  
+  
+  // Save the dark mode state to local storage
   let isDarkMode = main.classList.contains('darkmode');
   localStorage.setItem('darkModeEnabled', isDarkMode);
-  
- 
 }
 
-function initalDarkMode() {
-  let isDarkMode = localStorage.getItem('darkModeEnabled') == 'true';
+function initialDarkMode() {
+  let isDarkMode = localStorage.getItem('darkModeEnabled') === 'true';
   const darktoggle = document.getElementById('DMtoggle');
   const header = document.getElementById('header');
   const footer = document.getElementById('footer');
-  let main = document.getElementById('main');
+  const hrElements = document.querySelectorAll('hr');
+  const main = document.getElementById('main');
+ 
   if (isDarkMode) {
     main.classList.toggle('darkmode');
     header.classList.toggle('darkhfmode');
     footer.classList.toggle('darkhfmode');
+    hrElements.forEach(hr => {
+      hr.classList.toggle('darkHr');
+    });
+  
     darktoggle.checked = true;
   }
 }
 
-window.addEventListener('load', initalDarkMode);
-
+window.addEventListener('load', initialDarkMode);

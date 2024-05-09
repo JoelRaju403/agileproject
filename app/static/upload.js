@@ -13,10 +13,11 @@
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ prompt: promptText }),
+      
       success: function(response){
         // Handle success
       
-
+        
         
       },
       error: function(xhr, status, error){

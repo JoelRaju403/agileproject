@@ -204,6 +204,25 @@ main {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 footer {
   background: var(--purple-header);
   color: #fff;
@@ -234,6 +253,8 @@ footer button {
   transition: background-color 0.3s, color 0.3s;
   width: 15rem;
 }
+
+
 
 footer button:hover {
   background-color: rgba(128, 128, 128, 0.671);

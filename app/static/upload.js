@@ -13,11 +13,12 @@
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ prompt: promptText }),
-      
       success: function(response){
-        // Handle success
       
-        
+        console.log(response.flashcards);
+        var cards = response.flashcards;
+        cards.forEach(divMaker);
+
         
       },
       error: function(xhr, status, error){

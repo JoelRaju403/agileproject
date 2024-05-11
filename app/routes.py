@@ -232,7 +232,7 @@ def answer():
                             messages=[
         {
             "role": "system",
-            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title, you are creating one set. Each flashcard has a question, an answer.",
+            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be  a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer.",
         },
         {
             "role": "user",
@@ -254,20 +254,14 @@ def answer():
         return jsonify({"error": "Only POST requests are supported for this endpoint"}), 405
 
 def parse_generated_text(generated_text):
-    # Split the generated text into lines
+   
     lines = generated_text.split('\n')
     user_id = current_user.id
-
-    # The first line is the title
-    title = lines[0].replace('Title: ', '').replace('**', '').strip()
-
-    # The second line is the subject
-    subject = lines[1].replace('Subject: ', '').replace('**', '').strip()
-
-    # Initialize an empty list of flashcards
+    
+    title = lines[1].replace('Title: ', '').strip()
+    subject = lines[0].replace('Subject: ', '').strip()
     flashcards = []
 
-    # Iterate over the lines
     for line in lines[2:]:
         if line.startswith('Question:'):
             # Start a new flashcard

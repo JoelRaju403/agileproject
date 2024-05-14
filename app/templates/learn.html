@@ -1,54 +1,31 @@
 {% extends "base.html" %}
+{%block content %}
 
+<link rel="stylesheet" type="text/css" href="static/learn.css">
+<h1 id="heading">{{info.title}}</h1>
+<h3>{{info.subject}}</h3>
 
-
-
-{% block content %}
-  
-<link rel="stylesheet" href="{{ url_for('static', filename='learn.css') }}">
-<script src="static/learn.js"></script>
-
-<div class="slider">
-  <div class="holder">
-    <div class="flashcard active first">
-      <div class="front">
-        <p class="show-text">Press the DOWN ARROW key to flip the flashcard.</p>
-      </div>
-      <div class="back">
-        <p>Press the LEFT ARROW KEY to move to the next flashcard</p>
-      </div>
-    </div>
-    {%for card in cards%}
-    <div class="flashcard">
-      <div class="front">
-        <p class="show-text">{{card.question}}</p>
-      </div>
-      <div class="back">
-        <p>{{card.answer}}</p>
-      </div>
-    </div>
-    {%endfor%}
-    <div class="flashcard">
-    <div class="flashcard lastcard flipped">
-      <div class="front">
-        <p class="show-text">You have finished the deck. Press the RIGHT ARROW KEY to flip back through.</p>
-      </div>
-      <div class="back">
-        <p>You have finished the deck. Press the RIGHT ARROW KEY to flip back through.</p>
-      </div>
-    </div>
+<div class="carousel">
+  <div class="card active">
+    <h2>Click On The Card To Reveal The Answer!</h2>
+    <p class="answer">Press The Arrows To Move Between Flashcards</p>
   </div>
+  {%for card in cards %}
+  <div class="card">
+    <h2>{{card.question}}</h2>
+    <p class="answer">{{card.answer}}</p>
+  </div>
+
+  {%endfor%}
+
+  <div class="navigation">
+    <button id="prev" class="navigation">&#8249;</button>
+    <button id="next" class="navigation">&#8250;</button>
+  </div>
+
 </div>
 
-<footer>
-  <div class="instructions">
-    <ul>
-      <li>&#9668; - rotate LEFT</li>
-      <li>&#9658; - rotate RIGHT</li>
-      <li>&#9660; - FLIP card</li>
-    </ul>
-  </div>
-</footer>
+<script src="static/learn.js"></script>
 
 
-{% endblock %}
+{%endblock%}

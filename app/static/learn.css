@@ -1,127 +1,74 @@
-* {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.carousel {
+  display: flex;
+  width: 90vw; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+
+.card {
+  display: none;
+  width:100%;/* Use relative unit */
+  max-width: 800px; /* Maximum width */
+  height:50%; /* Adjust height automatically */
+  max-height: 500px;
+  margin: 2rem auto; /* Use rem for scalable margin */
+  padding: 1rem; /* Use rem for scalable padding */
+  background-color: transparent;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+
+.active {
+  display: block;
   
-  h1 {
-    text-align: center;
-    margin: 30px auto 0px;
-    padding-bottom: 20px;
-    font-size: 36px;
-    font-family: Helvitica, Arial, sans-serif;
-    border-bottom: 3px solid black;
-  }
-  
-  p {
-    font-size: 12px;
-    line-height: 1;
-    margin: 80px 50px 10px;
-    color: white;
-    border-bottom: 50px solid white;
-  }
-  
-  .show-text {
-    color: black!important;
-  }
-  
-  .slider {
-    width: 400px;
-    height: 60px;
-    position: relative;
-    display: block;
-    margin: 10px auto 0px;
-    -webkit-transform: perspective(1000);
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-  }  
-  
-  .holder {
-    position: absolute;
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-  }
-  
-  .flashcard {
-    border: 2px solid black;
-    background: white;
-    float: left;
-    position: absolute;
-    width: 400px;
-    height: 216px;
-    margin: 20px auto 0px;
-    -webkit-transform: rotateY(180deg) translateZ(300px);
-    
-    -webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    transition: all 1s;
-  }
-  
-  .flashcard > div {
-    background: white;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    
-    font: 45px/200px bold Helvitica, Arial, sans-serif;
-    text-align: center;
-    
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-  }
-  
-  .flashcard > .front {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .flashcard.flipped {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-  }
-  
-  .flashcard.flipped > .front {
-    opacity: 0;
-  }
-  
-  .active {
-    -webkit-transform: rotateY(0deg) translateZ(300px)!important;
-  }
-  
-  .previous {
-    -webkit-transform: rotateY(-180deg) translateZ(300px)!important;
-  }
-  
-  .lastcard {
-    border: 1px solid white!important;
-    color: white!important;
-    background: white!important;
-  }
-  
-  .front p {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .first .back p {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .lastcard .front p,
-  .lastcard .back p {
-    font-weight: normal!important;
-    font-size: 20px;
-  }
-  
-  footer {
-    border-top: 3px solid black;
-    position: relative;
-    bottom: -293px;
-    padding-top: 20px;
-  }
-  ul, li {
-    text-align: center;
-    font-family: Helvitica, Arial, sans-serif;
-  }
+}
+
+h2{
+  text-align: center;
+  margin-top: 15%;
+}
+p{
+  text-align: center;
+}
+
+.answer {
+  display: none;
+}
+
+.navigation {
+  display: flex; /* Make the container a flex container */
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 1rem; /* Add some gap between the buttons */
+  margin-top: 0;
+  padding: 8px 16px;
+  border-radius: 50%;
+  font-size: x-large;
+  color: lightgray;
+  background-color: white;
+
+}
+button{
+  border:2px solid lightgray;
+}
+
+button:hover{
+  background-color: rgba(211, 211, 211, 0.863);
+  color: white;
+}
+
+#heading{
+  padding-top: 1rem;
+}

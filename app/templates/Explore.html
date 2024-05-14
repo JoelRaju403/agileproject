@@ -19,7 +19,7 @@
     </div>
   
 
-  <hr>
+  <hr class="undersearch">
 
   
     
@@ -32,10 +32,10 @@
   
   <div class="cards-container">
   {% for card in cards%}
-    <div id = '{{card.id}}' class='myCards'>
-      <h2>{{card.subject}}</h2>
+    <div class='myCards' id = "{{card.id}}">
+      <h2>{{card.title}}</h2>
       <hr>
-      <h3>{{card.title}}</h3>
+      <h3>{{card.subject}}</h3>
     
     </div>
     {%endfor%}

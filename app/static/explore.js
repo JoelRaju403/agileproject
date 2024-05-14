@@ -34,9 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
           
           var h1_heading = document.createElement('h1');
           h1_heading.innerHTML="Search Results";
+          h1_heading.setAttribute('class', 'searchHeading');
           searchContainer.parentNode.insertBefore(h1_heading, searchContainer);
 
           const line = document.createElement('hr');
+          line.setAttribute('class', 'undersearch');
           myCardsHeading.parentNode.insertBefore(line, myCardsHeading);
         
           result.forEach(divMaker);
@@ -89,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
     for(let i = 0; i < myCardDiv.length; i++){
       myCardDiv[i].addEventListener('click',function (event){
         var id = myCardDiv[i].getAttribute("id");
-        alert(id);
         console.log(id);
 
         const toSend = JSON.stringify({id: id});

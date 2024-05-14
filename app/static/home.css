@@ -45,6 +45,8 @@
 
   }
 
+
+
   #hamburgerMenu {
     display: none;
     cursor: pointer;
@@ -117,7 +119,7 @@
 
 
   .content {
-    background-image: url(home.jpg);
+
     width: 100vw;
     height: 100vh;
     background-repeat: no-repeat;

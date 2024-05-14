@@ -1,28 +1,20 @@
-$(document).ready(function() {
+var cards = $(".card");
+var cardIndex = 0;
 
-	$(document).keydown(function(e) {
-		switch(e.which) {
-			case 37: // left
-			$('.active').next().addClass('active');
-			$('.active').prev().removeClass('active').addClass('previous');
-			break;
+$("#next").click(function() {
+    $(cards[cardIndex]).fadeOut(400, function() {
+        cardIndex = (cardIndex + 1) % cards.length;
+        $(cards[cardIndex]).fadeIn(400);
+    });
+});
 
-			case 38: // up
-			break;
+$("#prev").click(function() {
+    $(cards[cardIndex]).fadeOut(400, function() {
+        cardIndex = (cardIndex - 1 + cards.length) % cards.length;
+        $(cards[cardIndex]).fadeIn(400);
+    });
+});
 
-			case 39: // right
-			$('.active').prev().removeClass('previous').addClass('active');
-			$('.active').next().removeClass('active');
-			break;
-
-			case 40: // down
-			$('.active').toggleClass('flipped');
-			$('.active').find('p').toggleClass('show-text');
-			break;
-
-			default: return; // exit
-		}
-		e.preventDefault();
-	});
-
+$(".card").click(function() {
+    $(this).find(".answer").toggle();
 });

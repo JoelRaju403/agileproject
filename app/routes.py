@@ -188,8 +188,11 @@ def learn():
   setid = session.get('id')
   getCards = Cards.query.filter_by(setId = setid).all()
   results = [{'question': card.question, 'answer': card.answer} for card in getCards] 
+  getsetInfo = Sets.query.filter_by(id = setid)
+  setInfo = {'subject': getsetInfo[0].subject, 'title':getsetInfo[0].title}
+
   print(results)
-  return render_template('learn.html', cards=results) 
+  return render_template('learn.html', cards=results, info=setInfo) 
 
 
 

@@ -45,6 +45,16 @@
 
   }
 
+  a{
+    text-decoration: none;
+    padding: 3px;
+  }
+
+  nav:hover ul:hover li:hover a:hover {
+    background-color: rgb(6, 104, 97);
+    }
+  
+
 
 
   #hamburgerMenu {

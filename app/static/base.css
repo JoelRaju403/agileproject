@@ -42,9 +42,17 @@
   nav ul li a {
     color: #fff;
     text-decoration: bold;
+    padding:4px;
   }
 
+  a{
+    text-decoration: none;
+  }
 
+  nav:hover ul:hover li:hover a:hover {
+  background-color: rgb(6, 104, 97);
+  border-radius: 5px;
+  }
 
   #hamburgerMenu {
     display: none;

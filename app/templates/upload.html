@@ -24,38 +24,43 @@
   </nav>
 </header>
 <body>
+ 
+  <div id="loadingContainer">
+    <div class="loader"></div>
+    <div class="textAni" id="animatedText"></div>
+  </div>
+  
+  
+
   <main>
     <section class="learnSection">
       <h2 class="first">Generate instant study materials through AI</h2>
-      <h3 class="second">Upload class notes, lecture slides or journal articles</h3>
+      <h3 class="second">Upload class notes, lecture slides, or journal articles</h3>
       <h4 class="third">Request the services of an AI to make flashcards!</h4>
       <form id="prompt-form" method="post">
         <div class="PasteText">Paste Text below!</div>
         <textarea id="prompt-textarea" name="prompt" placeholder="Paste your notes here. We'll do the rest."></textarea>
+      </form>
     </section>
+
     <section class="Waffle">
       <h3>AI has improved your notes!</h3>
       <div class="p1"><i class="fa-solid fa-robot"></i>Learn faster by converting notes to flashcards</div>
-      <div class="p2"><i class="fa-solid fa-award"></i>Pactice on our learn page</div>
+      <div class="p2"><i class="fa-solid fa-award"></i>Practice on our learn page</div>
       <div class="p3"><i class="fa-solid fa-share"></i>Recommended Stud.e to a friend</div>
       <div class="socialMedia"><i class="fa-brands fa-instagram"></i>
         <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-x-twitter"></i>
       </div>
 
     </section>
-
-
-    <div class="loading"></div>
-    
   </main>
+
   <div class="flashcards"></div>
   <footer>
-    <p>This product is enhanced with AI and may provide incorrect or problematic content. Do not enter any personal
-      data.</p> <button id="transform-btn">Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
+    <p>This product is enhanced with AI and may provide incorrect or problematic content. Do not enter any personal data.</p> <button id="transform-btn">Transform <i class="fa-solid fa-wand-magic-sparkles"></i></button>
   </footer>
-</form>
+  <script src="{{ url_for('static', filename='upload.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
-<script src="{{ url_for('static', filename='upload.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </html>

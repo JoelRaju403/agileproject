@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import render_template, flash, redirect, url_for, request
+from flask import Flask,  render_template, flash, redirect, url_for, request, session
 from app import app
 from app.forms import LoginForm
 from flask_login import current_user, login_user
@@ -165,15 +165,37 @@ def search_request():
   query=data.get('term')
 
   search_cards = Sets.query.filter_by(subject=query, public = 1).all()
-  results = [{'subject': card.subject, 'title': card.title} for card in search_cards]
+  results = [{'subject': card.subject, 'title': card.title, 'id': card.id} for card in search_cards]
   
   mycards = Sets.query.filter_by(userId=current_user.id)    
 
   print(results)
   
   return jsonify({'results': results}), 200
-    
-    
+
+
+
+@app.route('/sendId', methods=['POST'])
+def get_learn():
+  data = request.json
+  id = data.get('id')
+  session['id'] = id
+  
+  return redirect(url_for('learn'), code = 302)
+
+
+@app.route('/learn')
+def learn():
+  setid = session.get('id')
+  getCards = Cards.query.filter_by(setId = setid).all()
+  results = [{'question': card.question, 'answer': card.answer} for card in getCards] 
+  getsetInfo = Sets.query.filter_by(id = setid)
+  setInfo = {'subject': getsetInfo[0].subject, 'title':getsetInfo[0].title}
+
+  print(results)
+  return render_template('learn.html', cards=results, info=setInfo) 
+
+
 
 
 @app.route('/save_flashcards', methods=['POST'])
@@ -300,6 +322,14 @@ def store_flashcards(title, subject, flashcards, user_id):
         db.session.add(card)
 
     db.session.commit()  # Commit the Cards objects to the database
+
+
+
+
+
+
+
+
 
 
 

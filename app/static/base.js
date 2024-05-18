@@ -19,7 +19,8 @@ function handleWindowResize() {
     dropdownContent.classList.remove('active');
   }
   else {
-    profileDropdown.classList.toggle('show');
+    profileDropdown.classList.remove('show');
+    
   }
  
 }
@@ -29,14 +30,9 @@ window.addEventListener('resize', handleWindowResize);
 
 const uploadCreate = document.getElementById("uploadOrCreate");
 function uploadOrCreate() {;
-  uploadCreate.style.display = "block";
+  uploadCreate.classList.toggle('show');
 }
   
-function closePopup() {
-  
-  uploadCreate.style.display = "none";
-}
-
 
 function profileDrop() {
   profileDropdown.classList.toggle('show');
@@ -59,6 +55,9 @@ function darkmode() {
 
   const dropdown = document.getElementById("fullscreenMenuDropdown");
   dropdown.classList.toggle('darkhfmode');
+
+  const upload_Create = document.getElementById("uploadOrCreate");
+  upload_Create.classList.toggle('darkhfmode');
   
   
   // Save the dark mode state to local storage
@@ -70,11 +69,11 @@ function darkmode() {
   let isDarkModeToggled = localStorage.getItem('darkModeEnabled') === 'true';
   if (isDarkModeToggled) {
 
-    darkDropDown.textContent = "Light Mode";
+    darkDropDown.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
     darktoggle.checked = true;
   }
   else {
-    darkDropDown.textContent = "Dark Mode";
+    darkDropDown.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
     darktoggle.checked = false;
   }
 
@@ -89,13 +88,16 @@ function initialDarkMode() {
   const darkDropDown = document.getElementById("darkDropDown");
   const dropdown = document.getElementById("fullscreenMenuDropdown");
   const main = document.getElementById('main');
+  const upload_Create = document.getElementById("uploadOrCreate");
+  
   
  
   if (isDarkMode) {
     main.classList.toggle('darkmode');
     header.classList.toggle('darkhfmode');
     footer.classList.toggle('darkhfmode');
-    dropdown.classList.toogle('darkhfmode');
+    dropdown.classList.toggle('darkhfmode');
+    upload_Create.classList.toggle('darkhfmode');
     darkDropDown.textContent = "Light Mode";
     hrElements.forEach(hr => {
       hr.classList.toggle('darkHr');
@@ -104,7 +106,7 @@ function initialDarkMode() {
   
     darktoggle.checked = true;
   } else {
-    darkDropDown.textContent = "Dark Mode";
+    darkDropDown.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
   }
 }
 

@@ -33,16 +33,16 @@
     <ul class="navbarLinks">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('explore') }}">Explore</a></li>
-        <i id="pluscircle" class="fa-solid fa-circle-plus" onclick="uploadOrCreate()"></i>
+        <i class="fa-regular fa-plus plus-menu-scale" onclick="uploadOrCreate()"></i>
         <div id=fullscreenMenu>
           <i  class="fa-solid fa-bars" onclick="profileDrop()"></i>
         </ul>
           <div id="fullscreenMenuDropdown">
           <ul>
-        <li><a href="{{ url_for('user', username=current_user.username) }}">Profile </a></li>
-        <li><a href="{{ url_for('edit_profile') }}"> Settings </a></li>
-        <li id="darkDropDown" onclick="darkmode()" style="cursor: pointer;"> Dark Mode </li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        <li><a href="{{ url_for('user', username=current_user.username) }}"><i class="fa-solid fa-user"></i> Profile </a></li>
+        <li><a href="{{ url_for('edit_profile') }}"><i class="fa-solid fa-gear"></i> Settings </a></li>
+        <li id="darkDropDown" onclick="darkmode()" style="cursor: pointer;"><i class="fa-solid fa-moon"></i> Dark Mode </li>
+        <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out"></i> Logout</a></li>
       </ul>
       </div>
     </div>
@@ -54,28 +54,19 @@
           <li><a href="{{ url_for('home') }}">Home</a></li>
           <li><a href="{{url_for('explore') }}">Explore</a></li>
           <li><a href="{{ url_for('create') }}">Create</a></li>
-              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
-              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          <li><a href="{{ url_for('upload') }}">Upload</a></li>
+          <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
       </div>
 
       <div id="uploadOrCreate">
-        <span id="closePopUp" onclick="closePopup()">&times;</span>
-        <h1 class="titlepopup">Create</h1>
-        <div id="createContainer">
-            <div class="createbyhand">
-                <p>Create your Own Flash Cards</p>
-            </div>
-            <div>
-                <button class="buttonpopup" onclick="window.location.href='{{ url_for('create') }}'">Create</button>
-            </div>
-            <div id="divider"></div> <!-- Line between sections -->
-            <div class="createwithAi">
-                <p>Create with the help of AI</p>
-              </div>
-              <div>
-                <button class="buttonpopup" onclick="window.location.href='{{ url_for('upload') }}'">Upload</button>
-            </div>
-        </div>
+          <ul>
+            <div id="createOption">
+            <li><a href="{{ url_for('create') }}"><i class="fa-solid fa-pencil"></i>Create</a></li>
+            </li>
+          </div>
+            <li><a href="{{ url_for('upload') }}"><i class="fas fa-file-upload"></i>Upload</a></li>
+          </ul>
     </div>
     
   

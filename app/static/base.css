@@ -21,6 +21,7 @@
     display: flex; 
     align-items: center; 
     width: 100vw;
+    border-bottom: 1px solid white;
   }
   header img {
     margin-right: 1rem; 
@@ -48,12 +49,6 @@
     display: none;
     cursor: pointer;
     margin-right: 2rem;
-    
-  }
-
-  #header #pluscircle {
-    scale: 2;
-    margin-right: 2rem;
   }
 
   #dropdownContent {
@@ -69,7 +64,6 @@
   }
 
  
-
   #dropdownContent.active {
     display: block; 
   }
@@ -103,9 +97,6 @@
   }
  
  
-
- 
-
   footer {
     background: rgb(8, 129, 120);
     color: #fff;
@@ -116,79 +107,49 @@
     width: 100vw;
     height: 50px;
     z-index: 1;
+    border-top: 1px solid white;
 
-  
   }
 
   
   #uploadOrCreate {
     display: none;
-    position: fixed; /* Position the popup relative to the viewport */
-    top: 0;
-    left: 0;
-    width: 90%;
-    height: 70%;
-    background-color: rgb(8, 129, 120); 
-    z-index: 9999; /* Ensure the popup appears on top of other content */
-    top: 25%; /* Center vertically */
-    left: 5%;
-    border-radius: 2rem;
-    box-shadow: #333333;
-    overflow: hidden; /* Disable scroll */
-}
-
-#closePopUp {
-    cursor: pointer;
-    position: absolute;
-    top: 3rem;
-    right: 5rem; /* Adjust right position */
-    color: white;
-    scale: 3
-}
-
-
-.titlepopup {
-    position: absolute;
-    margin-top: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-weight: bolder;
-    font-size: xx-large;
-}
-
-#createContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bolder;
-    font-size: x-large;
-}
-
-.createbyhand,
-.createwithAi {
-    flex: 1;
-    text-align: center; /* Center-aligns the content within each section */
-    padding: 0 10px; /* Adjust spacing around the content */
-}
-
-#divider {
-    border-right: 1px solid black; /* Vertical line */
-    height: 15rem; /* Adjust line height */
-    margin: 0 10px; /* Adjust spacing between line and sections */
-    margin-top: 7rem;
-}
-
-.buttonpopup {
-
-    background-color: #2196F3;
-    border-radius: 1rem;
-    color: white;
-    display: block;
+    position: absolute; /* Position absolutely relative to the fullscreenMenu */
+    left: 22.5rem;
+    top: 5rem;
+    background-color: rgb(8, 129, 120);
+    border: 1px solid #ccc; /* Example border */
+    z-index: 1; /* Ensure the dropdown appears above oth
+    er content */
     
-    width: 5rem;
-    height: 1.5rem;
-}
+    width: 10rem;
+  }
+
+  #uploadOrCreate ul li {
+    display: block; /* Ensure list items are block-level elements */
+    padding: 10px; /* Add padding for better spacing */
+  }
+
+  #uploadOrCreate ul li a i {
+    margin: 1rem;
+  }
+
+  #createOption {
+    border-bottom: 1px solid white;
+     
+  }
+
+
+  #uploadOrCreate ul li:hover {
+    background-color: rgb(12, 192, 180);
+    margin-right: 0;
+    
+  }
+
+  #uploadOrCreate.show {
+    display: block;
+  }
+
 
 
 #fullscreenMenu {
@@ -216,8 +177,14 @@ margin: 0;
 
 #fullscreenMenuDropdown ul li {
 padding: 10px;
+margin-right: 0;
 display: block;
 }
+
+#fullscreenMenuDropdown ul li:hover {
+  background-color: rgb(12, 192, 180);
+  width: auto;
+  }
 
 
 
@@ -227,9 +194,7 @@ padding: 0;
 margin: 0;
 }
 
-#fullscreenMenuDropdown ul li {
-padding: 10px;
-}
+
 
 #fullscreenMenuDropdown.show {
   display: block;
@@ -242,7 +207,6 @@ li a {
 .iconwithMode span {
   display: inline-block;
 }
-
 
 
 .darkmode {
@@ -262,6 +226,11 @@ li a {
 }
 
 
+.plus-menu-scale {
+  scale: 1.25;
+  
+}
+
 
 
  
@@ -270,6 +239,3 @@ li a {
 
 
 
-
-
-  

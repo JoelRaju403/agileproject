@@ -232,7 +232,7 @@ def answer():
                             messages=[
         {
             "role": "system",
-            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be  a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer.",
+            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer.",
         },
         {
             "role": "user",
@@ -258,8 +258,8 @@ def parse_generated_text(generated_text):
     lines = generated_text.split('\n')
     user_id = current_user.id
     
-    title = lines[1].replace('Title: ', '').strip()
-    subject = lines[0].replace('Subject: ', '').strip()
+    title = lines[1].replace('Title: ', '').strip().replace('-', '')
+    subject = lines[0].replace('Subject: ', '').strip().replace('-', '')
     flashcards = []
 
     for line in lines[2:]:

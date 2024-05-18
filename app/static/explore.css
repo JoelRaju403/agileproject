@@ -71,7 +71,7 @@
 }
 
 .myCards{
-    width: calc(25% - 20px); /* Adjust the width and margin as needed */
+    width: calc(25% - 20px); 
     height:250px;
     min-width:250px;
     margin-bottom: 0;
@@ -79,6 +79,7 @@
     border: 1px solid white;
     border-radius: 2rem;
     padding: 2rem;
+    margin-top: 2rem ;
     
 
 } 
@@ -86,6 +87,7 @@
 .myCards>h2{
     align-items: center;
     margin-bottom: auto;
+    font-size: 70%;
 
 }
 .myCards>h3{
@@ -93,6 +95,8 @@
     float: right;
     bottom: 0;
     display: flex;
+    font-size: 70%;
+
 }
 
 .myCards>hr{
@@ -111,6 +115,5 @@ hr{
 
 .searchContainer>h1{
     float:left;
-    
-
 }
+

@@ -28,6 +28,7 @@ from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
 import os
+import re
 from openai import OpenAI
 
 client = OpenAI(
@@ -232,7 +233,7 @@ def answer():
                             messages=[
         {
             "role": "system",
-            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer.",
+            "content": "You are a helpful assistant that converts text into a series of flashcards. Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer. The format should be as follows: 'Subject: subject_name', 'Title: title_name', 'Question: question_text', 'Answer: answer_text'.",
         },
         {
             "role": "user",
@@ -247,7 +248,7 @@ def answer():
             response = parse_generated_text(generated_text)
 
             
-            return response
+            return  response
         else:
             return jsonify({"error": "No prompt provided"}), 400
     else:
@@ -258,8 +259,10 @@ def parse_generated_text(generated_text):
     lines = generated_text.split('\n')
     user_id = current_user.id
     
-    title = lines[1].replace('Title: ', '').strip().replace('-', '')
-    subject = lines[0].replace('Subject: ', '').strip().replace('-', '')
+ 
+    subject = lines[0].lower().replace('subject:', '').strip()
+    title = lines[1].lower().replace('title:', '').strip()
+
     flashcards = []
 
     for line in lines[2:]:

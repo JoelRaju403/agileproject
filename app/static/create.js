@@ -100,7 +100,6 @@ $(document).ready(function(){
   }
   const subject = $('#subject').val();
   const title = $('#title').val();
-  
   const jsonData = JSON.stringify({
     subject: subject,
     title: title,
@@ -109,7 +108,6 @@ $(document).ready(function(){
   });
 
   delFlashcards()
-
   $.ajax({
     url: '/save_flashcards',
     type: 'POST',

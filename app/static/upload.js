@@ -2,35 +2,29 @@ document.addEventListener('DOMContentLoaded', function(){
   const flashcards = document.getElementsByClassName("flashcards")[0];
   const textToType = "Flashcards are generating!!!!";
   $('#loadingContainer').hide();
+  $('#outputContainer').hide();
+  $('#AIContainer').hide();
 
   $('#transform-btn').one('click', function(event){
-    event.preventDefault(); 
-    //start the text typing
-    
-    //we have to check if the user has submitted data to create flashcards    
+    event.preventDefault();  
     const promptText = $('#prompt-textarea').val();
     if(promptText == null || promptText.trim() == "") {
-      alert("The prompt is empty. Please enter some text.");
+      $('#outputContainer').show();
       return;
     }
     $('#loadingContainer').show();
     typeTest();
-
-    // Send data to Flask route using AJAX
     $.ajax({
       url: '/answer',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ prompt: promptText }),
-      success: function(response){
-        $('#loadingContainer').hide();
-        console.log(response.flashcards);
-        var cards = response.flashcards;
-        cards.forEach(divMaker);
+      success: function(){
+        window.location.href = '/explore';
       },
       error: function(xhr, status, error){
-        // Handle error
-        console.error('Failed to send prompt to Flask route:', xhr.responseText);
+      $('#AIContainer').show();
+        console.log(xhr,status, error);
       }
     });
   });
@@ -73,6 +67,27 @@ function typeTest(){
     }
   }, 200);  
 
-  
 }
 });
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const closeIcons = document.querySelectorAll('.closeIcon');
+  closeIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+      const popup = this.closest('.errormessage, .popup');
+      popup.classList.add('hidden');
+      $('#outputContainer').hide();
+      $('#AIContainer').hide();
+      $('#loadingContainer').hide();
+
+
+    });
+  });
+});
+
+

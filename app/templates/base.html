@@ -19,7 +19,69 @@
   
 
 </head>
+{% block navbar %}
 
+
+{% if current_user.is_authenticated %}
+<header id="header">
+  <div id="hamburgerMenu">
+  <i class="fa-solid fa-bars"></i>
+</div>
+  <img src="{{ url_for('static', filename='logo.png') }}">
+  <h1>Stud.e</h1>
+  <nav>
+    <ul class="navbarLinks">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('explore') }}">Explore</a></li>
+        <i id="pluscircle" class="fa-solid fa-circle-plus" onclick="uploadOrCreate()"></i>
+        <div id=fullscreenMenu>
+          <i  class="fa-solid fa-bars" onclick="profileDrop()"></i>
+        </ul>
+          <div id="fullscreenMenuDropdown">
+          <ul>
+        <li><a href="{{ url_for('user', username=current_user.username) }}">Profile </a></li>
+        <li><a href="{{ url_for('edit_profile') }}"> Settings </a></li>
+        <li id="darkDropDown" onclick="darkmode()" style="cursor: pointer;"> Dark Mode </li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+      </div>
+    </div>
+
+        
+      <div id="dropdownContent">
+        <span id="closeMenu">&times;</span>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{url_for('explore') }}">Explore</a></li>
+          <li><a href="{{ url_for('create') }}">Create</a></li>
+              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </div>
+
+      <div id="uploadOrCreate">
+        <span id="closePopUp" onclick="closePopup()">&times;</span>
+        <h1 class="titlepopup">Create</h1>
+        <div id="createContainer">
+            <div class="createbyhand">
+                <p>Create your Own Flash Cards</p>
+            </div>
+            <div>
+                <button class="buttonpopup" onclick="window.location.href='{{ url_for('create') }}'">Create</button>
+            </div>
+            <div id="divider"></div> <!-- Line between sections -->
+            <div class="createwithAi">
+                <p>Create with the help of AI</p>
+              </div>
+              <div>
+                <button class="buttonpopup" onclick="window.location.href='{{ url_for('upload') }}'">Upload</button>
+            </div>
+        </div>
+    </div>
+    
+  
+  
+</nav>
+{% else %}
 <header id="header">
   <div id="hamburgerMenu">
   <i class="fa-solid fa-bars"></i>
@@ -58,9 +120,11 @@
       </ul>
       
       </div>
-  
+
   
 </nav>
+{% endif %}
+{% endblock %}
 
 
 </header>

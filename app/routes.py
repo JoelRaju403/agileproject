@@ -228,7 +228,7 @@ def answer():
         prompt_text = data.get('prompt')
         if prompt_text:
             chat_completion = client.chat.completions.create(
-                            model="gpt-3.5-turbo",
+                            model="gpt-4-turbo",
                             messages=[
         {
             "role": "system",

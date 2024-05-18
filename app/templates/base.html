@@ -4,27 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Stud.e{% endblock %}</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='create.css') }}">
-
-
+  
+  
+  
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+ 
+  <script src="{{ url_for('static', filename='setting.js') }}"></script>
+  
+
 </head>
-<header>
+{% block navbar %}
+
+
+{% if current_user.is_authenticated %}
+<header id="header">
+  <div id="hamburgerMenu">
+  <i class="fa-solid fa-bars"></i>
+</div>
   <img src="{{ url_for('static', filename='logo.png') }}">
   <h1>Stud.e</h1>
   <nav>
-    <ul>
+    <ul class="navbarLinks">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('explore') }}">Explore</a></li>
+        <i id="pluscircle" class="fa-solid fa-circle-plus" onclick="uploadOrCreate()"></i>
+        <div id=fullscreenMenu>
+          <i  class="fa-solid fa-bars" onclick="profileDrop()"></i>
+        </ul>
+          <div id="fullscreenMenuDropdown">
+          <ul>
+        <li><a href="{{ url_for('user', username=current_user.username) }}">Profile </a></li>
+        <li><a href="{{ url_for('edit_profile') }}"> Settings </a></li>
+        <li id="darkDropDown" onclick="darkmode()" style="cursor: pointer;"> Dark Mode </li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+      </div>
+    </div>
+
+        
+      <div id="dropdownContent">
+        <span id="closeMenu">&times;</span>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{url_for('explore') }}">Explore</a></li>
+          <li><a href="{{ url_for('create') }}">Create</a></li>
+              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </div>
+
+      <div id="uploadOrCreate">
+        <span id="closePopUp" onclick="closePopup()">&times;</span>
+        <h1 class="titlepopup">Create</h1>
+        <div id="createContainer">
+            <div class="createbyhand">
+                <p>Create your Own Flash Cards</p>
+            </div>
+            <div>
+                <button class="buttonpopup" onclick="window.location.href='{{ url_for('create') }}'">Create</button>
+            </div>
+            <div id="divider"></div> <!-- Line between sections -->
+            <div class="createwithAi">
+                <p>Create with the help of AI</p>
+              </div>
+              <div>
+                <button class="buttonpopup" onclick="window.location.href='{{ url_for('upload') }}'">Upload</button>
+            </div>
+        </div>
+    </div>
+    
+  
+  
+</nav>
+{% else %}
+<header id="header">
+  <div id="hamburgerMenu">
+  <i class="fa-solid fa-bars"></i>
+</div>
+  <img src="{{ url_for('static', filename='logo.png') }}">
+  <h1>Stud.e</h1>
+  <nav>
+    <ul class="navbarLinks">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('explore') }}">Explore</a></li>
         <li><a href="{{ url_for('create') }}">Create</a></li>
         {% if current_user.is_authenticated %}
@@ -37,20 +103,44 @@
             <li><a id="login-btn" href="{{ url_for('login') }}">Login</a></li>
         {% endif %}
     </ul>
+    
+      
+      <div id="dropdownContent">
+        <span id="closeMenu">&times;</span>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{url_for('explore') }}">Explore</a></li>
+          <li><a href="{{ url_for('create') }}">Create</a></li>
+          {% if current_user.is_authenticated %}
+              <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+          {% else %}
+              <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
+      </ul>
+      
+      </div>
+
+  
 </nav>
+{% endif %}
+{% endblock %}
+
 
 </header>
-<body>
+<body id="main">
 
   <main>
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <p>&copy; 2024 Stud.e. All rights reserved.</p>
-  </footer>
-  <script src="{{ url_for('static', filename='home.js') }}"></script>
 
-</body>
   
 
+</body>
+<footer id="footer">
+  <p>&copy; 2024 Stud.e. All rights reserved.</p>
+</footer>
+
+
+<script src="{{ url_for('static', filename='base.js') }}"></script>
 </html>

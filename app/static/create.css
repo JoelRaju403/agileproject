@@ -5,11 +5,18 @@ body {
     box-sizing: border-box;
     
 }
+main{
+  height: 100vh;
+}
 
 .container {
+    margin-top: 30px;  
     max-width: 600px;
     margin: 20px auto;
+    margin-top: 0;
     padding: 20px;
+    background-color: transparent;
+    border: 1px solid white;
 }
     
 
@@ -48,7 +55,7 @@ button:hover {
 .create-box{
   margin: auto;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: px;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 
@@ -83,7 +90,8 @@ button:hover {
   height: 300px;
   word-wrap: break-word;
   margin: 10px;
-  background-color: white;
+  background-color: transparent;
+  border: 1px solid white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -135,4 +143,6 @@ input:checked + .slider:before {
   left: 45px;
   color: grey
 }
+
+
 

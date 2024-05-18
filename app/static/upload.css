@@ -1,5 +1,7 @@
 :root{
   --purple-header: #0a092d;
+  --purple-header-with-Opacity: #6d6d6d61;
+
   --lighter: #AD88C6;
   --gray-300-gray-600: #586380;
 }
@@ -16,7 +18,7 @@ body{
   background-color: var(--purple-header);
 }
 
-/* Updated CSS */
+
 header {
   background: var(--purple-header);
   color: #fff;
@@ -198,10 +200,75 @@ main {
 .socialMedia i {
   font-size: 2.5rem;
   cursor: pointer;
-  margin: auto;
   padding: 0;
   
 }
+
+
+
+#loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  position: absolute;
+  width: 100vw;
+  background-color: var(--purple-header-with-Opacity) ;
+  cursor: not-allowed;
+  color: white;
+}
+#animatedText{
+  font-size: 35px;
+  background-color: transparent;
+  color: white;
+  height: 2rem;
+  width: 40rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 60%;
+  align-items: center;
+}
+
+
+
+/*https://css-loaders.com/clones/5*/
+.loader {
+  width: 150px; 
+  height: 150px;
+  aspect-ratio: 1;
+  background: #554236;
+  display: grid;
+  animation: l4-0 1s infinite linear;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  background:#f77825;
+  animation: inherit;
+  animation-name: l4-1;
+}
+.loader::after {
+  background: #60B99A;
+  --s: 60deg;
+}
+@keyframes l4-0 {
+  0%,20% {transform: rotate(0)}
+  100%   {transform: rotate(90deg)}
+}
+@keyframes l4-1 {
+  50% {transform: rotate(var(--s,30deg))}
+  100% {transform: rotate(0)}
+}
+
+
+
+
+
+
+
 
 
 footer {
@@ -235,7 +302,12 @@ footer button {
   width: 15rem;
 }
 
+
+
 footer button:hover {
   background-color: rgba(128, 128, 128, 0.671);
   color: var(--purple-header);
 }
+
+
+

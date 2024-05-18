@@ -225,6 +225,10 @@ li a {
   background-color: white;
 }
 
+#darkDropDown {
+  cursor: pointer;
+}
+
 
 .plus-menu-scale {
   scale: 1.25;

@@ -2,6 +2,11 @@ const hamburgerMenu = document.getElementById('hamburgerMenu');
 const dropdownContent = document.getElementById('dropdownContent');
 const closemenu = document.getElementById('closeMenu');
 const profileDropdown = document.getElementById('fullscreenMenuDropdown');
+const createUpdate_button = document.getElementById('createUpdate_button');
+const menubar = document.getElementById('menubar');
+const darkDropDown = document.getElementById("darkDropDown");
+
+
 
 hamburgerMenu.addEventListener('click', function() {
   dropdownContent.classList.toggle('active');
@@ -10,6 +15,12 @@ hamburgerMenu.addEventListener('click', function() {
 closemenu.addEventListener('click', function() {
   dropdownContent.classList.remove('active'); // Remove the 'active' class
 });
+
+createUpdate_button.addEventListener('click', uploadOrCreate);
+
+menubar.addEventListener('click', profileDrop);
+
+darkDropDown.addEventListener('click', darkmode);
 
 
 // Function to handle window resize event
@@ -64,7 +75,7 @@ function darkmode() {
   let isDarkMode = main.classList.contains('darkmode');
   localStorage.setItem('darkModeEnabled', isDarkMode);
 
-  const darkDropDown = document.getElementById("darkDropDown");
+  
   const darktoggle = document.getElementById('DMtoggle');
   let isDarkModeToggled = localStorage.getItem('darkModeEnabled') === 'true';
   if (isDarkModeToggled) {

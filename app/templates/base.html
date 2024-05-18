@@ -33,15 +33,15 @@
     <ul class="navbarLinks">
         <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="{{ url_for('explore') }}">Explore</a></li>
-        <i class="fa-regular fa-plus plus-menu-scale" onclick="uploadOrCreate()"></i>
+        <i class="fa-regular fa-plus plus-menu-scale" id="createUpdate_button"></i>
         <div id=fullscreenMenu>
-          <i  class="fa-solid fa-bars" onclick="profileDrop()"></i>
+          <i  class="fa-solid fa-bars" id='menubar'></i>
         </ul>
           <div id="fullscreenMenuDropdown">
           <ul>
         <li><a href="{{ url_for('user', username=current_user.username) }}"><i class="fa-solid fa-user"></i> Profile </a></li>
         <li><a href="{{ url_for('edit_profile') }}"><i class="fa-solid fa-gear"></i> Settings </a></li>
-        <li id="darkDropDown" onclick="darkmode()" style="cursor: pointer;"><i class="fa-solid fa-moon"></i> Dark Mode </li>
+        <li id="darkDropDown"><i class="fa-solid fa-moon"></i> Dark Mode </li>
         <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out"></i> Logout</a></li>
       </ul>
       </div>

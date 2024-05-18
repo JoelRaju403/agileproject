@@ -1,0 +1,28 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Center text inside the container */
+}
+
+.error_heading {
+  margin: 0;
+  margin-top: -10rem;
+  scale: 2;
+}
+
+.error_container {
+  margin-top: 5rem;
+  scale:1.5;
+}
+
+#error {
+  margin: 0.5rem 0;
+}

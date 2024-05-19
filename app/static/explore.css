@@ -67,6 +67,10 @@
     margin: 4rem;
 }
 
+main{
+    height: 100vh;
+}
+
 .myCards{
     width: calc(25% - 20px); /* Adjust the width and margin as needed */
     height:250px;

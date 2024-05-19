@@ -51,11 +51,11 @@
                 {{ form.password(size=32, placeholder="Password") }}
                 {% for error in form.password.errors %}
                 <span>[{{ error }}]</span>
-                {% endfor %}
+                {% endfor %} </p>
                 <div class="centerPassword">
                 <a class="forgetPassword" href="#"> Forgot Password</a>
               </div>
-            </p>
+           
             <div class="centered-text">
                 <p>{{ form.remember_me() }} Remember Me</p>
             </div><p>{{ form.submit() }}</p>

@@ -43,9 +43,12 @@
     border-radius: 5px;
   }
 
-  nav:hover ul:hover li:hover a:hover {
+  nav>ul>li>a:hover {
     background-color: rgb(6, 104, 97);
-    }
+  
+  }
+
+  
 
   
 
@@ -58,7 +61,7 @@
   #dropdownContent {
     display: none;
     position: fixed;
-    background-color: rgb(8, 129, 120); 
+    background-color: rgb(5, 100, 94);
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
@@ -128,10 +131,9 @@
     margin: 1rem;
   }
 
-  #createOption {
-    border-bottom: 1px solid white;
-     
-  }
+
+
+  
 
 
   #uploadOrCreate ul li:hover {
@@ -159,7 +161,7 @@ display: none; /* Initially hide the dropdown */
 position: absolute; /* Position absolutely relative to the fullscreenMenu */
 right: 2rem;
 top: 5rem;
-background-color: rgb(8, 129, 120);
+background-color: rgb(5, 100, 94);
 border: 1px solid #ccc; /* Example border */
 border-radius: 1rem;
 z-index: 999; /* Ensure the dropdown appears above other content */

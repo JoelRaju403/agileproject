@@ -26,7 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
         data: searchData,
         success: function (response) {
           if ($('.searchContainer').length != 0){ 
+            const searchHeading = document.getElementById('searchHeading')
+            const line = document.getElementById('undersearch');
             clearBox(searchContainer);
+            
           }
           
           console.log('Search results:', response);
@@ -34,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
           
           var h1_heading = document.createElement('h1');
           h1_heading.innerHTML="Search Results";
-          h1_heading.setAttribute('class', 'searchHeading');
+          h1_heading.setAttribute('id', 'searchHeading');
           searchContainer.parentNode.insertBefore(h1_heading, searchContainer);
 
           const line = document.createElement('hr');

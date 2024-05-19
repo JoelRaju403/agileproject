@@ -59,14 +59,17 @@
 }
     
 #myCardsHeading{
-    margin: 4rem;
+    margin: 4rem
 }
 
 .cards-container{
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
     margin: 4rem;
+
+    
 }
 
 main{
@@ -84,6 +87,7 @@ main{
     padding: 2rem;
     transition: all 0.3s ease;
     margin-top: 2rem ;
+
     
 
 } 
@@ -95,7 +99,7 @@ main{
 .myCards>h2{
     align-items: center;
     margin-bottom: auto;
-    font-size: 70%;
+    font-size: 90%;
 
 }
 .myCards>h3{
@@ -103,7 +107,7 @@ main{
     float: right;
     bottom: 0;
     display: flex;
-    font-size: 70%;
+    font-size: 90%;
 
 }
 
@@ -123,6 +127,10 @@ main{
 
 .searchContainer>h1{
     float:left;
+}
+
+#searchHeading{
+    margin: 4rem;
 }
 
 

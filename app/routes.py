@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
 import os
-import re
+
 from openai import OpenAI
 
 client = OpenAI(

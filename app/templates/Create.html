@@ -13,7 +13,7 @@
       <input type="text" id="title" name="title">
       <br>
       <label class="toggle">
-        <input type="checkbox" id="publicCheckbox" onclick="SwitchPublic()">
+        <input type="checkbox" id="publicCheckbox">
         <span class="slider"></span> <p class="Private">Private</p>
       </label>
     </div>
@@ -27,9 +27,9 @@
       <label for="answer">Answer</label>
       <textarea id="answer" cols="3" rows="10"></textarea>
       <div>
-        <button onclick="addFlashcard()">Save Card</button>
+        <button id="Saving_flashcard"> Save Card</button>
         <button id="flashcard-form"> Submit Set</button>
-        <button class="creation" onclick="delFlashcards()">Delete All Cards</button>
+        <button class="creation" id="deleting_flashcard">Delete All Cards</button>
       </div>
     </div>
   </div>

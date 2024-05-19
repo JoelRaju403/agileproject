@@ -39,11 +39,11 @@
         </ul>
           <div id="fullscreenMenuDropdown">
           <ul>
-        <li><a href="{{ url_for('user', username=current_user.username) }}"><i class="fa-solid fa-user"></i> Profile </a></li>
+        <li><a href="{{ url_for('explore') }}"><i class="fa-solid fa-user"></i> Profile </a></li>
         <li><a href="{{ url_for('edit_profile') }}"><i class="fa-solid fa-gear"></i> Settings </a></li>
         <li id="darkDropDown"><i class="fa-solid fa-moon"></i> Dark Mode </li>
         <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out"></i> Logout</a></li>
-      </ul>
+      </ul>user', username=current_user.username)
       </div>
     </div>
 
@@ -85,7 +85,7 @@
         <li><a href="{{ url_for('explore') }}">Explore</a></li>
         <li><a href="{{ url_for('create') }}">Create</a></li>
         {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+            <li><a href="{{ url_for('explore')}}">Profile</a></li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
             <li><a href="{{ url_for('upload') }}">Upload</a></li>
           

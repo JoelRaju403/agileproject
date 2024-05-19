@@ -27,6 +27,7 @@ body {
   box-sizing: border-box; /* Include padding and border in element's total width and height */
   border-radius: 2rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
 }
 
 

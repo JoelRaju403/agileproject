@@ -8,7 +8,6 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
 <h1 id="SettingTitle">Settings</h1>
 
 <fieldset>
@@ -20,21 +19,21 @@
                 <b>{{ form.username.label }}</b><br>
                 {{ form.username(size=32) }}<br>
                 {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span class="ErrorEdit">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p class="Edit">
                 <b>{{form.email.label}}</b><br>
                 {{ form.email(size=32) }}<br>
                 {% for error in form.email.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span class="ErrorEdit">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p class="Edit">
             <b>{{ form.confirm_password.label (class="confirm-label")}}</b><br>
                 {{ form.confirm_password }}<br>
                 {% for error in form.confirm_password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span class="ErrorEdit">[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>{{ form.submit(id="editSubmit") }}</p>
@@ -48,7 +47,7 @@
     <div class="textbtn">
         <p><b>Dark Mode</b></p>
         <label class="toggle">
-            <input type="checkbox" id="DMtoggle" onclick="darkmode()">
+            <input type="checkbox" id="DMtoggle">
             <span class="slider"></span>
         </label>
     </div>
@@ -69,7 +68,7 @@
     <div class="textbtn">
         <p class="inlinetxt"> Make profile private (all cards will be private)</p>
         <label class="toggle">
-            <input type="checkbox" id="publicCheckbox">
+            <input type="checkbox" id="publicPrivateCheckbox">
             <span class="slider"></span>
         </label>
     </div>

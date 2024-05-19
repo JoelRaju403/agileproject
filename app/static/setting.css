@@ -109,4 +109,8 @@ input:checked + .slider:before {
   font-weight: bold;
 };
 
+#ErrorEdit {
+  color: red;
+}
+
 

@@ -74,12 +74,12 @@ background-position: center;
   cursor: pointer;
 }
 
-/* Sign In title */
+
 .modal .modal-content h1 {
   margin-bottom: 20px;
 }
 
-/* Social icons */
+
 .modal .social-icons {
   margin-bottom: 20px;
 }
@@ -152,7 +152,7 @@ display: block;
   width: 35rem;
 
 }
-/* why do we wnt this */
+
 .modal a:hover {
   color: #333;
   text-decoration: none;
@@ -202,7 +202,7 @@ display: block;
  }
 
  .swiggly-text {
-  text-decoration:red underline ; /* Add styles for the swiggly effect */ 
+  text-decoration:red underline ;
 }
 
 
@@ -221,13 +221,13 @@ display: block;
 /* Style the Google button icon */
 .Google .icon {
   font-size: 24px;
-  color: var(--gray-outline); /* Use the defined variable for color */
+  color: var(--gray-outline); 
   text-decoration: none;
 }
 
 /* Style the Google button text */
 .Google a {
-  color: var(--gray-outline); /* Use the defined variable for color */
+  color: var(--gray-outline); 
   text-decoration: none;
   margin-left: 10px; /* Add some space between icon and text */
 }
@@ -292,6 +292,6 @@ background-color: rgba(0, 0, 0, 0.1);
 }
 
 .confirm-label {
-  display: inline-block; /* Ensures the label appears on one line */
-  width: auto; /* Allows the label to expand to accommodate its content */
+  display: inline-block; 
+  width: auto; 
 }

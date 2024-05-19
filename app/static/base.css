@@ -1,8 +1,4 @@
-:root{
-  /*ALL COLOUR VALUES ARE DECLARED HERE*/
-    
-  }
-  /* Reset styles */
+/* Reset styles */
   * {
     margin: 0;
     padding: 0;
@@ -42,8 +38,16 @@
   }
   nav ul li a {
     color: #fff;
-    text-decoration: bold;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
   }
+
+  nav:hover ul:hover li:hover a:hover {
+    background-color: rgb(6, 104, 97);
+    }
+
+  
 
   #hamburgerMenu {
     display: none;
@@ -61,11 +65,13 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: hidden; /* Disable scroll */
+
   }
 
  
   #dropdownContent.active {
-    display: block; 
+    display: block;
+ 
   }
 
   #dropdownContent.active ul li{
@@ -78,7 +84,7 @@
 
   #closeMenu {
     cursor: pointer;
-    scale: 3;
+    transform: scale(3);
     float: right;
     margin-right: 5%;
     margin-top: 5%;
@@ -102,20 +108,20 @@
   
   #uploadOrCreate {
     display: none;
-    position: absolute; /* Position absolutely relative to the fullscreenMenu */
+    position: absolute; 
     left: 22.5rem;
     top: 5rem;
-    background-color: rgb(8, 129, 120);
-    border: 1px solid #ccc; /* Example border */
-    z-index: 1; /* Ensure the dropdown appears above oth
-    er content */
+    background-color: rgb(5, 100, 94);
+    border: 1px solid #ccc; 
+    border-radius: 1rem;
+    z-index: 1; 
     
     width: 10rem;
   }
 
   #uploadOrCreate ul li {
-    display: block; /* Ensure list items are block-level elements */
-    padding: 10px; /* Add padding for better spacing */
+    display: block; 
+    padding: 10px; 
   }
 
   #uploadOrCreate ul li a i {
@@ -130,6 +136,7 @@
 
   #uploadOrCreate ul li:hover {
     background-color: rgb(12, 192, 180);
+    border-radius: 1rem;
     margin-right: 0;
     
   }
@@ -144,7 +151,7 @@
   position: absolute;
   right: 2.5rem;
   top: 2.5rem;
-  scale: 2;
+  transform: scale(2);
 }
 
 #fullscreenMenuDropdown {
@@ -154,6 +161,7 @@ right: 2rem;
 top: 5rem;
 background-color: rgb(8, 129, 120);
 border: 1px solid #ccc; /* Example border */
+border-radius: 1rem;
 z-index: 999; /* Ensure the dropdown appears above other content */
 }
 
@@ -171,6 +179,7 @@ display: block;
 
 #fullscreenMenuDropdown ul li:hover {
   background-color: rgb(12, 192, 180);
+  border-radius: 1rem;
   width: auto;
   }
 
@@ -219,8 +228,7 @@ li a {
 
 
 .plus-menu-scale {
-  scale: 1.25;
-  
+  transform: scale(1.25); 
 }
 
 

@@ -13,46 +13,7 @@
     font-family: Arial, sans-serif;
     line-height: 1.6;
   }
-  header {
-    background-color: var(--header-color);
-    color: #fff;
-    padding: 1rem;
-    display: flex; 
-    align-items: center; 
-    width: 100vw;
-  }
-
-  header img {
-    margin-right: 1rem; 
-    height: 65px;
-    width: 65px;
-    
-  }
-  header h1 {
-    font-size: 2rem;
-    margin-right: 1rem; }
-  nav ul {
-    list-style: none;
-    margin-left: auto; 
-  }
-  nav ul li {
-    display: inline;
-    margin-right: 1rem;
-  }
-  nav ul li a {
-    color: #fff;
-    text-decoration: bold;
-
-  }
-
-  a{
-    text-decoration: none;
-    padding: 3px;
-  }
-
-  nav:hover ul:hover li:hover a:hover {
-    background-color: rgb(6, 104, 97);
-    }
+  
   
 
 
@@ -79,8 +40,8 @@
  
   .hero {
     text-align: center;
-    margin-bottom: 2rem;
-    margin-bottom: 20rem;
+    
+    background-color: black;
   
   }
   .hero h2 {
@@ -106,7 +67,8 @@
   #three-container {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    margin: 0;
   }
   
   #content {
@@ -115,62 +77,6 @@
   
 
 
-  .studyFeatures {
-    position: relative;
-    overflow: hidden;
-    height: auto;
-    width: 100%;
-    display: block;
-    background: #f0f0f0;
-  }
-  .scroll1{
-    height: 100vh;
-    width: 100%;
-
-  }
-
-  .scroll2{
-    height: 100vh;
-    width: 100%;
-
-  }
-  .scroll3{
-    height: 100vh;
-    width: 100%;
-
-  }
-  .scrollableContent {
-    display: flex;
-    flex-wrap: column;
-    align-items: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #333;
-    background-color: #fff;
-  }
-
-  .scrollableContent > div:first-child {
-    display: block; }
-  
-  .scrollableContent > div {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    display: none;
-  }
-  
-  .scrollableContent img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .scrollableContent p {
-    margin: 10px 0;
-  }
-  
-
 .sticky {
   position: sticky;
   top: 0;
@@ -194,73 +100,6 @@
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
 }
-
-
-
-
-
-  .content {
-
-    width: 100vw;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    margin-bottom: 0;
-   
->
-  
-.studyFeatures {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.scrollableContent {
-  display: flex;
-  flex-wrap: wrap; 
-}
-
-.scroll {
-  width: calc(33.33% - 20px); 
-  text-align: center;
-  margin-bottom: 20px;
-
-.scroll img {
-  max-width: 100%;
-}
-
-.scroll p {
-  margin-top: 10px;
-}
-
-  
-
-.sticky {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-  
-@keyframes fadeOutUp {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-}
-
-.fadeOutUp {
-  animation-name: fadeOutUp;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}
-
-
 
 
 
@@ -303,4 +142,26 @@
   
   .slide-up {
     animation: slideUp 0.5s ease forwards;
+  }
+
+  #logInForm{
+    display: flex;
+     align-items: center; 
+     text-align: center;
+  }
+  #logInForm > span{
+
+    padding: 0 10px;
+  }
+
+
+
+
+
+  #logInForm > hr{
+    flex: 1;
+  }
+
+  .inputInfo > span{
+    color: red;
   }

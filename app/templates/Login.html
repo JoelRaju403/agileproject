@@ -34,8 +34,8 @@
             <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>
             <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with Facebook</b></div>
           </div>
-          <div>
-            <hr >
+          <div id="logInForm">
+            <hr>
             <span>or use your email password</span>
             <hr>
           </div>
@@ -44,13 +44,13 @@
             <p>
                 {{ form.username(size=32, placeholder="Enter username") }}
                 {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span>[{{ error }}]</span>
                 {% endfor %}
             </p>
             <p>
                 {{ form.password(size=32, placeholder="Password") }}
                 {% for error in form.password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
+                <span>[{{ error }}]</span>
                 {% endfor %}
                 <div class="centerPassword">
                 <a class="forgetPassword" href="#"> Forgot Password</a>

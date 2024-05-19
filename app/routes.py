@@ -34,7 +34,7 @@ from openai import OpenAI
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
-
+QUOTES_API = os.environ.get('QUOTES_KEY')
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
@@ -146,7 +146,7 @@ def explore():
   api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
   quote = None
   author = None
-  response = requests.get(api_url, headers={'X-Api-Key': '54BNuKnSnAeD1L+DHawYTw==4eLn0FXxFEnC1EmI'})
+  response = requests.get(api_url, headers={'X-Api-Key': QUOTES_API})
   if response.status_code == requests.codes.ok:
     data=response.json()
     quote = data[0].get('quote')
@@ -255,7 +255,7 @@ def answer():
                             messages=[
         {
             "role": "system",
-            "content": "You are a helpful assistant that converts text into a series of flashcards. Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer. The format should be as follows: 'Subject: subject_name', 'Title: title_name', 'Question: question_text', 'Answer: answer_text'.",
+            "content": "You are a helpful assistant that converts text into a series of flashcards. Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer. The format should be as follows: 'Subject: subject_name', 'Title: title_name', 'Question: question_text', 'Answer: answer_text'.You cannot use asterisks",
         },
         {
             "role": "user",

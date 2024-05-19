@@ -39,6 +39,9 @@ function divMaker(text) {
 
 }
 
+const savingFlashcard = document.getElementById("Saving_flashcard");
+savingFlashcard.addEventListener('click', addFlashcard);
+
 function addFlashcard(){
   var checkbox = document.querySelector('.toggle input[type="checkbox"]'); // Select the checkbox element
   console.log('Checkbox checked:', checkbox.checked); // Log the state of the checkbox
@@ -70,6 +73,8 @@ function addFlashcard(){
 
 }
 
+const deleting_flashcard = document.getElementById("deleting_flashcard");
+deleting_flashcard.addEventListener('click', delFlashcards);
 
 function delFlashcards(){
   localStorage.clear();
@@ -122,6 +127,9 @@ $(document).ready(function(){
   });
 });
 });
+
+const publicCheckbox = document.getElementById("publicCheckbox");
+publicCheckbox.addEventListener('click', SwitchPublic)
 
 function SwitchPublic() {
   var privateElement = document.querySelector('.Private'); // Select the paragraph element with class 'Private'

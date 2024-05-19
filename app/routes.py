@@ -19,16 +19,10 @@ from app.forms import LoginForm
 from flask_login import current_user, login_user
 import sqlalchemy as sa
 from app import db
-from flask_login import logout_user
-from flask_login import login_required
-from flask import request
-from urllib.parse import urlsplit
-from app.forms import RegistrationForm
 from datetime import datetime, timezone
 from app.forms import EditProfileForm
-from flask import jsonify
 import os
-import re
+
 from openai import OpenAI
 
 client = OpenAI(
@@ -138,6 +132,15 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 
+"""
+The `explore` function retrieves an inspirational quote from an API, fetches card sets associated
+with the current user, and renders an Explore page with the user's information, card sets, and the
+retrieved quote.
+:return: The `explore` route in the Flask application is returning a rendered template called
+'Explore.html' along with some data. The data being returned includes the current user (`user`), a
+list of cards belonging to the current user (`mycards`), a randomly fetched quote (`quote`), and the
+author of the quote (`author`). The template will be rendered with this data for display in the
+"""
 @app.route('/explore')
 @login_required
 def explore():
@@ -158,7 +161,7 @@ def explore():
 
   return render_template('Explore.html', user=user, cards=mycards, quote=quote, author=author)
 
-
+#route for searching
 @app.route('/search', methods=['POST'])
 def search_request():
   data = request.json
@@ -183,7 +186,7 @@ def get_learn():
   
   return redirect(url_for('learn'), code = 302)
 
-
+#learn route to study flashcards
 @app.route('/learn')
 def learn():
   setid = session.get('id')
@@ -197,7 +200,7 @@ def learn():
 
 
 
-
+#route to save flashcards to database
 @app.route('/save_flashcards', methods=['POST'])
 def save_flashcards():
   data = request.json
@@ -229,6 +232,7 @@ def save_flashcards():
 
   return jsonify({'message': 'Flashcards saved successfully'}), 200
 
+#route to delete a user
 @app.route('/delete_user/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
   user = User.query.get(user_id)
@@ -239,7 +243,7 @@ def delete_user(user_id):
   else:
     return jsonify({'error' : 'User not found'}), 404
 
-
+#route to upload flashcards and sets from ai
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
   return render_template('upload.html')
@@ -250,6 +254,7 @@ def answer():
         data = request.json
         prompt_text = data.get('prompt')
         if prompt_text:
+            #pass the prompt to the model so that it can generate the flashcards
             chat_completion = client.chat.completions.create(
                             model="gpt-4-turbo",
                             messages=[
@@ -264,9 +269,7 @@ def answer():
             ],
                     )
             generated_text = chat_completion.choices[0].message.content
-            print(type(generated_text))
-
-            print(generated_text)
+           
             response = parse_generated_text(generated_text)
 
             
@@ -276,6 +279,7 @@ def answer():
     else:
         return jsonify({"error": "Only POST requests are supported for this endpoint"}), 405
 
+#Makes the output suitable so that it can be submitted properly
 def parse_generated_text(generated_text):
    
     lines = generated_text.split('\n')

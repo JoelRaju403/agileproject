@@ -77,7 +77,12 @@ Users can search and explore other flashcard sets created by other users.
    ```
    Export the ZenQuotes API key
     ```
-      echo "export QUOTES_API='ENTER_YOUR_API_KEY'" >>  ~/.zshrc
+      echo "export QUOTES_KEY='ENTER_YOUR_API_KEY'" >>  ~/.zshrc
+      source ~/.zshrc
+    ```
+     Export the key for database
+    ```
+      echo "export SECRET_KEY='ENTER_THE_SECRET_KEY'" >>  ~/.zshrc
       source ~/.zshrc
     ```
    This will allow the web application to access the OpenAI API and the Quotes API.

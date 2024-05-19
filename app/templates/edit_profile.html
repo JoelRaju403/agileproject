@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
+
+{% endblock %}
+
 {% block content %}
 <h1 id="SettingTitle">Settings</h1>
 
@@ -74,7 +80,6 @@
 </fieldset>
 </div>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='setting.css') }}">
 
 
 {% endblock %}

@@ -11,7 +11,11 @@
   <div class="content" id="content">
     <h2>Master Your Subjects with stud.e</h2>
     <p>Study smarter, not harder. Access millions of flashcards and quizzes created by students like you.</p>
+    {% if current_user.is_authenticated %}
+    <button class='btn' id='explore-btn1'> Get started </button>
+    {% else %}
     <button class='btn' id="login-btn1"> Get started</button>
+    {% endif %}
   </div>
 </section>
 <section class="studyFeatures">

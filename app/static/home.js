@@ -1,6 +1,5 @@
-
-
   const modal = document.getElementById('login-modal');
+  
 
 
  // const loginBtn = document.getElementById('login-btn');
@@ -12,6 +11,14 @@
 
   const page = document.documentElement;
 
+  document.addEventListener('DOMContentLoaded', function() {
+    var getStartedExplore = document.getElementById('explore-btn1');
+    
+      getStartedExplore.addEventListener('click', function() {
+        window.location.href = '/explore';
+      });
+    }
+  );
 
   // When the user clicks the 'get started' button, open the modal 
   loginBtn1.addEventListener('click', function(event) {
@@ -20,6 +27,7 @@
     modal.classList.add('slide-up'); // Add slide-up class
   });
 
+ 
 
   // When the user clicks on <span> (x), close the modal
   closeBtn.onclick = function() {

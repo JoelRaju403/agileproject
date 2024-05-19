@@ -1,3 +1,6 @@
+
+//OpenAI. (2024). ChatGPT (3.5 Turbo) [Large language model]. https://chat.openai.com
+
 const container = document.getElementById('three-container');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);

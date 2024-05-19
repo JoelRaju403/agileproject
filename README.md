@@ -10,32 +10,32 @@ In our database we have three tables in our database.
 One for storing the User Information: 
 Table Name: User 
 Columns:  
-        id - INTEGER  
-        name - VARCHAR(64)
-        email - VARCHAR(120)  
+         - id - INTEGER  
+         - name - VARCHAR(64)
+         - email - VARCHAR(120)  
         password_hash - VARCHAR(256)  
 Primary Key: [ 'id' ]
 
 One for storing the Sets Information: 
 Table Name: Sets
 Columns:
-      userId - INTEGER
-      id - INTEGER
-      subject - VARCHAR(100)
-      title - VARCHAR(100)
-      public - BOOLEAN
-      cards - CARDS
+- userId - INTEGER
+- id - INTEGER
+- subject - VARCHAR(100)
+- title - VARCHAR(100)
+- public - BOOLEAN
+- cards - CARDS
 Primary key: ['id']
 Foreign key: userID -> User.id
 
 One for storing the Flashcard Information: 
 Table Name: Cards
 Columns:
-        userId - INTEGER
-        id - INTEGER
-        setId - INTEGER
-        question - VARCHAR(400)
-        answer - VARCHAR(400)
+- userId - INTEGER
+- id - INTEGER
+- setId - INTEGER
+- question - VARCHAR(400)
+- answer - VARCHAR(400)
 Primary key: ['id']
 Foreign key: setId -> Sets.id
 

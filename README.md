@@ -6,38 +6,39 @@ Users can request/search for other users' flashcards to learn as well as request
 
 ## Architecture of the Web Application
 
-In our database we have three tables in our database.
+In our database we have three tables.
+
 One for storing the User Information: 
 Table Name: User 
 Columns:  
-        id - INTEGER  
-        name - VARCHAR(64)
-        email - VARCHAR(120)  
-        password_hash - VARCHAR(256)  
-Primary Key: [ 'id' ]
+- id - INTEGER  
+- name - VARCHAR(64)
+- email - VARCHAR(120)  
+- password_hash - VARCHAR(256)  
+- Primary Key: [ 'id' ]
 
 One for storing the Sets Information: 
 Table Name: Sets
 Columns:
-      userId - INTEGER
-      id - INTEGER
-      subject - VARCHAR(100)
-      title - VARCHAR(100)
-      public - BOOLEAN
-      cards - CARDS
-Primary key: ['id']
-Foreign key: userID -> User.id
+- userId - INTEGER
+- id - INTEGER
+- subject - VARCHAR(100)
+- title - VARCHAR(100)
+- public - BOOLEAN
+- cards - CARDS
+- Primary key: ['id']
+- Foreign key: userID -> User.id
 
 One for storing the Flashcard Information: 
 Table Name: Cards
 Columns:
-        userId - INTEGER
-        id - INTEGER
-        setId - INTEGER
-        question - VARCHAR(400)
-        answer - VARCHAR(400)
-Primary key: ['id']
-Foreign key: setId -> Sets.id
+- userId - INTEGER
+- id - INTEGER
+- setId - INTEGER
+- question - VARCHAR(400)
+- answer - VARCHAR(400)
+- Primary key: ['id']
+- Foreign key: setId -> Sets.id
 
 ## Learn
 Users can head to the learn page to study flashcards created by them or others around the world.
@@ -77,7 +78,12 @@ Users can search and explore other flashcard sets created by other users.
    ```
    Export the ZenQuotes API key
     ```
-      echo "export QUOTES_API='ENTER_YOUR_API_KEY'" >>  ~/.zshrc
+      echo "export QUOTES_KEY='ENTER_YOUR_API_KEY'" >>  ~/.zshrc
+      source ~/.zshrc
+    ```
+   Export the key for database
+    ```
+      echo "export SECRET_KEY='ENTER_THE_SECRET_KEY'" >>  ~/.zshrc
       source ~/.zshrc
     ```
    This will allow the web application to access the OpenAI API and the Quotes API.

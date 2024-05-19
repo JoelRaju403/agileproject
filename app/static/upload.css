@@ -231,6 +231,8 @@ main {
   background-color: var(--purple-header-with-Opacity) ;
   cursor: not-allowed;
   color: white;
+  text-shadow: 2px 2px 1px #1f1f1f;
+
 }
 
 #AIContainer{
@@ -243,6 +245,8 @@ main {
   background-color: var(--purple-header-with-Opacity) ;
   cursor: not-allowed;
   color: white;
+  text-shadow: 2px 2px 1px #1f1f1f;
+
 }
 
 

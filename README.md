@@ -10,11 +10,11 @@ In our database we have three tables in our database.
 One for storing the User Information: 
 Table Name: User 
 Columns:  
-         - id - INTEGER  
-         - name - VARCHAR(64)
-         - email - VARCHAR(120)  
-        password_hash - VARCHAR(256)  
-Primary Key: [ 'id' ]
+- id - INTEGER  
+- name - VARCHAR(64)
+- email - VARCHAR(120)  
+- password_hash - VARCHAR(256)  
+- Primary Key: [ 'id' ]
 
 One for storing the Sets Information: 
 Table Name: Sets
@@ -25,8 +25,8 @@ Columns:
 - title - VARCHAR(100)
 - public - BOOLEAN
 - cards - CARDS
-Primary key: ['id']
-Foreign key: userID -> User.id
+- Primary key: ['id']
+- Foreign key: userID -> User.id
 
 One for storing the Flashcard Information: 
 Table Name: Cards
@@ -36,8 +36,8 @@ Columns:
 - setId - INTEGER
 - question - VARCHAR(400)
 - answer - VARCHAR(400)
-Primary key: ['id']
-Foreign key: setId -> Sets.id
+- Primary key: ['id']
+- Foreign key: setId -> Sets.id
 
 ## Learn
 Users can head to the learn page to study flashcards created by them or others around the world.

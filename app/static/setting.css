@@ -16,7 +16,7 @@ fieldset {
   margin-top: 1rem;
   border-radius: 1rem;
   margin-bottom: 5rem;
-  box-shadow: 1rem;
+ 
 
 }
 
@@ -107,7 +107,7 @@ input:checked + .slider:before {
   color: white;
   width: 10%;
   font-weight: bold;
-};
+}
 
 #ErrorEdit {
   color: red;

@@ -103,19 +103,6 @@
 
 
 
-
-  footer {
-    background: var(--header-color);
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    position: flex;
-    bottom: 0;
-    width: 100vw;
-    height: 50px;
-  
-  }
-  
   .darkmode {
     background-color: rgb(129, 129, 129);
     

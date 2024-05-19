@@ -42,16 +42,6 @@
   nav ul li a {
     color: #fff;
     text-decoration: bold;
-    padding:4px;
-  }
-
-  a{
-    text-decoration: none;
-  }
-
-  nav:hover ul:hover li:hover a:hover {
-  background-color: rgb(6, 104, 97);
-  border-radius: 5px;
   }
 
   #hamburgerMenu {
@@ -114,6 +104,145 @@
  
  
 
+ 
+
+  footer {
+    background: rgb(8, 129, 120);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position:flex;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+    z-index: 1;
+
+  
+  }
+
+  
+  #uploadOrCreate {
+    display: none;
+    position: fixed; /* Position the popup relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 70%;
+    background-color: rgb(8, 129, 120); 
+    z-index: 9999; /* Ensure the popup appears on top of other content */
+    top: 25%; /* Center vertically */
+    left: 5%;
+    border-radius: 2rem;
+    box-shadow: #333333;
+    overflow: hidden; /* Disable scroll */
+}
+
+#closePopUp {
+    cursor: pointer;
+    position: absolute;
+    top: 3rem;
+    right: 5rem; /* Adjust right position */
+    color: white;
+    scale: 3
+}
+
+
+.titlepopup {
+    position: absolute;
+    margin-top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+#createContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+.createbyhand,
+.createwithAi {
+    flex: 1;
+    text-align: center; /* Center-aligns the content within each section */
+    padding: 0 10px; /* Adjust spacing around the content */
+}
+
+#divider {
+    border-right: 1px solid black; /* Vertical line */
+    height: 15rem; /* Adjust line height */
+    margin: 0 10px; /* Adjust spacing between line and sections */
+    margin-top: 7rem;
+}
+
+.buttonpopup {
+
+    background-color: #2196F3;
+    border-radius: 1rem;
+    color: white;
+    display: block;
+    
+    width: 5rem;
+    height: 1.5rem;
+}
+
+
+#fullscreenMenu {
+  position: absolute;
+  right: 2.5rem;
+  top: 2.5rem;
+  scale: 2;
+}
+
+#fullscreenMenuDropdown {
+display: none; /* Initially hide the dropdown */
+position: absolute; /* Position absolutely relative to the fullscreenMenu */
+right: 2rem;
+top: 5rem;
+background-color: rgb(8, 129, 120);
+border: 1px solid #ccc; /* Example border */
+z-index: 999; /* Ensure the dropdown appears above other content */
+}
+
+#fullscreenMenuDropdown ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+#fullscreenMenuDropdown ul li {
+padding: 10px;
+display: block;
+}
+
+
+
+#fullscreenMenuDropdown ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+#fullscreenMenuDropdown ul li {
+padding: 10px;
+}
+
+#fullscreenMenuDropdown.show {
+  display: block;
+}
+
+li a {
+  text-decoration: none;
+}
+
+.iconwithMode span {
+  display: inline-block;
+}
+
 
 
 .darkmode {
@@ -131,16 +260,3 @@
 .darkHr {
   background-color: white;
 }
-
-
-
-
- 
-
-  
-
-
-
-
-
-  

@@ -6,7 +6,8 @@ Users can request/search for other users' flashcards to learn as well as request
 
 ## Architecture of the Web Application
 
-In our database we have three tables in our database.
+In our database we have three tables.
+
 One for storing the User Information: 
 Table Name: User 
 Columns:  
@@ -80,7 +81,7 @@ Users can search and explore other flashcard sets created by other users.
       echo "export QUOTES_KEY='ENTER_YOUR_API_KEY'" >>  ~/.zshrc
       source ~/.zshrc
     ```
-     Export the key for database
+   Export the key for database
     ```
       echo "export SECRET_KEY='ENTER_THE_SECRET_KEY'" >>  ~/.zshrc
       source ~/.zshrc

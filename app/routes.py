@@ -1,6 +1,6 @@
 import requests
 import json
-from flask import render_template, flash, redirect, url_for, request
+from flask import Flask,  render_template, flash, redirect, url_for, request, session
 from app import app
 from app.forms import LoginForm
 from flask_login import current_user, login_user
@@ -28,6 +28,7 @@ from datetime import datetime, timezone
 from app.forms import EditProfileForm
 from flask import jsonify
 import os
+import re
 from openai import OpenAI
 
 client = OpenAI(
@@ -164,15 +165,37 @@ def search_request():
   query=data.get('term')
 
   search_cards = Sets.query.filter_by(subject=query, public = 1).all()
-  results = [{'subject': card.subject, 'title': card.title} for card in search_cards]
+  results = [{'subject': card.subject, 'title': card.title, 'id': card.id} for card in search_cards]
   
   mycards = Sets.query.filter_by(userId=current_user.id)    
 
   print(results)
   
   return jsonify({'results': results}), 200
-    
-    
+
+
+
+@app.route('/sendId', methods=['POST'])
+def get_learn():
+  data = request.json
+  id = data.get('id')
+  session['id'] = id
+  
+  return redirect(url_for('learn'), code = 302)
+
+
+@app.route('/learn')
+def learn():
+  setid = session.get('id')
+  getCards = Cards.query.filter_by(setId = setid).all()
+  results = [{'question': card.question, 'answer': card.answer} for card in getCards] 
+  getsetInfo = Sets.query.filter_by(id = setid)
+  setInfo = {'subject': getsetInfo[0].subject, 'title':getsetInfo[0].title}
+
+  print(results)
+  return render_template('learn.html', cards=results, info=setInfo) 
+
+
 
 
 @app.route('/save_flashcards', methods=['POST'])
@@ -232,7 +255,7 @@ def answer():
                             messages=[
         {
             "role": "system",
-            "content": "You are a helpful assistant that converts text into a series of flashcards.Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer.",
+            "content": "You are a helpful assistant that converts text into a series of flashcards. Each set of flashcards has one Subject and Title.The Subject name has to be a max of two words and the Title name has to be a maximum of 4 words.You are creating one set. Each flashcard has a question, an answer. The format should be as follows: 'Subject: subject_name', 'Title: title_name', 'Question: question_text', 'Answer: answer_text'.",
         },
         {
             "role": "user",
@@ -247,7 +270,7 @@ def answer():
             response = parse_generated_text(generated_text)
 
             
-            return response
+            return  response
         else:
             return jsonify({"error": "No prompt provided"}), 400
     else:
@@ -258,8 +281,10 @@ def parse_generated_text(generated_text):
     lines = generated_text.split('\n')
     user_id = current_user.id
     
-    title = lines[1].replace('Title: ', '').strip().replace('-', '')
-    subject = lines[0].replace('Subject: ', '').strip().replace('-', '')
+ 
+    subject = lines[0].lower().replace('subject:', '').strip()
+    title = lines[1].lower().replace('title:', '').strip()
+
     flashcards = []
 
     for line in lines[2:]:
@@ -297,6 +322,14 @@ def store_flashcards(title, subject, flashcards, user_id):
         db.session.add(card)
 
     db.session.commit()  # Commit the Cards objects to the database
+
+
+
+
+
+
+
+
 
 
 

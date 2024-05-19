@@ -1,0 +1,74 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.carousel {
+  display: flex;
+  width: 90vw; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+
+.card {
+  display: none;
+  width:100%;/* Use relative unit */
+  max-width: 800px; /* Maximum width */
+  height:50%; /* Adjust height automatically */
+  max-height: 500px;
+  margin: 2rem auto; /* Use rem for scalable margin */
+  padding: 1rem; /* Use rem for scalable padding */
+  background-color: transparent;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+
+
+.active {
+  display: block;
+  
+}
+
+h2{
+  text-align: center;
+  margin-top: 15%;
+}
+p{
+  text-align: center;
+}
+
+.answer {
+  display: none;
+}
+
+.navigation {
+  display: flex; /* Make the container a flex container */
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 1rem; /* Add some gap between the buttons */
+  margin-top: 0;
+  padding: 8px 16px;
+  border-radius: 50%;
+  font-size: x-large;
+  color: lightgray;
+  background-color: white;
+
+}
+button{
+  border:2px solid lightgray;
+}
+
+button:hover{
+  background-color: rgba(211, 211, 211, 0.863);
+  color: white;
+}
+
+#heading{
+  padding-top: 1rem;
+}

@@ -37,29 +37,3 @@
 
  
   
-    
-  document.addEventListener('DOMContentLoaded', function() {
-    const studyFeatures = document.querySelector('.studyFeatures');
-    const scrollableContent = document.querySelector('.scrollableContent');
-    const textBlocks = scrollableContent.querySelectorAll('div');
-
-    window.addEventListener('scroll', function() {
-        const scrollPosition = window.scrollY;
-        const sectionTop = studyFeatures.offsetTop;
-
-        textBlocks.forEach((textBlock, index) => {
-            const textBlockTop = textBlock.offsetTop;
-            const isVisible = textBlock.classList.contains('fadeOutUp');
-            const isLastBlock = index === textBlocks.length ;
-
-            if (scrollPosition >= sectionTop + textBlockTop && !isVisible && !isLastBlock) {
-                setTimeout(() => {
-                    textBlock.classList.add('fadeOutUp');
-                    textBlocks[index + 1].style.display = 'block'; // Show the next block
-                }, 500); // Adjust the delay time as needed (in milliseconds)
-            } else {
-                textBlock.classList.remove('fadeOutUp');
-            }
-        });
-    });
-});

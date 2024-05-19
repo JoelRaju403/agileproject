@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 
 <section class="hero">
-  <div id="three-container"></div> 
+  <div id="three-container"></div>
   <div class="content" id="content">
     <h2>Master Your Subjects with stud.e</h2>
     <p>Study smarter, not harder. Access millions of flashcards and quizzes created by students like you.</p>
@@ -20,13 +20,21 @@
 </section>
 <section class="studyFeatures">
   <div class="scrollableContent">
-    
-    <div class="scroll1"><img src="static/home.jpg"><p>Unlock Your Learning Potential with Flashcards!</p></div>
-    <div class="scroll2"><img src="static/flashcard.jpg">Quickly Summarise Notes into Question and Answers</div>
-    <div class="scroll3"><img src="static/My first design.png">Discover a Wealth of Knowledge: Search for Other People's Flashcards</div>
-    
+    <div class="scroll">
+      <img src="static/home.jpg">
+      <p>Unlock Your Learning Potential with Flashcards!</p>
+    </div>
+    <div class="scroll">
+      <img src="static/flashcard.jpg">
+      <p>Quickly Summarise Notes into Question and Answers</p>
+    </div>
+    <div class="scroll">
+      <img src="static/My first design.png">
+      <p>Discover a Wealth of Knowledge: Search for Other People's Flashcards</p>
+    </div>
   </div>
 </section>
+
 
 
 <div id="login-modal" class="modal">
@@ -35,12 +43,16 @@
       <span class="close">&times;</span>
       <form action="{{ url_for('login') }}" method="post" novalidate>
         <div class="heading-container">
-          <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b><a href="{{ url_for('login') }}">Log In</a></b></h1>
-          <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a href="{{ url_for('register') }}">Sign Up</a></b></h1>
+          <h1 class="{% if page == 'home' %}swiggly-text{% endif %} login-heading"><b><a
+                href="{{ url_for('login') }}">Log In</a></b></h1>
+          <h1 class="{% if page == 'register' %}swiggly-text{% endif %} signin-heading"><b><a
+                href="{{ url_for('register') }}">Sign Up</a></b></h1>
         </div>
         <div class="social-icons">
-          <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b></div>
-          <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with Facebook</b></div>
+          <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-google"></i></a><b>Log In with Google</b>
+          </div>
+          <div class="Google"><a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a><b>Log In with
+              Facebook</b></div>
         </div>
         <div style="display: flex; align-items: center; text-align: center;">
           <hr style="flex: 1;">
@@ -60,9 +72,9 @@
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-            <div class="centerPassword">
-              <a class="forgetPassword" href="#"> Forgot Password</a>
-            </div>
+          <div class="centerPassword">
+            <a class="forgetPassword" href="#"> Forgot Password</a>
+          </div>
           </p>
           <div class="centered-text">
             <p>{{ form.remember_me() }} Remember Me</p>

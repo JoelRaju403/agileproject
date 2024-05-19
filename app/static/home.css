@@ -42,9 +42,40 @@
   nav ul li a {
     color: #fff;
     text-decoration: bold;
+
   }
- 
+
+  a{
+    text-decoration: none;
+    padding: 3px;
+  }
+
+  nav:hover ul:hover li:hover a:hover {
+    background-color: rgb(6, 104, 97);
+    }
   
+
+
+
+  #hamburgerMenu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+  }
+  
+  #dropdownContent {
+    display: none;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .navbarLinks {
+      display: none;
+    }
+  
+    #hamburgerMenu {
+      display: flex;
+    }
+  }
  
   .hero {
     text-align: center;
@@ -138,6 +169,71 @@
   .scrollableContent p {
     margin: 10px 0;
   }
+  
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+  
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.fadeOutUp {
+  animation-name: fadeOutUp;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+
+
+
+
+  .content {
+
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 0;
+   
+>
+  
+.studyFeatures {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.scrollableContent {
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.scroll {
+  width: calc(33.33% - 20px); 
+  text-align: center;
+  margin-bottom: 20px;
+
+.scroll img {
+  max-width: 100%;
+}
+
+.scroll p {
+  margin-top: 10px;
+}
+
   
 
 .sticky {

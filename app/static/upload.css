@@ -1,7 +1,7 @@
 :root{
   --purple-header: #0a092d;
   --purple-header-with-Opacity: #6d6d6d61;
-
+  --header-color: rgb(8, 129, 120);
   --lighter: #AD88C6;
   --gray-300-gray-600: #586380;
 }
@@ -27,8 +27,7 @@ header {
   align-items: center; 
   width: 100vw;
   border-bottom: 1px solid white;
-  
-  
+
 }
 
 nav {
@@ -91,11 +90,13 @@ main {
   color: #ddd;
   display: flex;
   width: 100vw;
+  
 }
 .learnSection,
 .Waffle {
     flex-grow: 1;
-    width: 50%;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .learnSection {
@@ -108,7 +109,7 @@ main {
   width: 55vw;
   display: flex;
   flex-direction: column; 
- align-items: left;
+  align-items: left;
 }
 
 
@@ -180,6 +181,7 @@ main {
 .Waffle div {
   margin-bottom: 10px;
   
+  
 }
 
 .Waffle div i {
@@ -201,6 +203,7 @@ main {
   font-size: 2.5rem;
   cursor: pointer;
   padding: 0;
+  padding-right: 10px
   
 }
 
@@ -217,6 +220,90 @@ main {
   cursor: not-allowed;
   color: white;
 }
+
+#outputContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  width: 100vw;
+  background-color: var(--purple-header-with-Opacity) ;
+  cursor: not-allowed;
+  color: white;
+}
+
+#AIContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: absolute;
+  width: 100vw;
+  background-color: var(--purple-header-with-Opacity) ;
+  cursor: not-allowed;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.errormessage{
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2; 
+  cursor: initial !important;
+  height: 10vh;
+  width: 40vh;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  
+}
+
+
+.errormessage > p{
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.errormessage > i {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+ color: red;
+}
+
+.errormessage > i:hover {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+}
+
+
+
+
+
+
+
+
+
+
+
 #animatedText{
   font-size: 35px;
   background-color: transparent;
@@ -246,12 +333,12 @@ main {
 .loader::after {
   content: "";
   grid-area: 1/1;
-  background:#f77825;
+  background:#0aa1ff;
   animation: inherit;
   animation-name: l4-1;
 }
 .loader::after {
-  background: #60B99A;
+  background: #60b99a;
   --s: 60deg;
 }
 @keyframes l4-0 {
@@ -279,11 +366,11 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 50px; /* Increased height for button */
+  height: 50px; 
   border-top: 1px solid white;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribute items horizontally */
+  justify-content: space-between; /
 }
 
 footer p {
@@ -292,7 +379,7 @@ footer p {
 }
 
 footer button {
-  background-color: grey;
+  background-color: #60b99a;
   border: 2px solid #4a4949;
   color: #fff;
   padding: 10px 20px;
@@ -311,3 +398,77 @@ footer button:hover {
 
 
 
+@media screen and (max-width: 768px) {
+ 
+
+
+  main{
+    flex-direction: column;
+  }
+
+  .learnSection,
+  .Waffle {
+    width: 100%; 
+  }
+
+  .errormessage {
+    width: 90%; 
+  } 
+  footer button {
+    padding: 0.5rem 1rem; 
+  }
+
+  #outputContainer, #loadingContainer{
+    width: 100%; 
+    height: 110%;
+  }
+
+  .learnSection {
+    width: 90%; 
+    margin: 0 auto 20px auto; 
+  }
+  .Waffle {
+    width: 90%; 
+    margin: 0 auto 20px auto; 
+
+  }
+
+  .socialMedia i:first-child{
+    padding-left: 100px;    
+  }
+  .socialMedia i{
+    margin-bottom: 40px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+ 
+
+  .errormessage > p {
+    font-size: 1.5rem; 
+  }
+
+  footer button {
+    padding: 0.3rem 0.8rem; 
+  }
+  .learnSection {
+    width: 100%; 
+    
+  }
+  .Waffle {
+    width: 100%; 
+    
+
+  }
+
+  #outputContainer, #loadingContainer, #AIContainer{
+    width: 100%; 
+    height: 110%;
+  }
+}
+
+
+.hidden {
+  display: none;
+}

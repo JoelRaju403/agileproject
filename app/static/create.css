@@ -55,8 +55,8 @@ button:hover {
 .create-box{
   margin: auto;
   padding: 20px;
-  margin-top: px;
-  border-radius: 5px;
+  margin-top: 10px;
+  border-radius: 1.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 
 }
@@ -64,7 +64,7 @@ button:hover {
   margin: auto;
   padding: 20px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 1.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 
 }
@@ -72,6 +72,7 @@ button:hover {
   width: 100%;
   border-radius: 5px;
   border: 1px solid lightgray;
+  padding: 5px;
   
 }
 .flashcards{

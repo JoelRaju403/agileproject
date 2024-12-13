@@ -1,4 +1,4 @@
-### Agile Web Development Project
+### Quizlet Clone
 
 ## Purpose of the Web Application.
 This is a Flask web application that allows users to create their own flashcards and study them.
